@@ -1,0 +1,66 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ir.shahinsoft.languagenotifier.main.MainActivity">
+
+    <item
+        android:id="@+id/login"
+        android:icon="@drawable/ic_login"
+        android:title="@string/login" />
+
+    <item
+        android:id="@+id/action_quiz"
+        android:icon="@drawable/ic_quiz"
+        android:title="@string/take_quiz" />
+
+    <item
+        android:id="@+id/action_categories"
+        android:icon="@drawable/ic_category"
+        android:title="@string/title_category" />
+
+    <item
+        android:id="@+id/action_history"
+        android:icon="@drawable/ic_history"
+        android:title="@string/history" />
+
+    <group android:id="@+id/g_io">
+
+        <item
+            android:id="@+id/action_import"
+            android:icon="@drawable/ic_import"
+            android:title="@string/import_txt" />
+
+        <item
+            android:id="@+id/action_export"
+            android:icon="@drawable/ic_export"
+            android:title="@string/export" />
+
+    </group>
+
+
+    <group android:id="@+id/g_about">
+
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/action_settings" />
+
+        <item
+            android:id="@+id/action_telegram"
+            android:icon="@drawable/ic_telegram"
+            android:title="@string/telegram_channel" />
+
+        <item
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_info"
+            android:title="@string/about_us"
+            app:showAsAction="always" />
+
+    </group>
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_close_black_24dp"
+        android:title="@string/logout" />
+
+</menu>

@@ -1,0 +1,280 @@
+<resources>
+    <string name="app_name">Notifictionary</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_text_to_translate">Type To Translate</string>
+    <string name="add_to_learn">Add to Learn list</string>
+    <string name="add_to_selected_category">Add to selected category</string>
+    <string name="blind_swap_language">Swap Languages</string>
+    <string name="api_key_depricated">Api depricated</string>
+    <string name="exceed_daily_translate">Cannot translate now</string>
+    <string name="text_size_error">Text is too large for translation</string>
+    <string name="cannot_translate">Error in Translate</string>
+    <string name="translate_not_supported">Developer Error</string>
+    <string name="error_unknown">Unknown Error</string>
+    <string name="error_noConnection">No Internet connection</string>
+    <string name="error_timeout">Request timed out</string>
+    <string name="error_server">Translate server not available</string>
+    <string name="error_network">Network Error</string>
+    <string name="title_target">Translate to</string>
+    <string name="title_source">Translate from</string>
+    <string name="filter">Filter</string>
+    <string name="correct_count">Correct count</string>
+    <string name="wrong_count">Correct count</string>
+    <string name="finish_quiz">Finish Quiz</string>
+    <string name="correct_answer_is">Answere is:</string>
+    <string name="error_create_quiz">You must add at least 4 words to learning list</string>
+    <string name="notifictionary_is_active">Notifictionary is Active</string>
+    <string name="close_notification">Stop</string>
+    <string name="question_description">Select the meaning of Word displayer bellow</string>
+    <string name="wrong">WRONG</string>
+    <string name="correct">CORRECT</string>
+    <string name="no_more_question">No more questions</string>
+    <string name="pick_color">Pick a color</string>
+    <string name="select">SELECT</string>
+    <string name="title_duplicated">Word Already Exists</string>
+    <string name="description_duplicated">Word %s already Exists in Learn list\ndo you want to add it again?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="enter_name">Please Enter file name</string>
+    <string name="hint_file_name">File name</string>
+    <string name="word">Word</string>
+    <string name="translate">Translate</string>
+    <string name="hint_optional">Hint(Optional)</string>
+    <string name="edit">Edit</string>
+    <string name="edit_title">Edit Word</string>
+    <string name="enter_category_name">Please Enter category name</string>
+    <string name="hint_category_name">Category</string>
+    <string name="period_time">Time between reminders</string>
+    <string name="about_us">About US</string>
+    <string name="about_us_desc">Notifictionary is created to help People who want to learn specific Language or Words or etc. this app will notify user repeatedly during the day &amp; randomly show one of the words you already inserted. Sometimes app will ask you a word to see if you learned that word or not.</string>
+    <string name="title_activity_assay">Challenge your knowledge</string>
+    <string name="title_result">Result of Quiz</string>
+    <string name="color_not_selected">No Color Selected</string>
+    <string name="error_file_name">Please enter a file name</string>
+    <string name="error_already_exists">Already Exists</string>
+    <string name="close">Close</string>
+    <string name="all">ALL</string>
+    <string name="service_permission">ir.shahinsoft.notifictionary.service.PERMISSION</string>
+    <string name="error_empty">This fields is required</string>
+    <string name="label_limit">Memorize Limit (num)</string>
+    <string name="more">more</string>
+    <string name="none" />
+    <string name="remove">Remove</string>
+    <string name="move">Move</string>
+    <string name="delete_title">Delete word</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_description_format">Do you really want to delete %s ?</string>
+    <string name="word_is_empty">Word is empty</string>
+    <string name="translate_empty">Translate is empty</string>
+    <string name="undo">Undo</string>
+    <string name="add_message_format">%s added to learn list</string>
+    <string name="favorite">Favorite</string>
+    <string name="take_quiz">Take Quiz</string>
+    <string name="title_category">Categories</string>
+    <string name="history">Copy History</string>
+    <string name="import_txt">Import</string>
+    <string name="export">Export</string>
+    <string name="telegram_channel">Telegram channel</string>
+    <string name="category_deleted">Category Deleted!</string>
+    <string name="title_remove_category">Remove Category</string>
+    <string name="content_remove_category">Do you really want to delete this category? \\nAll words inside it will be deleted</string>
+    <string name="add">Add</string>
+    <string name="select_back_up_file">Select backup file</string>
+    <string name="export_done">Export completed</string>
+    <string name="please_wait">Please wait</string>
+    <string name="loading_words">Loading words</string>
+    <string name="msg_words_saved">Words imported to database</string>
+    <string name="title_import">Import</string>
+    <string name="title_export">Export</string>
+    <string name="select_all">Select all</string>
+    <string name="diselect">Disselect all</string>
+    <string name="error_read_file">Error : file may not be notifictionary backup file</string>
+    <string name="unselect">DISSELECT</string>
+    <string name="notification_cycle">Notification Time</string>
+    <string name="memorize_limit">Memorize limit</string>
+    <string name="correct_answer_goal">Correct Answer goal</string>
+    <string name="theme">Theme</string>
+    <string name="notification_sound">Notification sound</string>
+    <string name="notification_vibrate">Notification vibrate</string>
+    <string name="notification_settings">Notification settings</string>
+    <string name="translate_everywhere">Translate everywhere</string>
+    <string name="save_history">Save Translated words</string>
+    <string name="help">Help</string>
+    <string name="license">License</string>
+    <string name="qa"><![CDATA[Q&A]]></string>
+    <string name="title_help">Help</string>
+    <string name="title_license">License</string>
+    <string name="speak_speed">Speack speed</string>
+    <string name="speech">Speech</string>
+    <string name="expand">expand</string>
+    <string name="options">options</string>
+    <string name="contact_to_developer">Developed by Shayan Darvish pour</string>
+    <string name="social_media">Social Media</string>
+    <string name="telegram_account">Developer telegram account</string>
+    <string name="instagram_account">Developer Instagram account</string>
+    <string name="twitter_account">Developer twitter account</string>
+    <string name="gmail_account">Send Email to developer</string>
+    <string name="close_about_activity">Close about activity</string>
+    <string name="seen">Mark as read</string>
+    <string name="replace">Replace</string>
+    <string name="theme_red">Theme red</string>
+    <string name="theme_pink">Theme pink</string>
+    <string name="theme_purple">Theme purple</string>
+    <string name="theme_purple_deep">Theme purple deep</string>
+    <string name="theme_indigo">Theme Indigo</string>
+    <string name="theme_blue">Theme blue</string>
+    <string name="theme_blue_light">Theme blue light</string>
+    <string name="theme_cyan">Theme cyan</string>
+    <string name="theme_teal">Theme teal</string>
+    <string name="theme_gray">Theme gray</string>
+    <string name="theme_green">Theme green</string>
+    <string name="theme_green_light">Theme green light</string>
+    <string name="theme_lime">Theme lime</string>
+    <string name="theme_yellow">Theme yellow</string>
+    <string name="theme_orange">Theme orange</string>
+    <string name="theme_amber">Theme amber</string>
+    <string name="theme_orange_deep">Theme orange deep</string>
+    <string name="theme_brown">Theme brown</string>
+    <string name="theme_blue_gray">Theme blue gray</string>
+    <string name="theme_black">Theme black</string>
+    <string name="new_category">New category</string>
+    <string name="no_word_found">No word found in this category</string>
+    <string name="login">Login</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="error_email">Email is not valid</string>
+    <string name="login_success">Login seccess</string>
+    <string name="logout">Logout</string>
+    <string name="clear_all">Clear all</string>
+    <string name="shop_still_not_working">Shop not available for now</string>
+    <array name="word_types">
+        <item>None</item>
+        <item>Verb</item>
+        <item>Adjective</item>
+        <item>Subjective</item>
+        <item>Adverb</item>
+        <item>Noun</item>
+        <item>Suffix</item>
+        <item>Prefix</item>
+    </array>
+    <string name="title_activity_settings2">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="pref_notification_period_description">the delay between reminder notifications</string>
+    <string name="pref_notification_period">Notification time</string>
+    <string name="pref_translate_anywhere_desc">Translate any word any where by copy it or select the word and then click \'translate\' button</string>
+    <string name="pref_translate_anywhere">Translate anywhere</string>
+    <string name="pref_save_translations">Save translated words</string>
+    <string name="pref_save_translations_desc">Save a history of copied and translated words in application and then by opening \'History activity\' you\'ll be able to add them to your learn list or simply delete them</string>
+    <string name="pref_theme">Theme</string>
+    <string name="pref_theme_desc">Change the main color of the application</string>
+    <string name="general_settings">General</string>
+    <string name="pref_learn_goal">Correct asnwer goal</string>
+    <string name="pref_learn_goal_desc">The word will be marked as learned if you answer correctly the question about that word more than your goal</string>
+    <string name="pref_allow_reminder_notifications">Allow reminder notifications</string>
+    <string name="notification_cycle_desc">The delay between notifications sent by application</string>
+    <string name="pref_smart_notification_time">Smart notifications</string>
+    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\\nLearn process may be few days due to learning procecure</string>
+    <string name="pref_notification_sound">Sound</string>
+    <string name="pref_notification_vibration">Vibrate</string>
+    <string name="notification_settings_desc">After android 8.0 we don\'t have access to notifications settings and you must change settings from android settings</string>
+    <string name="card_stack_view">Card stack view</string>
+    <string name="card_stack_view_desc">📱Tinder like swipeable card view for Android</string>
+    <string name="circle_picker">Circle picker</string>
+    <string name="circle_picker_desc">CirclePicker is an alternative to the built-in NumberPicker view in Android. It provides an easy to use, easy to customize widget with a modern look and feel.</string>
+    <string name="google">Google</string>
+    <string name="google_desc">Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware.</string>
+    <string name="volley">Volley</string>
+    <string name="volley_desc">Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster.  For more information about Volley and how to use it, visit the Android developer training page.\nhttps://developer.android.com/training/volley/index.html</string>
+    <string name="sticky_nested_scroll_view">Sticky nested scroll view</string>
+    <string name="sticky_nested_scroll_view_desc">A small android library for tagging views inside a ScrollView as \"sticky\" making them stick to the top of the scroll container until a new sticky view comes and takes it\'s place</string>
+    <string name="material_intro_screen">Material intro screen</string>
+    <string name="material_intro_screen_desc">Material intro screen is inspired by Material Intro and developed with love from scratch. I decided to rewrite completely almost all features in order to make Android intro screen easy to use for everyone and extensible as possible.</string>
+    <string name="crashlythics">Crashlytics</string>
+    <string name="crashlythics_desc">The most powerful, yet lightest weight crash reporting solution.</string>
+    <string name="mitra">Mitra Lashkary</string>
+    <string name="mitra_desc">The designer of notifictionary</string>
+    <string name="pref_learn_goal_hint">Enter your goal</string>
+    <string name="pref_cycle_hint">delay between notifications(minutes)</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="did_you_guess_right">Did you Guess right?</string>
+    <string name="see_translation">See Translation</string>
+
+</resources>

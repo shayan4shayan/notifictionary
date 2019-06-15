@@ -1,0 +1,20 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- These settings headers are only used on tablets. -->
+
+    <header
+        android:fragment="ir.shahinsoft.notifictionary.activities.SettingsActivity$GeneralPreferenceFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/general_settings" />
+
+    <header
+        android:fragment="ir.shahinsoft.notifictionary.activities.SettingsActivity$NotificationPreferenceFragment"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/pref_header_notifications" />
+
+    <header
+        android:fragment="ir.shahinsoft.notifictionary.activities.SettingsActivity$LicensePreferenceFragment"
+        android:icon="@drawable/ic_copyright"
+        android:title="@string/license" />
+
+</preference-headers>

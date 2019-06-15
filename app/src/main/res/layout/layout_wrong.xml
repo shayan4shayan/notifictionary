@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wrong_view"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:layout_margin="16dp"
+    android:background="#d32f2f"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:tint="#fff"
+        app:srcCompat="@drawable/ic_close_black_24dp"
+        android:contentDescription="@string/wrong" />
+
+    <ir.shahinsoft.notifictionary.widget.AppTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wrong"
+        android:textColor="#fff"
+        android:textSize="32sp"
+        app:font_name="bold" />
+</LinearLayout>

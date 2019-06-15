@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ir.shahinsoft.notifictionary">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
+
+        <activity android:name=".activities.TestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SettingActivityPhone" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings2"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".activities.SelectLanguageActivity"
+            android:theme="@style/PopupTheme" />
+        <activity android:name=".activities.ResultActivity" />
+        <activity
+            android:name=".activities.AssayActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CategoryActivity"
+            android:theme="@style/PopupTheme" />
+        <activity android:name=".activities.ExportActivity" />
+        <activity android:name=".activities.ImportActivity" />
+        <activity
+            android:name=".activities.HistoryActivity"
+            android:theme="@style/PopupTheme" />
+        <activity android:name=".activities.LicenseActivity" />
+        <activity android:name=".activities.HelpActivity" />
+        <activity
+            android:name=".activities.AboutActivity"
+            android:theme="@style/PopupTheme.NoActionBar" />
+        <activity
+            android:name=".activities.TranslateActivity"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:label="@string/translate"
+            android:theme="@style/Theme.AppCompat.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/AppTheme.Login" />
+        <activity android:name=".activities.ShopActivity" />
+
+        <service
+            android:name=".services.NotifictionaryService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="@string/service_permission" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5455830807776357~8476580033" />
+
+        
+
+    </application>
+
+</manifest>

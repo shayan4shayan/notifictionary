@@ -1,0 +1,44 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:icon="@mipmap/ic_notification"
+        android:key="notifications_new_message"
+        android:title="@string/pref_allow_reminder_notifications" />
+
+    <EditTextPreference
+        android:dependency="notifications_new_message"
+        android:hint="@string/pref_cycle_hint"
+        android:icon="@mipmap/ic_cycle"
+        android:inputType="number"
+        android:key="pref_notification_cycle"
+        android:maxLength="3"
+        android:summary="@string/notification_cycle_desc"
+        android:title="@string/notification_cycle" />
+
+    <SwitchPreference
+        android:dependency="notifications_new_message"
+        android:icon="@mipmap/ic_artificial_intelligence"
+        android:key="pref_smart_notifications"
+        android:summary="@string/pref_smart_notification_time_desc"
+        android:title="@string/pref_smart_notification_time" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:icon="@mipmap/ic_sound"
+        android:key="pref_notification_sound"
+        android:title="@string/pref_notification_sound" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:icon="@mipmap/ic_vibrate"
+        android:key="pref_notification_vibration"
+        android:title="@string/pref_notification_vibration" />
+    <Preference
+        android:enabled="false"
+        android:icon="@mipmap/ic_settings"
+        android:key="android_settings"
+        android:summary="@string/notification_settings_desc"
+        android:title="@string/notification_settings" />
+</PreferenceScreen>

@@ -1,0 +1,38 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:icon="@mipmap/ic_goal"
+        android:key="pref_learn_goal"
+        android:inputType="number"
+        android:hint="@string/pref_learn_goal_hint"
+        android:summary="@string/pref_learn_goal_desc"
+        android:title="@string/pref_learn_goal" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_translate_anywhere"
+        android:icon="@mipmap/ic_goal"
+        android:summary="@string/pref_translate_anywhere_desc"
+        android:title="@string/pref_translate_anywhere" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:icon="@mipmap/ic_save"
+        android:key="pref_save_translates"
+        android:summary="@string/pref_save_translations_desc"
+        android:title="@string/pref_save_translations" />
+
+
+    <ir.shahinsoft.notifictionary.prefrences.SeekbarPrefrence
+        android:key="pref_speech_speed"
+        android:layout="@layout/setting_speech_speed" />
+
+
+    <EditTextPreference
+        android:icon="@mipmap/ic_rgb"
+        android:inputType="none"
+        android:key="pref_theme"
+        android:summary="@string/pref_theme_desc"
+        android:title="@string/pref_theme" />
+
+</PreferenceScreen>

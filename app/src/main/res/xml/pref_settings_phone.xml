@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/general_settings">
+
+        <EditTextPreference
+            android:defaultValue="5"
+            android:hint="@string/pref_learn_goal_hint"
+            android:icon="@mipmap/ic_goal"
+            android:inputType="number"
+            android:key="pref_learn_goal"
+            android:summary="@string/pref_learn_goal_desc"
+            android:title="@string/pref_learn_goal" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@mipmap/ic_goal"
+            android:key="pref_translate_anywhere"
+            android:summary="@string/pref_translate_anywhere_desc"
+            android:title="@string/pref_translate_anywhere" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@mipmap/ic_save"
+            android:key="pref_save_translates"
+            android:summary="@string/pref_save_translations_desc"
+            android:title="@string/pref_save_translations" />
+
+
+        <ir.shahinsoft.notifictionary.prefrences.SeekbarPrefrence
+            android:key="pref_speech_speed"
+            android:layout="@layout/setting_speech_speed" />
+
+
+        <EditTextPreference
+            android:icon="@mipmap/ic_rgb"
+            android:inputType="none"
+            android:key="pref_theme"
+            android:summary="@string/pref_theme_desc"
+            android:title="@string/pref_theme" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/notification_settings">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@mipmap/ic_notification"
+            android:key="notifications_new_message"
+            android:title="@string/pref_allow_reminder_notifications" />
+
+        <EditTextPreference
+            android:defaultValue="20"
+            android:dependency="notifications_new_message"
+            android:hint="@string/pref_cycle_hint"
+            android:icon="@mipmap/ic_cycle"
+            android:inputType="number"
+            android:key="pref_notification_cycle"
+            android:maxLength="3"
+            android:summary="@string/notification_cycle_desc"
+            android:title="@string/notification_cycle" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notifications_new_message"
+            android:icon="@mipmap/ic_artificial_intelligence"
+            android:key="pref_smart_notifications"
+            android:summary="@string/pref_smart_notification_time_desc"
+            android:title="@string/pref_smart_notification_time" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notifications_new_message"
+            android:icon="@mipmap/ic_sound"
+            android:key="pref_notification_sound"
+            android:title="@string/pref_notification_sound" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notifications_new_message"
+            android:icon="@mipmap/ic_vibrate"
+            android:key="pref_notification_vibration"
+            android:title="@string/pref_notification_vibration" />
+        <Preference
+            android:enabled="false"
+            android:icon="@mipmap/ic_settings"
+            android:key="android_settings"
+            android:summary="@string/notification_settings_desc"
+            android:title="@string/notification_settings" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/license">
+        <Preference
+            android:summary="@string/card_stack_view_desc"
+            android:title="@string/card_stack_view">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/yuyakaido/CardStackView" />
+
+        </Preference>
+
+        <Preference
+            android:summary="@string/circle_picker_desc"
+            android:title="@string/circle_picker">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/bugadani/CirclePicker" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/google_desc"
+            android:title="@string/google">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/google" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/volley_desc"
+            android:title="@string/volley">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/google/volley" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/sticky_nested_scroll_view_desc"
+            android:title="@string/sticky_nested_scroll_view">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/didikk/sticky-nestedscrollview" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/material_intro_screen_desc"
+            android:title="@string/material_intro_screen">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/TangoAgency/material-intro-screen" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/crashlythics_desc"
+            android:title="@string/crashlythics">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/crashlytics" />
+        </Preference>
+
+        <Preference
+            android:summary="@string/mitra_desc"
+            android:title="@string/mitra">
+            <intent
+                android:action="android.intent.action.SEND"
+                android:data="mitra.l76@gmail.com" />
+        </Preference>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

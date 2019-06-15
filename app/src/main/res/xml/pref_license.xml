@@ -1,0 +1,68 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:summary="@string/card_stack_view_desc"
+        android:title="@string/card_stack_view">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/yuyakaido/CardStackView" />
+
+    </Preference>
+
+    <Preference
+        android:summary="@string/circle_picker_desc"
+        android:title="@string/circle_picker">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/bugadani/CirclePicker" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/google_desc"
+        android:title="@string/google">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/google" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/volley_desc"
+        android:title="@string/volley">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/google/volley" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/sticky_nested_scroll_view_desc"
+        android:title="@string/sticky_nested_scroll_view">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/didikk/sticky-nestedscrollview" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/material_intro_screen_desc"
+        android:title="@string/material_intro_screen">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/TangoAgency/material-intro-screen" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/crashlythics_desc"
+        android:title="@string/crashlythics">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/crashlytics" />
+    </Preference>
+
+    <Preference
+        android:summary="@string/mitra_desc"
+        android:title="@string/mitra">
+        <intent
+            android:action="android.intent.action.SEND"
+            android:data="mitra.l76@gmail.com" />
+    </Preference>
+
+</PreferenceScreen>

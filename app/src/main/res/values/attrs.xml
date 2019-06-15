@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="font_name" format="enum">
+        <enum name="light" value="0" />
+        <enum name="medium" value="1" />
+        <enum name="regular" value="2" />
+        <enum name="bold" value="3" />
+    </attr>
+
+    <declare-styleable name="CircleProgressBar">
+        <attr name="min_progress" format="integer" />
+        <attr name="max_progress" format="integer" />
+        <attr name="progress" />
+        <attr name="progressbarColor" format="color" />
+        <attr name="progressBarThickness" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="AppTextView">
+        <attr name="font_name" />
+    </declare-styleable>
+
+    <declare-styleable name="AppEditText">
+        <attr name="font_name" />
+    </declare-styleable>
+
+    <declare-styleable name="AppButton">
+        <attr name="font_name" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ir.shahinsoft.notifictionary.widget.AppTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:font_name="bold"
+        android:padding="16dp"
+        android:text="@string/pick_color"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_red"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_red" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_pink"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imagePink"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_pink" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_purple"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imagePurple"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_purple" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_deep_purple"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imagePurpleDeep"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_purple_deep" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_indigo"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageIndigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_indigo" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_blue"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_blue" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_blue_light"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageBlueLight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_blue_light" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_cyan"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageCyan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_cyan" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_teal"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageTeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_teal" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_blue_gray"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageBlueGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_blue_gray" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_green"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_green" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_green_light"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageGreenLight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_green_light" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_lime"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageLime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_lime" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_yellow"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageYellow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_yellow" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_amber"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageAmber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_amber" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_orange"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageOrange"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_orange" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_orange_deep"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageOrangeDeep"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_orange_deep" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_brown"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageBrown"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_brown" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_gray"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_gray" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="2dp"
+                app:cardBackgroundColor="@color/picker_black"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/imageBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:tint="@color/white"
+                    android:contentDescription="@string/theme_black" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ir.shahinsoft.notifictionary.widget.AppButton
+        android:id="@+id/select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"
+        android:paddingRight="32dp"
+        android:paddingLeft="32dp"
+        android:background="@color/transparent"
+        android:text="@string/select"
+        android:textColor="@color/colorSecondary" />
+</LinearLayout>

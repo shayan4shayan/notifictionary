@@ -1,0 +1,362 @@
+[
+  {
+    "language": "Azerbaijan",
+    "code": "az"
+  },
+  {
+    "language": "Albanian",
+    "code": "sq"
+  },
+  {
+    "language": "Amharic",
+    "code": "am"
+  },
+  {
+    "language": "English",
+    "code": "en"
+  },
+  {
+    "language": "Arabic",
+    "code": "ar"
+  },
+  {
+    "language": "Armenian",
+    "code": "hy"
+  },
+  {
+    "language": "Afrikaans",
+    "code": "af"
+  },
+  {
+    "language": "Basque",
+    "code": "eu"
+  },
+  {
+    "language": "Bashkir",
+    "code": "ba"
+  },
+  {
+    "language": "Belarusian",
+    "code": "be"
+  },
+  {
+    "language": "Bengali",
+    "code": "bn"
+  },
+  {
+    "language": "Burmese",
+    "code": "my"
+  },
+  {
+    "language": "Bulgarian",
+    "code": "bg"
+  },
+  {
+    "language": "Bosnian",
+    "code": "bs"
+  },
+  {
+    "language": "Welsh",
+    "code": "cy"
+  },
+  {
+    "language": "Hungarian",
+    "code": "hu"
+  },
+  {
+    "language": "Vietnamese",
+    "code": "vi"
+  },
+  {
+    "language": "Haitian (Creole)",
+    "code": "ht"
+  },
+  {
+    "language": "Galician",
+    "code": "gl"
+  },
+  {
+    "language": "Dutch",
+    "code": "nl"
+  },
+  {
+    "language": "Hill Mari",
+    "code": "mrj"
+  },
+  {
+    "language": "Greek",
+    "code": "el"
+  },
+  {
+    "language": "Georgian",
+    "code": "ka"
+  },
+  {
+    "language": "Gujarati",
+    "code": "gu"
+  },
+  {
+    "language": "Danish",
+    "code": "da"
+  },
+  {
+    "language": "Hebrew",
+    "code": "he"
+  },
+  {
+    "language": "Yiddish",
+    "code": "yi"
+  },
+  {
+    "language": "Indonesian",
+    "code": "id"
+  },
+  {
+    "language": "Irish",
+    "code": "ga"
+  },
+  {
+    "language": "Italian",
+    "code": "it"
+  },
+  {
+    "language": "Icelandic",
+    "code": "is"
+  },
+  {
+    "language": "Spanish",
+    "code": "es"
+  },
+  {
+    "language": "Kazakh",
+    "code": "kk"
+  },
+  {
+    "language": "Kannada",
+    "code": "kn"
+  },
+  {
+    "language": "Catalan",
+    "code": "ca"
+  },
+  {
+    "language": "Kyrgyz",
+    "code": "ky"
+  },
+  {
+    "language": "Chinese",
+    "code": "zh"
+  },
+  {
+    "language": "Korean",
+    "code": "ko"
+  },
+  {
+    "language": "Xhosa",
+    "code": "xh"
+  },
+  {
+    "language": "Laotian",
+    "code": "lo"
+  },
+  {
+    "language": "Latin",
+    "code": "la"
+  },
+  {
+    "language": "Latvian",
+    "code": "lv"
+  },
+  {
+    "language": "Lithuanian",
+    "code": "lt"
+  },
+  {
+    "language": "Luxembourgish",
+    "code": "lb"
+  },
+  {
+    "language": "Malagasy",
+    "code": "mg"
+  },
+  {
+    "language": "Malay",
+    "code": "ms"
+  },
+  {
+    "language": "Malayalam",
+    "code": "ml"
+  },
+  {
+    "language": "Maltese",
+    "code": "mt"
+  },
+  {
+    "language": "Macedonian",
+    "code": "mk"
+  },
+  {
+    "language": "Maori",
+    "code": "mi"
+  },
+  {
+    "language": "Marathi",
+    "code": "mr"
+  },
+  {
+    "language": "Mari",
+    "code": "mhr"
+  },
+  {
+    "language": "Mongolian",
+    "code": "mn"
+  },
+  {
+    "language": "German",
+    "code": "de"
+  },
+  {
+    "language": "Nepali",
+    "code": "ne"
+  },
+  {
+    "language": "Norwegian",
+    "code": "no"
+  },
+  {
+    "language": "Punjabi",
+    "code": "pa"
+  },
+  {
+    "language": "Papiamento",
+    "code": "pap"
+  },
+  {
+    "language": "Persian",
+    "code": "fa"
+  },
+  {
+    "language": "Polish",
+    "code": "pl"
+  },
+  {
+    "language": "Portuguese",
+    "code": "pt"
+  },
+  {
+    "language": "Romanian",
+    "code": "ro"
+  },
+  {
+    "language": "Cebuano",
+    "code": "ceb"
+  },
+  {
+    "language": "Serbian",
+    "code": "sr"
+  },
+  {
+    "language": "Sinhala",
+    "code": "si"
+  },
+  {
+    "language": "Slovakian",
+    "code": "sk"
+  },
+  {
+    "language": "Swahili",
+    "code": "sw"
+  },
+  {
+    "language": "sundanese",
+    "code": "su"
+  },
+  {
+    "language": "Tajik",
+    "code": "tg"
+  },
+  {
+    "language": "Thai",
+    "code": "th"
+  },
+  {
+    "language": "Tagalog",
+    "code": "tl"
+  },
+  {
+    "language": "Tamil",
+    "code": "ta"
+  },
+  {
+    "language": "Tatar",
+    "code": "tt"
+  },
+  {
+    "language": "Telugu",
+    "code": "te"
+  },
+  {
+    "language": "Turkish",
+    "code": "tr"
+  },
+  {
+    "language": "Udmurt",
+    "code": "udm"
+  },
+  {
+    "language": "Uzbek",
+    "code": "uz"
+  },
+  {
+    "language": "Ukrainian",
+    "code": "uk"
+  },
+  {
+    "language": "Urdu",
+    "code": "ur"
+  },
+  {
+    "language": "Finnish",
+    "code": "fi"
+  },
+  {
+    "language": "French",
+    "code": "fr"
+  },
+  {
+    "language": "Hindi",
+    "code": "hi"
+  },
+  {
+    "language": "Croatian",
+    "code": "hr"
+  },
+  {
+    "language": "Czech",
+    "code": "cs"
+  },
+  {
+    "language": "Swedish",
+    "code": "sv"
+  },
+  {
+    "language": "Scottish",
+    "code": "gd"
+  },
+  {
+    "language": "Estonian",
+    "code": "et"
+  },
+  {
+    "language": "Esperanto",
+    "code": "eo"
+  },
+  {
+    "language": "Javanese",
+    "code": "jv"
+  },
+  {
+    "language": "Japanese",
+    "code": "ja"
+  }
+]
