@@ -201,7 +201,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         imgSwitch.setOnClickListener { swapTranslateLanguages() }
 
 
-
     }
 
     override fun onResume() {
@@ -320,9 +319,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val word = textWord.text.toString()
         val translateText = textTranslate.text.toString()
         val translate = createTranslate(word, translateText)
+        translate.lang = "${source.get()}-${target.get()}"
+
         InsertTask(getAppDatabase()) {
             toast(String.format(getString(R.string.add_message_format), translate.name))
         }.execute(translate)
+
         mainFragment.addTranslateToCurrentCategory(translate)
         textWord.text?.clear()
         textTranslate.text?.clear()

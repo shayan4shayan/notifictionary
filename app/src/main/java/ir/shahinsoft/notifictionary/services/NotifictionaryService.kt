@@ -211,6 +211,7 @@ class NotifictionaryService : Service() {
         if (!isStarted) return
         val goal = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_learn_goal", "5")!!.toInt()
         RandomTranslateTask(getAppDatabase(), goal) {
+
             if (intent.getBooleanExtra("send_notification", true))
                 NotificationUtil.sendNotification(this, intent, it)
             state = State.NOTIFICATION_SEND
