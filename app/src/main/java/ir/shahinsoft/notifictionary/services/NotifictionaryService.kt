@@ -107,6 +107,7 @@ class NotifictionaryService : Service() {
     private fun initLearningService() {
         PathProvider.instance.init(this)
         learningService = LearningService()
+        triggerNextNotificationTime()
     }
 
     private fun initDeviceUsageReceiver() {
@@ -177,13 +178,13 @@ class NotifictionaryService : Service() {
         triggerNextNotificationTime()
     }
 
-    private fun sendTranslateNotification(id: Int, translate: String, translation: String, intent: Intent) {
+    private fun sendTranslateNotification(id: Int, translate: String, translation: String?, intent: Intent) {
         Log.d("NotifictionaryService", "update translate $id")
         state = State.START
         if (id > 0) {
             NotificationUtil.sendTranslateNotification(this, id, translate, translation)
             learningService.reward(intent.getIntExtra("state_id", 0),
-                    Record.Action.values().get(intent.getIntExtra("action", 0)), true)
+                    Record.Action.values()[intent.getIntExtra("action", 0)], true)
             toast("agent gets good reward")
         }
         //triggerNextNotificationTime()
@@ -249,8 +250,8 @@ class NotifictionaryService : Service() {
     private fun handleSmartNotification() {
         val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
         val pair = learningService.getNextNotificationTime(powerManager.isScreenOn)
-        val time = pair.second
-        toast("sending notification in $time milli seconds")
+        var time = pair.second
+        toast("action ${pair.first.second} selected by agent")
         val state = pair.first.first
         val action = pair.first.second
         val intent = Intent(this, NotifictionaryService::class.java).apply {
@@ -260,10 +261,17 @@ class NotifictionaryService : Service() {
             putExtra("action", Record.Action.values().indexOf(action))
             putExtra("send_notification", time > 0)
         }
+
+        if (action == Record.Action.DO_NOT_SEND) {
+            time = 1000 * 60 * 60 * 2
+        }
+
+        toast(time)
+
         val pIntent = PendingIntent.getService(this, state.id, intent, PendingIntent.FLAG_ONE_SHOT)
 
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + if (time > 0) time else 1000 * 60 * 30, pIntent)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + time, pIntent)
     }
 
     private fun getNormalTime(period: Int): Long {
@@ -297,7 +305,6 @@ class NotifictionaryService : Service() {
             initLearningService()
         }
         initOtherPartsIfNeeded()
-        triggerNextNotificationTime()
     }
 
     private fun initOtherPartsIfNeeded() {
