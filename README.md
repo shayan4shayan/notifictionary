@@ -1,6 +1,8 @@
 # notifictionary
 
-android application for learning vocabulary 
+android application for learning vocabulary
+
+* this app in in development mode.
 
 # Main Features
 1. Online translate
