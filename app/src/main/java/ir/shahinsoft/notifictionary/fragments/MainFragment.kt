@@ -26,7 +26,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        tabLayout.setSelectedTabIndicatorColor(getApplicationColor()!!)
+        tabLayout.setSelectedTabIndicatorColor(getApplicationColor())
         newCategory.tint(R.color.black)
         newCategory.setOnClickListener {
             addNewCategory()
@@ -47,13 +47,16 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        LoadCategoryTask(context.getAppDatabase()) { onDisplayViewPager(it) }.execute()
+        LoadCategoryTask(context.getAppDatabase()) {
+            onDisplayViewPager(it)
+        }.execute()
     }
 
     override fun onResume() {
         super.onResume()
+//        context?.getAppDatabase()
         LoadCategoryTask(context?.getAppDatabase()!!) {
-            checkForUpdate(it)
+//            checkForUpdate(it)
         }.execute()
     }
 
@@ -72,7 +75,6 @@ class MainFragment : androidx.fragment.app.Fragment() {
         val adapter = MainPagerAdapter(generateAllCategory(categories), childFragmentManager)
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
-        viewPager.addOnPageChangeListener(adapter)
     }
 
     private fun generateAllCategory(categories: ArrayList<Category>): ArrayList<Category> {
@@ -88,9 +90,9 @@ class MainFragment : androidx.fragment.app.Fragment() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val transition = layoutTop.background as TransitionDrawable
                 transition.startTransition(300)
-                transition.setDrawable(1, ColorDrawable().apply { color = getApplicationColor()!! })
+                transition.setDrawable(1, ColorDrawable().apply { color = getApplicationColor() })
             } else {
-                layoutTop.setBackgroundColor(getApplicationColor()!!)
+                layoutTop.setBackgroundColor(getApplicationColor())
             }
             tabLayout.setTabTextColors(context?.getColorCompat(R.color.white)!!, context?.getColorCompat(R.color.white)!!)
             tabLayout.setSelectedTabIndicatorColor(context?.getColorCompat(R.color.white)!!)
@@ -99,7 +101,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
         }
     }
 
-    private fun getApplicationColor() = PreferenceManager.getDefaultSharedPreferences(context).getString("pref_theme",ContextCompat.getColor(context!!,R.color.picker_red).toString())!!.toInt()
+    private fun getApplicationColor() = PreferenceManager.getDefaultSharedPreferences(context).getString("pref_theme", ContextCompat.getColor(context!!, R.color.picker_red).toString())!!.toInt()
 
 
     fun changeTablayoutToWhite() {

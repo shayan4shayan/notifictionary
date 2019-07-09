@@ -32,8 +32,9 @@ class QuizAdapter(context: Context, private val words: List<Translate>,
         return words.size
     }
 
+
     @SuppressLint("SetTextI18n")
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val quiz = getItem(position)
 
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.layout_quiz, parent, false)

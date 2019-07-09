@@ -11,14 +11,7 @@ import ir.shahinsoft.notifictionary.fragments.CategoryListFragment
 import ir.shahinsoft.notifictionary.model.Category
 import ir.shahinsoft.notifictionary.model.Translate
 
-class MainPagerAdapter(val categories: ArrayList<Category>, fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm), ViewPager.OnPageChangeListener {
-    override fun onPageScrollStateChanged(state: Int) {}
-
-    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
-    override fun onPageSelected(position: Int) {
-        //fragments[position].onSelected()
-    }
+class MainPagerAdapter(val categories: ArrayList<Category>, fm: FragmentManager) : FragmentPagerAdapter(fm){
 
     val fragments = SparseArray<CategoryListFragment>()
 
@@ -28,7 +21,7 @@ class MainPagerAdapter(val categories: ArrayList<Category>, fm: androidx.fragmen
         }
     }
 
-    override fun getItem(p0: Int): androidx.fragment.app.Fragment {
+    override fun getItem(p0: Int): Fragment {
         val category = categories[p0]
         if (fragments[p0] == null){
             fragments.put(p0, CategoryListFragment())

@@ -19,18 +19,5 @@ class TestActivity : AppCompatActivity() {
             id = 10
         }
 
-        NotificationUtil.sendNotification(this, translate)
-
-        val t2 = Translate().apply {
-            name = "compromise"
-            this.translate = "سازش"
-            lang = "en-fa"
-            id = 12
-        }
-
-        NotificationUtil.sendNotification(this, t2)
-
-
-
     }
 }

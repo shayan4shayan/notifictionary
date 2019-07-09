@@ -3,10 +3,7 @@ package ir.shahinsoft.notifictionary.services
 import android.annotation.TargetApi
 import android.app.*
 import android.content.*
-import android.os.Binder
-import android.os.Build
-import android.os.Handler
-import android.os.IBinder
+import android.os.*
 import android.preference.PreferenceManager
 import android.speech.tts.TextToSpeech
 import androidx.core.app.NotificationCompat
@@ -15,6 +12,8 @@ import ir.shahinsoft.notifictionary.*
 import ir.shahinsoft.notifictionary.model.History
 import ir.shahinsoft.notifictionary.receivers.LockReceiver
 import ir.shahinsoft.notifictionary.services.learning.LearningService
+import ir.shahinsoft.notifictionary.services.learning.database.PathProvider
+import ir.shahinsoft.notifictionary.services.learning.models.Record
 import ir.shahinsoft.notifictionary.tasks.InsertHistoryTask
 import ir.shahinsoft.notifictionary.tasks.RandomTranslateTask
 import ir.shahinsoft.notifictionary.utils.NotificationUtil
@@ -43,13 +42,15 @@ class NotifictionaryService : Service() {
 
     private lateinit var usageTracker: UserDeviceUsageTracker
 
+    private lateinit var learningService: LearningService
+
     private val clipboardReceiver = ClipboardManager.OnPrimaryClipChangedListener {
         val manager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         if (manager.primaryClip?.itemCount ?: 0 > 0) {
             val canTranslate = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_translate_anywhere", true)
             val item = manager.primaryClip?.getItemAt(0)
             if (item != null) {
-                val clip = item.text?.toString()?.replace("-\n","")
+                val clip = item.text?.toString()?.replace("-\n", "")
                 if (clip != null && clip != mCurrentClip) {
                     mCurrentClip = clip
                     translateAndToast(canTranslate, clip)
@@ -104,12 +105,8 @@ class NotifictionaryService : Service() {
     }
 
     private fun initLearningService() {
-        usageTracker = UserDeviceUsageTracker.getInstance(getAppDatabase())
-        Log.d("notifictionaryService", "starting learning service")
-        usageTracker.addCallback {
-            Log.d("notifictionaryService", "usageTracker callback called")
-            triggerNextNotificationTime()
-        }
+        PathProvider.instance.init(this)
+        learningService = LearningService()
     }
 
     private fun initDeviceUsageReceiver() {
@@ -153,22 +150,25 @@ class NotifictionaryService : Service() {
             ACTION_INIT_CLIPBOARD -> initClipBoard()
             ACTION_STOP_LISTEN_CLIPBOARD -> stopListenClipboard()
             ACTION_INIT_NOTIFICATIONS -> triggerNextNotificationTime()
-            ACTION_SEND_NOTIFICTIONARY -> sendNotifictionary()
+            ACTION_SEND_NOTIFICTIONARY -> sendNotifictionary(intent)
             ACTION_MARK_TRANSLATE -> markAsRead(intent.getIntExtra(EXTRA_ID, -1))
             ACTION_SPEAK -> speak(intent.getStringExtra(EXTRA_WORD))
             ACTION_NEW_PERIOD -> triggerNextNotificationTime()
             ACTION_SMART_NOTIFICATION_ON -> initDeviceUsageReceiver()
             ACTION_SMART_NOTIFICATION_OFF -> turnOffSmartNotifications()
-            ACTION_SEND_TRANSLATE_NOTIFICATION -> sendTranslateNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getStringExtra(EXTRA_TRANSLATE),intent.getStringExtra(EXTRA_LANG))
+            ACTION_SEND_TRANSLATE_NOTIFICATION -> sendTranslateNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getStringExtra(EXTRA_TRANSLATE), intent.getStringExtra(EXTRA_LANG), intent)
             ACTION_DISMISS_NOTIFICATION -> dismissNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getBooleanExtra(EXTRA_HAS_LEARNED, false))
-            ACTION_USER_DISMISSED_NOTIFICATION -> userDismissedNotification(intent.getIntExtra(EXTRA_ID, -1))
+            ACTION_USER_DISMISSED_NOTIFICATION -> userDismissedNotification(intent.getIntExtra(EXTRA_ID, -1), intent)
         }
 
         return START_STICKY
     }
 
-    private fun userDismissedNotification(id: Int) {
+    private fun userDismissedNotification(id: Int, intent: Intent) {
         Log.d("NotifictionaryService", "user dismissed notification")
+        learningService.reward(intent.getIntExtra("state_id", 0),
+                Record.Action.values()[intent.getIntExtra("action", 0)], false)
+        toast("agent received bad reward")
     }
 
     private fun dismissNotification(id: Int, hasLearned: Boolean) {
@@ -177,12 +177,14 @@ class NotifictionaryService : Service() {
         triggerNextNotificationTime()
     }
 
-    private fun sendTranslateNotification(id: Int, translate: String, translation: String) {
+    private fun sendTranslateNotification(id: Int, translate: String, translation: String, intent: Intent) {
         Log.d("NotifictionaryService", "update translate $id")
         state = State.START
         if (id > 0) {
             NotificationUtil.sendTranslateNotification(this, id, translate, translation)
-            //todo set reward for this notification
+            learningService.reward(intent.getIntExtra("state_id", 0),
+                    Record.Action.values().get(intent.getIntExtra("action", 0)), true)
+            toast("agent gets good reward")
         }
         //triggerNextNotificationTime()
     }
@@ -205,11 +207,12 @@ class NotifictionaryService : Service() {
         NotificationUtil.cancelNotification(this, id)
     }
 
-    private fun sendNotifictionary() {
+    private fun sendNotifictionary(intent: Intent) {
         if (!isStarted) return
         val goal = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_learn_goal", "5")!!.toInt()
         RandomTranslateTask(getAppDatabase(), goal) {
-            NotificationUtil.sendNotification(this, it)
+            if (intent.getBooleanExtra("send_notification", true))
+                NotificationUtil.sendNotification(this, intent, it)
             state = State.NOTIFICATION_SEND
         }.execute()
     }
@@ -227,33 +230,50 @@ class NotifictionaryService : Service() {
         val smartNotification = isSmartNotificationActive()
         Log.d("notifictionaryService", "$smartNotification")
         val period = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_notification_cycle", "20")!!.toInt()
-        val inMills = if (smartNotification) {
-            getSmartTime(period)
+        var inMills = 0L
+        if (smartNotification) {
+            handleSmartNotification()
+            return
         } else {
-            getNormalTime(period)
+            inMills = getNormalTime(period)
         }
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(getNotificationPendingIntent())
-        if (inMills == 0L) {
-            Log.d("notifictionaryService", "time is zero")
-            return
-        }
+        alarmManager.cancel(getNotificationPendingIntent(inMills))
+
         Log.d("notifictionaryService", "$inMills")
         Log.d("notifictionaryService", "$period")
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + inMills, getNotificationPendingIntent())
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + if (inMills > 0) inMills else 1000 * 60 * 30, getNotificationPendingIntent(inMills))
+    }
+
+    private fun handleSmartNotification() {
+        val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+        val pair = learningService.getNextNotificationTime(powerManager.isScreenOn)
+        val time = pair.second
+        toast("sending notification in $time milli seconds")
+        val state = pair.first.first
+        val action = pair.first.second
+        val intent = Intent(this, NotifictionaryService::class.java).apply {
+            this.action = ACTION_SEND_NOTIFICTIONARY
+            putExtra("state_id", state.id)
+            putExtra("is_smart", true)
+            putExtra("action", Record.Action.values().indexOf(action))
+            putExtra("send_notification", time > 0)
+        }
+        val pIntent = PendingIntent.getService(this, state.id, intent, PendingIntent.FLAG_ONE_SHOT)
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + if (time > 0) time else 1000 * 60 * 30, pIntent)
     }
 
     private fun getNormalTime(period: Int): Long {
         return (period * 60 * 1000).toLong()
     }
 
-    private fun getSmartTime(period: Int): Long {
-        return LearningService.getInstance().nextNotificationTime
-    }
 
-    private fun getNotificationPendingIntent(): PendingIntent {
+    private fun getNotificationPendingIntent(inMills: Long): PendingIntent {
         val intent = Intent(this, NotifictionaryService::class.java)
         intent.action = ACTION_SEND_NOTIFICTIONARY
+        intent.putExtra("send_notification", inMills > 0)
         return PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
     }
 

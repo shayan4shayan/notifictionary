@@ -179,6 +179,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             supportFragmentManager.beginTransaction().add(R.id.layoutWordList, this).commit()
         }
 
+
         textTranslate.addTextChangedListener(translateTextWatcher)
         textWord.addTextChangedListener(wordTextWatcher)
         fab.setOnClickListener { addNewWordToDatabase() }

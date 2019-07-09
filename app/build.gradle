@@ -23,7 +23,6 @@ android {
         }
     }
 
-
 }
 
 dependencies {
@@ -35,16 +34,16 @@ dependencies {
     implementation "androidx.legacy:legacy-preference-v14:1.0.0"
     implementation "androidx.preference:preference:1.0.0"
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
 
 
     implementation 'com.android.volley:volley:1.1.1'
 
-    def room_version = "2.1.0-beta01"
+    def room_version = "2.1.0"
 
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-beta01'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-rc01'
     annotationProcessor "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
 
     // optional - RxJava support for Room
@@ -57,7 +56,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
     //firebase
-    implementation 'com.google.firebase:firebase-core:16.0.8'
+//    implementation 'com.google.firebase:firebase-core:16.0.8'
 
     //google ads
     //implementation 'com.google.firebase:firebase-ads:17.1.0'

@@ -44,8 +44,8 @@ class ImportActivity : ExportActivity(), Importer.OnLoadCompleteListener, SaveSe
 
     override fun loadData() {
         Log.d("ImportActivity","loading data from file")
-        Importer(getStream(), getAppDatabase(), this).execute()
+        Importer(getStream()!!, getAppDatabase(), this).execute()
     }
 
-    private fun getStream() = contentResolver.openInputStream(uri)
+    private fun getStream() = contentResolver.openInputStream(uri!!)
 }

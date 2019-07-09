@@ -56,7 +56,7 @@ fun Context.startActivity(c: Class<out Activity>, action: Uri) {
 }
 
 fun Context.getAppDatabase(): DatabaseWrapper {
-    return DatabaseWrapper.getInstance(applicationContext)
+    return DatabaseWrapper.getInstance(this)
 }
 
 fun Context.isFirstLaunch(): Boolean {
