@@ -44,6 +44,7 @@ const val ACTION_SMART_NOTIFICATION_OFF = "smart_notification_off"
 const val ACTION_SEND_TRANSLATE_NOTIFICATION = "send_translate_notification"
 const val ACTION_DISMISS_NOTIFICATION = "action_dismiss_notification"
 const val ACTION_USER_DISMISSED_NOTIFICATION = "action_user_dismissed_notification"
+const val ACTION_FORCE_NOTIFICATION = "action_force_notification"
 
 
 const val CATEGORY_ID = "category_id"
