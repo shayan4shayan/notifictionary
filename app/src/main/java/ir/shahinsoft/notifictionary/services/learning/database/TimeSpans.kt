@@ -23,8 +23,8 @@ class TimeSpans {
     }
 
     private fun createSpans() {
-        (0 until 144).forEach {
-            spans.add(TimeSpan(it, it,(it+1)%144))
+        (0 until 288).forEach {
+            spans.add(TimeSpan(it, it,(it+1)%288))
         }
     }
 
