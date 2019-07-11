@@ -36,9 +36,9 @@ class LearningService {
         val action = pair.second
 
         val time = when(action){
-            Record.Action.NOW -> (1000 until 10000).random().toLong()
+            Record.Action.NOW -> (60000 until 5*60000).random().toLong()
             Record.Action.DELAY_ONE_HOUR -> (1000*60*30 until 1000*60*60).random().toLong()
-            Record.Action.DELAY_RANDOM_AFTER_ONE_HOUR -> (1000 * 60 * 60 until 1000*60*60*5).random().toLong()
+            Record.Action.DELAY_RANDOM_AFTER_ONE_HOUR -> (1000 * 60 * 60 until 1000*60*60*2).random().toLong()
             else -> 0
         }
 

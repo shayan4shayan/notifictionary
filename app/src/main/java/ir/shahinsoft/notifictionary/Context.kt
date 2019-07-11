@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
@@ -18,6 +19,24 @@ import java.lang.Appendable
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
+
+fun Context.toast(mills: Long) {
+    var mil = mills
+    var factor = 1000 * 60 * 60
+    val hour = (mil / factor)
+
+    mil %= factor // at least 1000 * 60 * 60
+    factor /= 60 // 1000*60
+    val min = (mil / factor)
+
+    mil %= factor //at least 1000 * 60
+    factor /= 60 //1000
+    val sec = (mil / factor)
+
+    Handler().postDelayed({
+        toast("notification will be sent in ${if (hour > 0) "$hour hour(s) " else ""}${if (min > 0) "$min min(s) " else ""}$sec seconds")
+    }, 5000)
 }
 
 fun Context.translateToast(message: String) {

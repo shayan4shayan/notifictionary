@@ -108,6 +108,7 @@ public class NotificationUtil {
                 .setChannelId(ID)
                 .setAutoCancel(true)
                 .setContent(getNotificationTranslateContentContent(context, translate, translation, id))
+                .setDeleteIntent(getForgetPendingIntent(context,id))
                 .setPriority(100);
 
         Notification notification = builder.build();
@@ -173,7 +174,7 @@ public class NotificationUtil {
         actionIntent.putExtra("state_id", intent.getIntExtra("state_id", 0));
         actionIntent.putExtra("is_smart", intent.getBooleanExtra("is_smart", true));
         actionIntent.putExtra("action", intent.getIntExtra("action", 0));
-        return PendingIntent.getService(context, translateId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getService(context, translateId, actionIntent, PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
     public static void sendRemindNotification(Context context) {

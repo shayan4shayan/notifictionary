@@ -1,14 +1,20 @@
 package ir.shahinsoft.notifictionary.services.learning.models
 
+import kotlin.math.min
+
 data class TimeSpan(val id: Int, val start: Int, val end: Int) {
 
     fun getStartTime(): String {
-        val hour = start / 2
-        return "${if (hour >= 10) "$hour" else "0$hour"}:${if (start % 2 == 1) "30" else "00"}"
+        var mins = start*5
+        val hour = mins/60
+        mins %=60
+        return "${if (hour >= 10) "$hour" else "0$hour"}:${if (mins>=10) "$mins" else "0$mins"}"
     }
 
     fun getEndTime(): String {
-        val hour = end / 2
-        return "${if (hour >= 10) "$hour" else "0$hour"}:${if (end % 2 == 1) "30" else "00"}"
+        var mins = end*5
+        val hour = mins/60
+        mins %=60;
+        return "${if (hour >= 10) "$hour" else "0$hour"}:${if (mins>=10) "$mins" else "0$mins"}"
     }
 }

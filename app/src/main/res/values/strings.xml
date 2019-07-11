@@ -276,5 +276,6 @@
     <string name="dismiss">Dismiss</string>
     <string name="did_you_guess_right">Did you Guess right?</string>
     <string name="see_translation">See Translation</string>
+    <string name="force_notification">Force a notification</string>
 
 </resources>
