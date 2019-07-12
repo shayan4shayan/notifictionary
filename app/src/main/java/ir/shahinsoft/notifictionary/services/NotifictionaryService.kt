@@ -14,6 +14,7 @@ import ir.shahinsoft.notifictionary.receivers.LockReceiver
 import ir.shahinsoft.notifictionary.services.learning.LearningService
 import ir.shahinsoft.notifictionary.services.learning.database.PathProvider
 import ir.shahinsoft.notifictionary.services.learning.models.Record
+import ir.shahinsoft.notifictionary.tasks.CountLearnTask
 import ir.shahinsoft.notifictionary.tasks.InsertHistoryTask
 import ir.shahinsoft.notifictionary.tasks.RandomTranslateTask
 import ir.shahinsoft.notifictionary.utils.NotificationUtil
@@ -179,12 +180,17 @@ class NotifictionaryService : Service() {
         learningService.reward(intent.getIntExtra("state_id", 0),
                 Record.Action.values()[intent.getIntExtra("action", 0)], false)
         toast("agent received bad reward")
+        triggerNextNotificationTime()
     }
 
     private fun dismissNotification(id: Int, hasLearned: Boolean) {
         NotificationUtil.cancelNotification(this, id)
         state = State.START
         triggerNextNotificationTime()
+
+        if (hasLearned){
+            CountLearnTask(getAppDatabase(),id).execute()
+        }
     }
 
     private fun sendTranslateNotification(id: Int, translate: String, translation: String?, intent: Intent) {
