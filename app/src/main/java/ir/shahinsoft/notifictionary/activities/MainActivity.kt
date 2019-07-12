@@ -38,12 +38,13 @@ import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.tasks.InsertFavoriteCategoryTask
 import ir.shahinsoft.notifictionary.tasks.InsertTask
 import ir.shahinsoft.notifictionary.utils.*
+import ir.shahinsoft.notifictionary.widget.YesNoDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.translate.*
 import java.lang.Exception
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener ,YesNoDialog.OnClickListener{
 
     private val undoHandler = Handler()
 
@@ -151,13 +152,28 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var translateStack = CallbackStack<String>(stackListener)
     private lateinit var mainFragment: MainFragment
 
+    override fun onYesClicked(item: Any) {
+        getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
+        startNotifictionaryService()
+    }
+
+    override fun onNoClicked(item: Any) {
+        finish()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        if (!(isLicenseAccepted())) {
+
+            YesNoDialog(this, false, this)
+                    .show("license", "This app will use your information for scientific purposes and to make profit. \nYour identity will not be disclosed.\nPlease confirm to continue use.")
+        }
         setSupportActionBar(toolbar)
 
         insertFavoriteCategory()
+
+
 
         //making cardView stays bellow toolbar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -184,7 +200,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         textWord.addTextChangedListener(wordTextWatcher)
         fab.setOnClickListener { addNewWordToDatabase() }
 
-        startNotifictionaryService()
+
         initTranslation()
 
         undoTranslation.setOnClickListener { undoTranslation() }
@@ -199,7 +215,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         textTarget.setOnClickListener { selectTarget() }
 
         imgSwitch.setOnClickListener { swapTranslateLanguages() }
-
 
     }
 
@@ -297,6 +312,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun insertFavoriteCategory() {
         if (isFirstLaunch()) {
+
             InsertFavoriteCategoryTask(getAppDatabase()).execute(Category(getString(R.string.favorite), 1))
         }
     }

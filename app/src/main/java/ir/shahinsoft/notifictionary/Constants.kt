@@ -13,6 +13,7 @@ const val LANGUAGE_SMALL = "language_small"
 const val TRANSLATE_ANYWHERE = "translate_anywhere"
 const val SAVE_HISTORY = "save_history"
 const val FIRST_LAUNCH = "first_launch"
+const val LICENSE_ACCEPTANCE = "license_acceptance"
 
 
 const val DEFAULT_SOURCE = "English"

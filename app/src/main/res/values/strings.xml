@@ -83,7 +83,7 @@
     <string name="telegram_channel">Telegram channel</string>
     <string name="category_deleted">Category Deleted!</string>
     <string name="title_remove_category">Remove Category</string>
-    <string name="content_remove_category">Do you really want to delete this category? \\nAll words inside it will be deleted</string>
+    <string name="content_remove_category">Do you really want to delete this category? \nAll words inside it will be deleted</string>
     <string name="add">Add</string>
     <string name="select_back_up_file">Select backup file</string>
     <string name="export_done">Export completed</string>
@@ -277,5 +277,8 @@
     <string name="did_you_guess_right">Did you Guess right?</string>
     <string name="see_translation">See Translation</string>
     <string name="force_notification">Force a notification</string>
+
+
+
 
 </resources>
