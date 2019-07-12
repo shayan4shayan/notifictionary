@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -34,8 +35,6 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         Log.d("Assay", "onCorrect called")
         swipeRight()
         correct++
-        translate.correctCount++
-        UpdateTask(getAppDatabase()).execute(translate)
     }
 
     private fun swipeRight() {
@@ -101,8 +100,6 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
 
         swipeLeft()
         wrong++
-        translate.wrongCount++
-        UpdateTranslateIdTask(getAppDatabase()).execute(translate)
     }
 
     private val dismissCorrectLayout = Runnable { layoutCorrectAnswerView.visibility = View.INVISIBLE }
@@ -130,7 +127,8 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
 
 
     private lateinit var words: ArrayList<Translate>
-    private var limit = 5
+
+    private var limit = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_learn_goal",5)
 
     private var correct = 0
         set(value) {
@@ -183,7 +181,7 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         words = list
 
 
-        if (words?.size!! < 4) run {
+        if (words.size < 4) run {
             Toast.makeText(this, R.string.error_create_quiz, Toast.LENGTH_LONG).show()
             finish()
             return
@@ -215,10 +213,6 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         val i = Intent(this, NotifictionaryService::class.java)
         i.action = ACTION_DISMISS_QUIZ_NOTIFICATION
         startService(i)
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun onBackPressed() {

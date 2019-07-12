@@ -188,8 +188,8 @@ class NotifictionaryService : Service() {
         state = State.START
         triggerNextNotificationTime()
 
-        if (hasLearned){
-            CountLearnTask(getAppDatabase(),id).execute()
+        if (hasLearned) {
+            CountLearnTask(getAppDatabase(), id).execute()
         }
     }
 
@@ -372,7 +372,7 @@ class NotifictionaryService : Service() {
                 Intent(this, NotifictionaryService::class.java).apply {
                     action = ACTION_FORCE_NOTIFICATION
                 }
-                , PendingIntent.FLAG_ONE_SHOT)
+                , if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else PendingIntent.FLAG_UPDATE_CURRENT)
 
     }
 
