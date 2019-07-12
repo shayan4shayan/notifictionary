@@ -251,7 +251,7 @@
     <string name="pref_allow_reminder_notifications">Allow reminder notifications</string>
     <string name="notification_cycle_desc">The delay between notifications sent by application</string>
     <string name="pref_smart_notification_time">Smart notifications</string>
-    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\\nLearn process may be few days due to learning procecure</string>
+    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\nLearn process may be few days due to learning procecure</string>
     <string name="pref_notification_sound">Sound</string>
     <string name="pref_notification_vibration">Vibrate</string>
     <string name="notification_settings_desc">After android 8.0 we don\'t have access to notifications settings and you must change settings from android settings</string>
