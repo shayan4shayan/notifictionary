@@ -26,7 +26,7 @@ class LearningService {
 
     private fun getDayOfWeek(): Int {
         val calendar = Calendar.getInstance()
-        return calendar.get(Calendar.DAY_OF_WEEK)
+        return calendar.get(Calendar.DAY_OF_WEEK) - 1
     }
 
     fun getNextNotificationTime(isScreenOn : Boolean) : Pair<Pair<ApproximateState,Record.Action>,Long>{
