@@ -61,8 +61,8 @@
         android:summary="@string/mitra_desc"
         android:title="@string/mitra">
         <intent
-            android:action="android.intent.action.SEND"
-            android:data="mitra.l76@gmail.com" />
+            android:action="android.intent.action.VIEW"
+            android:data="mailto:mitra.l76@gmail.com" />
     </Preference>
 
 </PreferenceScreen>
