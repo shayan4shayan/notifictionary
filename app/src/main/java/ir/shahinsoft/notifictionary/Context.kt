@@ -87,3 +87,8 @@ fun Context.isFirstLaunch(): Boolean {
 fun Context.firstLaunchFinished() {
     getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(FIRST_LAUNCH, false).apply()
 }
+
+fun Context.isLicenseAccepted(): Boolean {
+    val tmp = getSharedPreferences(APP, Context.MODE_PRIVATE).getBoolean(LICENSE_ACCEPTANCE, false)
+    return tmp
+}

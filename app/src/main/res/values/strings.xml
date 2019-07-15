@@ -83,7 +83,7 @@
     <string name="telegram_channel">Telegram channel</string>
     <string name="category_deleted">Category Deleted!</string>
     <string name="title_remove_category">Remove Category</string>
-    <string name="content_remove_category">Do you really want to delete this category? \\nAll words inside it will be deleted</string>
+    <string name="content_remove_category">Do you really want to delete this category? \nAll words inside it will be deleted</string>
     <string name="add">Add</string>
     <string name="select_back_up_file">Select backup file</string>
     <string name="export_done">Export completed</string>
@@ -251,7 +251,7 @@
     <string name="pref_allow_reminder_notifications">Allow reminder notifications</string>
     <string name="notification_cycle_desc">The delay between notifications sent by application</string>
     <string name="pref_smart_notification_time">Smart notifications</string>
-    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\\nLearn process may be few days due to learning procecure</string>
+    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\nLearn process may be few days due to learning procecure</string>
     <string name="pref_notification_sound">Sound</string>
     <string name="pref_notification_vibration">Vibrate</string>
     <string name="notification_settings_desc">After android 8.0 we don\'t have access to notifications settings and you must change settings from android settings</string>
@@ -277,5 +277,8 @@
     <string name="did_you_guess_right">Did you Guess right?</string>
     <string name="see_translation">See Translation</string>
     <string name="force_notification">Force a notification</string>
+
+
+
 
 </resources>

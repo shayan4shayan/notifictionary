@@ -3,7 +3,10 @@ package ir.shahinsoft.notifictionary.activities
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.content.pm.PackageManager
@@ -38,6 +41,7 @@ import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.tasks.InsertFavoriteCategoryTask
 import ir.shahinsoft.notifictionary.tasks.InsertTask
 import ir.shahinsoft.notifictionary.utils.*
+import ir.shahinsoft.notifictionary.widget.YesNoDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.translate.*
@@ -151,13 +155,35 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var translateStack = CallbackStack<String>(stackListener)
     private lateinit var mainFragment: MainFragment
 
+    val onYesClicked = {dialog: DialogInterface, which: Int ->
+        getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
+        startNotifictionaryService()
+    }
+
+    val onNoClicked = {dialog: DialogInterface, which: Int ->
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        if (!(isLicenseAccepted())) {
+
+        val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("License")
+            dialog.setMessage("This app will use your information for scientific purposes and to make profit. \nYour identity will not be disclosed.\nPlease confirm to continue use.")
+            dialog.setPositiveButton("Confirm" ,DialogInterface.OnClickListener(function = onYesClicked))
+            dialog.setNegativeButton("EXIT",DialogInterface.OnClickListener(function = onNoClicked))
+            dialog.show()
+        }else{
+            startNotifictionaryService()
+        }
         setSupportActionBar(toolbar)
 
         insertFavoriteCategory()
+
+
 
         //making cardView stays bellow toolbar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -184,7 +210,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         textWord.addTextChangedListener(wordTextWatcher)
         fab.setOnClickListener { addNewWordToDatabase() }
 
-        startNotifictionaryService()
+
         initTranslation()
 
         undoTranslation.setOnClickListener { undoTranslation() }
@@ -199,7 +225,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         textTarget.setOnClickListener { selectTarget() }
 
         imgSwitch.setOnClickListener { swapTranslateLanguages() }
-
 
     }
 
@@ -297,6 +322,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun insertFavoriteCategory() {
         if (isFirstLaunch()) {
+
             InsertFavoriteCategoryTask(getAppDatabase()).execute(Category(getString(R.string.favorite), 1))
         }
     }
