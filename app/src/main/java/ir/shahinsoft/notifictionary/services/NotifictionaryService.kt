@@ -172,6 +172,7 @@ class NotifictionaryService : Service() {
     private fun forceANotifictionary() {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(lastPendingInt)
+        state = State.START
         triggerNextNotificationTime()
     }
 
@@ -180,6 +181,7 @@ class NotifictionaryService : Service() {
         learningService.reward(intent.getIntExtra("state_id", 0),
                 Record.Action.values()[intent.getIntExtra("action", 0)], false)
         toast("agent received bad reward")
+        state = State.START
         triggerNextNotificationTime()
     }
 

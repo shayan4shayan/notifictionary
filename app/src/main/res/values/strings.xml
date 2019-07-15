@@ -277,8 +277,10 @@
     <string name="did_you_guess_right">Did you Guess right?</string>
     <string name="see_translation">See Translation</string>
     <string name="force_notification">Force a notification</string>
-
-
+    <string name="title_license_app">Notifictionary License</string>
+    <string name="description_licence_app">This app will use your phone usage information and responsed that gains from you for educational and financial purposes.\\nTo use this app you have to accept this.</string>
+    <string name="accept">Accept</string>
+    <string name="exit">Exit</string>
 
 
 </resources>

@@ -155,13 +155,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var translateStack = CallbackStack<String>(stackListener)
     private lateinit var mainFragment: MainFragment
 
-    val onYesClicked = {dialog: DialogInterface, which: Int ->
+    val onYesClicked = { dialog: DialogInterface, which: Int ->
         getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
         startNotifictionaryService()
     }
 
-    val onNoClicked = {dialog: DialogInterface, which: Int ->
+    val onNoClicked = { dialog: DialogInterface, which: Int ->
         finish()
+        //make sure app is closed
+        System.exit(0)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -170,19 +172,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(R.layout.activity_main)
         if (!(isLicenseAccepted())) {
 
-        val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("License")
-            dialog.setMessage("This app will use your information for scientific purposes and to make profit. \nYour identity will not be disclosed.\nPlease confirm to continue use.")
-            dialog.setPositiveButton("Confirm" ,DialogInterface.OnClickListener(function = onYesClicked))
-            dialog.setNegativeButton("EXIT",DialogInterface.OnClickListener(function = onNoClicked))
-            dialog.show()
-        }else{
+        } else {
             startNotifictionaryService()
         }
         setSupportActionBar(toolbar)
 
         insertFavoriteCategory()
-
 
 
         //making cardView stays bellow toolbar
