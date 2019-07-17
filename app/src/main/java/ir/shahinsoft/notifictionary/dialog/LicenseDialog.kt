@@ -8,8 +8,10 @@ import kotlinx.android.synthetic.main.dialog_licence.*
 class LicenseDialog(context: Context, val acceptListener: () -> Unit, val exitListener: () -> Unit) : AlertDialog(context) {
     override fun show() {
         super.show()
+        super.setCanceledOnTouchOutside(false)
         setContentView(R.layout.dialog_licence)
-        accept.setOnClickListener { acceptListener() }
+        accept.setOnClickListener { acceptListener() ; dismiss() }
         exit.setOnClickListener { exitListener() }
     }
+
 }

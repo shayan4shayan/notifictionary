@@ -33,6 +33,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.dialog.LicenseDialog
 import ir.shahinsoft.notifictionary.fragments.MainFragment
 import ir.shahinsoft.notifictionary.model.Category
 import ir.shahinsoft.notifictionary.model.Translate
@@ -155,12 +156,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var translateStack = CallbackStack<String>(stackListener)
     private lateinit var mainFragment: MainFragment
 
-    val onYesClicked = { dialog: DialogInterface, which: Int ->
+    val onAccept = {  ->
         getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
         startNotifictionaryService()
     }
 
-    val onNoClicked = { dialog: DialogInterface, which: Int ->
+    val onExit = {  ->
         finish()
         //make sure app is closed
         System.exit(0)
@@ -171,7 +172,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         setContentView(R.layout.activity_main)
         if (!(isLicenseAccepted())) {
-
+            val licensdialog1 = LicenseDialog(this, onAccept , onExit)
+            licensdialog1.show()
         } else {
             startNotifictionaryService()
         }

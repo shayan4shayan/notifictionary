@@ -4,7 +4,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
