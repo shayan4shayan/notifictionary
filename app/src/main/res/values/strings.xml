@@ -24,7 +24,7 @@
     <string name="title_source">Translate from</string>
     <string name="filter">Filter</string>
     <string name="correct_count">Correct count</string>
-    <string name="wrong_count">Correct count</string>
+    <string name="wrong_count">Wrong count</string>
     <string name="finish_quiz">Finish Quiz</string>
     <string name="correct_answer_is">Answere is:</string>
     <string name="error_create_quiz">You must add at least 4 words to learning list</string>
@@ -50,7 +50,7 @@
     <string name="enter_category_name">Please Enter category name</string>
     <string name="hint_category_name">Category</string>
     <string name="period_time">Time between reminders</string>
-    <string name="about_us">About US</string>
+    <string name="about_us">About Us</string>
     <string name="about_us_desc">Notifictionary is created to help People who want to learn specific Language or Words or etc. this app will notify user repeatedly during the day &amp; randomly show one of the words you already inserted. Sometimes app will ask you a word to see if you learned that word or not.</string>
     <string name="title_activity_assay">Challenge your knowledge</string>
     <string name="title_result">Result of Quiz</string>
@@ -252,6 +252,7 @@
     <string name="notification_cycle_desc">The delay between notifications sent by application</string>
     <string name="pref_smart_notification_time">Smart notifications</string>
     <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\nLearn process may be few days due to learning procecure</string>
+    <string name="pref_smart_notification_time_desc">Based on usage of your phone application picks best times to send reminder notifications.\nLearn process may be few days due to learning procecure</string>
     <string name="pref_notification_sound">Sound</string>
     <string name="pref_notification_vibration">Vibrate</string>
     <string name="notification_settings_desc">After android 8.0 we don\'t have access to notifications settings and you must change settings from android settings</string>
@@ -278,7 +279,7 @@
     <string name="see_translation">See Translation</string>
     <string name="force_notification">Force a notification</string>
     <string name="title_license_app">Notifictionary License</string>
-    <string name="description_licence_app">This app will use your phone usage information and responsed that gains from you for educational and financial purposes.\\nTo use this app you have to accept this.</string>
+    <string name="description_licence_app">This app will use your phone usage information and responsed that gains from you for educational and financial purposes.\nTo use this app you have to accept this.</string>
     <string name="accept">Accept</string>
     <string name="exit">Exit</string>
 

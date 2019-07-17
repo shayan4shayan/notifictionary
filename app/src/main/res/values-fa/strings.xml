@@ -1,0 +1,287 @@
+<resources>
+    <string name="app_name">نوتیفیکشنری</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">تنظیمات</string>
+    <string name="hint_text_to_translate">Type To Translate</string>
+    <string name="add_to_learn">اضافه به لیست یادگیری</string>
+    <string name="add_to_selected_category">اضافه به لیست انتخاب شده</string>
+    <string name="blind_swap_language">تعویض زبان</string>
+    <string name="api_key_depricated">Api depricated</string>
+    <string name="exceed_daily_translate">اکنون ترجمه مقدور نیست</string>
+    <string name="text_size_error">اندازه متن برای ترجمه بیش از حد مجاز است</string>
+    <string name="cannot_translate">خطا در ترجمه</string>
+    <string name="translate_not_supported">خطای توسعه دهنده</string>
+    <string name="error_unknown">خطا نامشخص</string>
+    <string name="error_noConnection">بدون اتصال به اینترنت</string>
+    <string name="error_timeout">Request timed out</string>
+    <string name="error_server">سرور ترجمه در دسترس نیست</string>
+    <string name="error_network">خطا شبکه</string>
+    <string name="title_target">ترجمه به</string>
+    <string name="title_source">ترجمه از</string>
+    <string name="filter">فیلتر</string>
+    <string name="correct_count">صحیح شمرده شد</string>
+    <string name="wrong_count">غلط شمرده شد</string>
+    <string name="finish_quiz">اتمام تست</string>
+    <string name="correct_answer_is">جواب:</string>
+    <string name="error_create_quiz">حداقل 4 کلمه باید در لیست باشد</string>
+    <string name="notifictionary_is_active">نوتیفیکشنری فعال است</string>
+    <string name="close_notification">توقف</string>
+    <string name="question_description">معنای لغت زیر را انتخاب کنید</string>
+    <string name="wrong">غلط</string>
+    <string name="correct">صحیح</string>
+    <string name="no_more_question">پایان سوالات</string>
+    <string name="pick_color">انتخاب رنگ</string>
+    <string name="select">انتخاب</string>
+    <string name="title_duplicated">کلمه از قبل موجود است</string>
+    <string name="description_duplicated">کلمه %s قبلا اضافه شده است./n آیا مایلید دوباره اضافه کنید؟</string>
+    <string name="no">نه</string>
+    <string name="yes">بله</string>
+    <string name="enter_name">اسم فایل را وارد کنید</string>
+    <string name="hint_file_name">اسم فایل</string>
+    <string name="word">کلمه</string>
+    <string name="translate">ترجمه</string>
+    <string name="hint_optional">راهنمایی (انتخابی)</string>
+    <string name="edit">ویرایش</string>
+    <string name="edit_title">ویرایش کلمه</string>
+    <string name="enter_category_name">اسم گروه را وارد کنید</string>
+    <string name="hint_category_name">گروه</string>
+    <string name="period_time">زمان بین یاداوری ها</string>
+    <string name="about_us">درباره ی ما</string>
+    <string name="about_us_desc">نوتیفیکیشنری برای کمک به افرادی که میخواهند یک زبان یا کلماتی یا غیره را یادبگیرند ساخته شده است . این اپلیکشین بطور مرتب در روز اعلامیه میدهد &amp; به طور تصادفی یکی از کلماتی که شما وارد کردید را نشان می دهد . بعضی اوقات از شما سوال می پرشد که آیا کلمه را آموختید یا خیر .</string>
+    <string name="title_activity_assay">دانش خود را به چالش بکشید</string>
+    <string name="title_result">نتایج تست</string>
+    <string name="color_not_selected">رنگی انتخاب نشد</string>
+    <string name="error_file_name">اسم یه فایل را وارد کنید</string>
+    <string name="error_already_exists">قبلا وجود دارد</string>
+    <string name="close">بسته</string>
+    <string name="all">همه</string>
+    <string name="service_permission">ir.shahinsoft.notifictionary.service.PERMISSION</string>
+    <string name="error_empty">این فیلدها مورد نیازند</string>
+    <string name="label_limit">حد حفظ کردن (عدد)</string>
+    <string name="more">بیشتر</string>
+    <string name="none" />
+    <string name="remove">حذف</string>
+    <string name="move">جابجا</string>
+    <string name="delete_title">حذف کلمه</string>
+    <string name="cancel">لغو</string>
+    <string name="delete">حذف </string>
+    <string name="delete_description_format">آیا واقعا می خواهید  %s حذف کنید؟</string>
+    <string name="word_is_empty">کلمه خالی است</string>
+    <string name="translate_empty">ترجمه خالی است</string>
+    <string name="undo">لغو</string>
+    <string name="add_message_format">%s به لیست یادگیری اضافه شد </string>
+    <string name="favorite">مورد علاقه</string>
+    <string name="take_quiz">شروع تست</string>
+    <string name="title_category">گروه ها</string>
+    <string name="history">تاریخچه کپی</string>
+    <string name="import_txt">ورودی از فایل</string>
+    <string name="export">خروجی به فایل</string>
+    <string name="telegram_channel">کانال تلگرام</string>
+    <string name="category_deleted">گروه حذف شد!</string>
+    <string name="title_remove_category">حذف گروه</string>
+    <string name="content_remove_category">آیا می خواهید این گروه را حذف کنید \nتمام لغات این گروه حذف خواهد شد</string>
+    <string name="add">افزودن</string>
+    <string name="select_back_up_file">فایل پشتیبان را انتخاب کنید</string>
+    <string name="export_done">خروجی تمام شد</string>
+    <string name="please_wait">لطفا صبر کنید</string>
+    <string name="loading_words">بارگذاری کلمه ها</string>
+    <string name="msg_words_saved">کلمه به پایگاه داده افزوده شد</string>
+    <string name="title_import">افزودن از فایل</string>
+    <string name="title_export">خروجی به فایل</string>
+    <string name="select_all">انتخاب همه</string>
+    <string name="diselect">انتخاب نکردن همه</string>
+    <string name="error_read_file">خطا : فایل ممکن است از نوع پشتیبان نباشد</string>
+    <string name="unselect">انتخاب نکردن</string>
+    <string name="notification_cycle">زمان اعلامیه</string>
+    <string name="memorize_limit">حد حفظ کردن</string>
+    <string name="correct_answer_goal">هدف جواب درست</string>
+    <string name="theme">پوسته</string>
+    <string name="notification_sound">صدا اعلامیه</string>
+    <string name="notification_vibrate">ویبره اعلامیه</string>
+    <string name="notification_settings">تنظیمات اعلامبه ها</string>
+    <string name="translate_everywhere">نرجمه در هرجا </string>
+    <string name="save_history">ذخیره کلمه ترجمه شده</string>
+    <string name="help">راهنما</string>
+    <string name="license">مجوز</string>
+    <string name="qa"><![CDATA[Q&A]]></string>
+    <string name="title_help">راهنما</string>
+    <string name="title_license">مجوز</string>
+    <string name="speak_speed">سرعت گفتار</string>
+    <string name="speech">گفتار</string>
+    <string name="expand">گسترش</string>
+    <string name="options">گزینه ها</string>
+    <string name="contact_to_developer">توسعه توسط شایان درویش پور</string>
+    <string name="social_media">رسانه های اجتمای</string>
+    <string name="telegram_account">اکانت تلگرام توسعه دهنده</string>
+    <string name="instagram_account">اکانت اینستاگرام توسعه دهنده</string>
+    <string name="twitter_account">اکانت توییتر توسعه دهنده</string>
+    <string name="gmail_account">ارسال ایمیل به توسعه دهنده</string>
+    <string name="close_about_activity">بستن پنجره درباه ی ما</string>
+    <string name="seen">خوانده شده در نظر بگیر</string>
+    <string name="replace">جایگزین</string>
+    <string name="theme_red">پوسته قرمز</string>
+    <string name="theme_pink">پوسته صورتی</string>
+    <string name="theme_purple">پوسته بنفش</string>
+    <string name="theme_purple_deep">پوسته بنفش پر رنگ</string>
+    <string name="theme_indigo">پوسته نیلی</string>
+    <string name="theme_blue">پوسته آبی</string>
+    <string name="theme_blue_light">پوسته آبی روشن</string>
+    <string name="theme_cyan">پوسته فیروزه ای
+    </string>
+    <string name="theme_teal">پوسته سبزآبی</string>
+    <string name="theme_gray">پوسته خاکستری</string>
+    <string name="theme_green">پوسته سبز</string>
+    <string name="theme_green_light">پوسته سبز روشن</string>
+    <string name="theme_lime">پوسته لیمویی</string>
+    <string name="theme_yellow">پوسته زرد</string>
+    <string name="theme_orange">پوسته نارنجی</string>
+    <string name="theme_amber">پوسته کهربا</string>
+    <string name="theme_orange_deep">پوسته نارنجی پر رنگ</string>
+    <string name="theme_brown">پوسته قهموه ای</string>
+    <string name="theme_blue_gray">پوسته آبی تیره</string>
+    <string name="theme_black">پوسته سیاه</string>
+    <string name="new_category">گروه جدید</string>
+    <string name="no_word_found">کلمه ای در این گروه پیدا نشد </string>
+    <string name="login">ورود</string>
+    <string name="first_name">نام</string>
+    <string name="last_name">نام خانوادگی</string>
+    <string name="email">ایم</string>
+    <string name="error_email">ایمیل معتبر نیست</string>
+    <string name="login_success">ورود موفقت آمیز</string>
+    <string name="logout">خروج</string>
+    <string name="clear_all">پاک کردن همه</string>
+    <string name="shop_still_not_working">اکنون خرید مقدور نیست</string>
+    <array name="word_types">
+        <item>هبچ یک</item>
+        <item>فعل</item>
+        <item>صفت</item>
+        <item>فاعلی</item>
+        <item>قید</item>
+        <item>اسم</item>
+        <item>پسوند</item>
+        <item>پیشوند</item>
+    </array>
+    <string name="title_activity_settings2">تنظیمات</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">عمومی</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">پیشنهاد اشخاص واسه ارتباط
+        بر اساس تاریخچه پیام ها
+    </string>
+
+    <string name="pref_title_display_name">نمایش اسم</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">اضافه کردن دوستان به پیام</string>
+    <string-array name="pref_example_list_titles">
+        <item>همیشه</item>
+        <item>در صورت امکان</item>
+        <item>هرگز</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">تاریخ &amp; همگام سازی </string>
+
+    <string name="pref_title_sync_frequency">نرخ همگان سازی</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 دقیقه</item>
+        <item>30 دقیقه</item>
+        <item>1 ساعت</item>
+        <item>3 ساعت</item>
+        <item>6 ساعت</item>
+        <item>هرگز</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>مدخل 1</item>
+        <item>مدخل 2</item>
+        <item>مدخل 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">تنظیملت همگان سازی سیستم</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">اعلامیه ها</string>
+
+    <string name="pref_title_new_message_notifications">علامیه ی پیام جدید</string>
+
+    <string name="pref_title_ringtone">آهنگ زنگ</string>
+    <string name="pref_ringtone_silent">بی صدا</string>
+
+    <string name="pref_title_vibrate">ویبره</string>
+    <string name="pref_notification_period_description">تاخیر بین اعلامیه های یاد آوری</string>
+    <string name="pref_notification_period">زمان اعلامیه</string>
+    <string name="pref_translate_anywhere_desc">هر کلمه را با کپی کردن آن یا انتخاب کلمه و لمس \'ترجمه\' ترجمه کنید</string>
+    <string name="pref_translate_anywhere">ترجمه در همه جا</string>
+    <string name="pref_save_translations">ذخیره ی کلمات ترجمه شده</string>
+    <string name="pref_save_translations_desc">ذخیره یک تاریخچه از کلمات کپی یا ترجمه شده و با باز کردن \'تاریخچه فعالیت\' شما قادر به حذف یا اضافه کردن به لیست یادگیری خواهید بود</string>
+    <string name="pref_theme">پوسته</string>
+    <string name="pref_theme_desc">تغییر رنگ اصلی برنامه</string>
+    <string name="general_settings">عمومی</string>
+    <string name="pref_learn_goal">هدف جواب دزست</string>
+    <string name="pref_learn_goal_desc">کلمه به عنوان کلمات یادگرفته شده محسوب می شود اگر بیش از هدف خود پاسخ درست به آن کلمه داده باشید.</string>
+    <string name="pref_allow_reminder_notifications">پذیرفتن اعلامیه یادآوری</string>
+    <string name="notification_cycle_desc">تاخیر بین اعلامیه ها توسط اپلیکیشن</string>
+    <string name="pref_smart_notification_time">اعلامیه هوشمند</string>
+    <string name="pref_smart_notification_time_desc">بر اساس استفاده ی شما از گوشی اپلیکیشن بهترین زمان برای اعلامیه را انتخای می کند .\nبر اساس روش کار برنامه ممکن است پس از چند روز شروع به کار کند.</string>
+    <string name="pref_notification_sound">صدا</string>
+    <string name="pref_notification_vibration">ویبره</string>
+    <string name="notification_settings_desc">از اندروید 8.0 ، به تنظیملت اعلامیه ها دسترسی نداریم و باید به طور دستی تغییر دهید.</string>
+    <string name="card_stack_view">Card stack view</string>
+    <string name="card_stack_view_desc">📱Tinder like swipeable card view for Android</string>
+    <string name="circle_picker">Circle picker</string>
+    <string name="circle_picker_desc">CirclePicker is an alternative to the built-in NumberPicker view in Android. It provides an easy to use, easy to customize widget with a modern look and feel.</string>
+    <string name="google">Google</string>
+    <string name="google_desc">Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware.</string>
+    <string name="volley">Volley</string>
+    <string name="volley_desc">Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster.  For more information about Volley and how to use it, visit the Android developer training page.\nhttps://developer.android.com/training/volley/index.html</string>
+    <string name="sticky_nested_scroll_view">Sticky nested scroll view</string>
+    <string name="sticky_nested_scroll_view_desc">A small android library for tagging views inside a ScrollView as \"sticky\" making them stick to the top of the scroll container until a new sticky view comes and takes it\'s place</string>
+    <string name="material_intro_screen">Material intro screen</string>
+    <string name="material_intro_screen_desc">Material intro screen is inspired by Material Intro and developed with love from scratch. I decided to rewrite completely almost all features in order to make Android intro screen easy to use for everyone and extensible as possible.</string>
+    <string name="crashlythics">Crashlytics</string>
+    <string name="crashlythics_desc">قدرتمند ترین و البته سبک ترین راه حل گزارش کرش.</string>
+    <string name="mitra">میترا لشکری</string>
+    <string name="mitra_desc">طراح نوتیفکیشنری</string>
+    <string name="pref_learn_goal_hint">هدف خود را وارد کنید</string>
+    <string name="pref_cycle_hint">تاخیر بین اعلامیه ها(دقیقه)</string>
+    <string name="dismiss">رد</string>
+    <string name="did_you_guess_right">درست حدس زدید؟</string>
+    <string name="see_translation">نمایش ترجمه</string>
+    <string name="force_notification">یک اعلامیه رو به اجبار نشون بده.</string>
+    <string name="title_license_app">مجوز نوتیفیکیشنری</string>
+    <string name="description_licence_app">این اپلیکیشن از زمان استفاده ی شما از گوشی برای مقاصد علمی و کسب درآمد اصتفاده خواهد کرد.\nبرای استفاده باید مجوز را قبول کنید.</string>
+    <string name="accept">قبول</string>
+    <string name="exit">خروج</string>
+
+
+</resources>
