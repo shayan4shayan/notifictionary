@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -128,7 +129,7 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
 
     private lateinit var words: ArrayList<Translate>
 
-    private var limit = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_learn_goal",5)
+    //private var limit = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_learn_goal",5)
 
     private var correct = 0
         set(value) {
@@ -186,7 +187,7 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
             finish()
             return
         }
-        limit = getSharedPreferences(APP, Context.MODE_PRIVATE).getInt(QUIZ_LIMIT, 10)
+        var limit = getSharedPreferences(APP, Context.MODE_PRIVATE).getInt(QUIZ_LIMIT, 10)
 
         val wordToAsk = words.filter { it.correctCount < limit }
         size = wordToAsk.size
