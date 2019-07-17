@@ -149,7 +149,7 @@
     <string name="login">ورود</string>
     <string name="first_name">نام</string>
     <string name="last_name">نام خانوادگی</string>
-    <string name="email">ایم</string>
+    <string name="email">ایمیل</string>
     <string name="error_email">ایمیل معتبر نیست</string>
     <string name="login_success">ورود موفقت آمیز</string>
     <string name="logout">خروج</string>
@@ -247,7 +247,7 @@
     <string name="pref_theme">پوسته</string>
     <string name="pref_theme_desc">تغییر رنگ اصلی برنامه</string>
     <string name="general_settings">عمومی</string>
-    <string name="pref_learn_goal">هدف جواب دزست</string>
+    <string name="pref_learn_goal">هدف جواب درست</string>
     <string name="pref_learn_goal_desc">کلمه به عنوان کلمات یادگرفته شده محسوب می شود اگر بیش از هدف خود پاسخ درست به آن کلمه داده باشید.</string>
     <string name="pref_allow_reminder_notifications">پذیرفتن اعلامیه یادآوری</string>
     <string name="notification_cycle_desc">تاخیر بین اعلامیه ها توسط اپلیکیشن</string>
@@ -269,7 +269,7 @@
     <string name="material_intro_screen">Material intro screen</string>
     <string name="material_intro_screen_desc">Material intro screen is inspired by Material Intro and developed with love from scratch. I decided to rewrite completely almost all features in order to make Android intro screen easy to use for everyone and extensible as possible.</string>
     <string name="crashlythics">Crashlytics</string>
-    <string name="crashlythics_desc">قدرتمند ترین و البته سبک ترین راه حل گزارش کرش.</string>
+    <string name="crashlythics_desc">The most powerful, yet lightest weight crash reporting solution.</string>
     <string name="mitra">میترا لشکری</string>
     <string name="mitra_desc">طراح نوتیفکیشنری</string>
     <string name="pref_learn_goal_hint">هدف خود را وارد کنید</string>
@@ -279,7 +279,7 @@
     <string name="see_translation">نمایش ترجمه</string>
     <string name="force_notification">یک اعلامیه رو به اجبار نشون بده.</string>
     <string name="title_license_app">مجوز نوتیفیکیشنری</string>
-    <string name="description_licence_app">این اپلیکیشن از زمان استفاده ی شما از گوشی برای مقاصد علمی و کسب درآمد اصتفاده خواهد کرد.\nبرای استفاده باید مجوز را قبول کنید.</string>
+    <string name="description_licence_app">این اپلیکیشن از زمان استفاده ی شما از گوشی برای مقاصد علمی و کسب درآمد استفاده خواهد کرد.\nبرای استفاده باید مجوز را قبول کنید.</string>
     <string name="accept">قبول</string>
     <string name="exit">خروج</string>
 
