@@ -12,9 +12,7 @@ class RandomTranslateTask(val db: DatabaseWrapper,val goal:Int, private val onLo
         //if (ids.isEmpty()) return null
         val list = ArrayList<Int>()
         ids.forEach { list.add(it) }
-        list.shuffle()
-        val random = Random().nextInt(ids.size)
-        val id = list[random]
+        val id = list.random()
         return db.select(id)
     }
 

@@ -16,12 +16,13 @@
     <ir.shahinsoft.notifictionary.widget.AppTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="16dp"
         android:text="@string/description_licence_app"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
         android:orientation="horizontal">
         <ir.shahinsoft.notifictionary.widget.AppButton
             android:layout_width="wrap_content"
