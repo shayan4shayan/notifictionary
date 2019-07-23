@@ -62,6 +62,7 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         overlayAnimationSet.playTogether(overlayAnimator)
 
         stackView.swipe(SwipeDirection.Right, cardAnimationSet, overlayAnimationSet)
+        checkStackEmpty()
     }
 
     private fun swipeLeft() {
@@ -89,6 +90,19 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         overlayAnimationSet.playTogether(overlayAnimator)
 
         stackView.swipe(SwipeDirection.Left, cardAnimationSet, overlayAnimationSet)
+        checkStackEmpty()
+    }
+
+    private fun checkStackEmpty() {
+        Log.d("Assay","$size")
+        val answered = correct + wrong
+        Log.d("Assay","$answered")
+
+        if (size == answered + 1){
+            textNoMoreQuestion.visibility = View.VISIBLE
+        } else {
+            textNoMoreQuestion.visibility = View.GONE
+        }
     }
 
     var handler = Handler()
@@ -205,7 +219,6 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
 
     private fun onLoadFinished() {
         layoutMain.visibility = View.VISIBLE
-        textNoMoreQuestion.visibility = View.VISIBLE
         loading.visibility = View.GONE
     }
 

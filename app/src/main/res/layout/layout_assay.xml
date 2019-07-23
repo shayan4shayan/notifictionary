@@ -166,8 +166,8 @@
             app:scaleDiff="0.2"
             app:stackFrom="top"
             app:swipeEnabled="false"
-            app:translationDiff="24"
-            app:visibleCount="3" />
+            app:translationDiff="32"
+            app:visibleCount="4" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/finishQuiz"

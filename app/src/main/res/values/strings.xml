@@ -30,7 +30,7 @@
     <string name="error_create_quiz">You must add at least 4 words to learning list</string>
     <string name="notifictionary_is_active">Notifictionary is Active</string>
     <string name="close_notification">Stop</string>
-    <string name="question_description">Select the meaning of Word displayer bellow</string>
+    <string name="question_description">Guess the meaning</string>
     <string name="wrong">WRONG</string>
     <string name="correct">CORRECT</string>
     <string name="no_more_question">No more questions</string>
