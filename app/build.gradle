@@ -62,7 +62,7 @@ dependencies {
     //google ads
     //implementation 'com.google.firebase:firebase-ads:17.1.0'
 
-    implementation 'com.airbnb.android:lottie:2.2.0'
+    implementation 'com.airbnb.android:lottie:3.0.7'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 
