@@ -9,20 +9,23 @@
             android:icon="@mipmap/ic_goal"
             android:inputType="number"
             android:key="pref_learn_goal"
+            android:layout="@layout/setting_goal"
             android:summary="@string/pref_learn_goal_desc"
             android:title="@string/pref_learn_goal" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:icon="@mipmap/ic_goal"
             android:key="pref_translate_anywhere"
+            android:layout="@layout/setting_translate_anywhere"
             android:summary="@string/pref_translate_anywhere_desc"
             android:title="@string/pref_translate_anywhere" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:icon="@mipmap/ic_save"
             android:key="pref_save_translates"
+            android:layout="@layout/setting_save_translated_words"
             android:summary="@string/pref_save_translations_desc"
             android:title="@string/pref_save_translations" />
 
@@ -32,20 +35,22 @@
             android:layout="@layout/setting_speech_speed" />
 
 
-        <EditTextPreference
+        <Preference
             android:icon="@mipmap/ic_rgb"
             android:inputType="none"
             android:key="pref_theme"
+            android:layout="@layout/setting_theme"
             android:summary="@string/pref_theme_desc"
             android:title="@string/pref_theme" />
 
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/notification_settings">
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:icon="@mipmap/ic_notification"
             android:key="notifications_new_message"
+            android:layout="@layout/setting_notification"
             android:title="@string/pref_allow_reminder_notifications" />
 
         <EditTextPreference
@@ -55,25 +60,28 @@
             android:icon="@mipmap/ic_cycle"
             android:inputType="number"
             android:key="pref_notification_cycle"
+            android:layout="@layout/setting_cycle"
             android:maxLength="3"
             android:summary="@string/notification_cycle_desc"
             android:title="@string/notification_cycle" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:dependency="notifications_new_message"
             android:icon="@mipmap/ic_artificial_intelligence"
+            android:layout="@layout/setting_smart"
             android:key="pref_smart_notifications"
             android:summary="@string/pref_smart_notification_time_desc"
             android:title="@string/pref_smart_notification_time" />
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:dependency="notifications_new_message"
             android:icon="@mipmap/ic_sound"
             android:key="pref_notification_sound"
+            android:layout="@layout/setting_sound"
             android:title="@string/pref_notification_sound" />
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="true"
             android:dependency="notifications_new_message"
             android:icon="@mipmap/ic_vibrate"
@@ -83,6 +91,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_settings"
             android:key="android_settings"
+            android:layout="@layout/setting_notification_setting"
             android:summary="@string/notification_settings_desc"
             android:title="@string/notification_settings" />
     </PreferenceCategory>

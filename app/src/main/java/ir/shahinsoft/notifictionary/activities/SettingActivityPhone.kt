@@ -3,13 +3,14 @@ package ir.shahinsoft.notifictionary.activities
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.preference.EditTextPreference
-import android.preference.PreferenceFragment
 import android.provider.Settings
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.EditTextPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import ir.shahinsoft.notifictionary.R
+import ir.shahinsoft.notifictionary.prefrences.ThemePrefrence
 import ir.shahinsoft.notifictionary.toast
 import ir.shahinsoft.notifictionary.widget.ColorPickerDialog
 
@@ -22,7 +23,7 @@ class SettingActivityPhone : BaseActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setTitle(R.string.action_settings)
-        fragmentManager
+        supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.layout, AllSettingsFragment())
                 .commit()
@@ -36,10 +37,8 @@ class SettingActivityPhone : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    class AllSettingsFragment : PreferenceFragment() {
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
+    class AllSettingsFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             addPreferencesFromResource(R.xml.pref_settings_phone)
 
             initTheme()
@@ -72,10 +71,10 @@ class SettingActivityPhone : BaseActivity() {
         }
 
         private fun initTheme() {
-            val pref = findPreference("pref_theme") as EditTextPreference
+            val pref = findPreference("pref_theme") as Preference
 
+            pref.preferenceManager.onDisplayPreferenceDialogListener = null
             pref.setOnPreferenceClickListener {
-                pref.dialog.dismiss()
                 ColorPickerDialog(activity!!) { color -> onColorChanged(pref, color) }.show()
                 true
             }
@@ -88,8 +87,8 @@ class SettingActivityPhone : BaseActivity() {
             }
         }
 
-        private fun onColorChanged(pref: EditTextPreference, color: Int) {
-            pref.text = "$color"
+        private fun onColorChanged(pref: Preference, color: Int) {
+            pref.sharedPreferences.edit().putString(pref.key,"$color").apply()
             (activity as BaseActivity).changeTheme(color)
         }
 

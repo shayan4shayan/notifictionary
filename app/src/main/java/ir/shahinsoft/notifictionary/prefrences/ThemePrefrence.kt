@@ -1,10 +1,8 @@
 package ir.shahinsoft.notifictionary.prefrences
 
 import android.content.Context
-import android.preference.DialogPreference
-import android.preference.EditTextPreference
-import android.preference.Preference
 import android.util.AttributeSet
+import androidx.preference.EditTextPreference
 import ir.shahinsoft.notifictionary.widget.ColorPickerDialog
 
 class ThemePrefrence(context: Context, attributeSet: AttributeSet?, defstyle: Int) : EditTextPreference(context, attributeSet, defstyle) {
@@ -20,5 +18,9 @@ class ThemePrefrence(context: Context, attributeSet: AttributeSet?, defstyle: In
         persistInt(color)
         notifyDependencyChange(shouldDisableDependents())
         notifyChanged()
+    }
+
+    fun dismissDialog() {
+
     }
 }
