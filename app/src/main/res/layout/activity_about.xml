@@ -35,10 +35,20 @@
             android:tint="@color/white" />
     </FrameLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:lottie_fileName="about.json"
+        android:padding="16dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:visibility="gone"
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
