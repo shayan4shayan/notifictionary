@@ -10,6 +10,8 @@ import ir.shahinsoft.notifictionary.services.learning.models.Record
 import ir.shahinsoft.notifictionary.services.worker.SendNotificationWorker
 import ir.shahinsoft.notifictionary.toast
 import ir.shahinsoft.notifictionary.utils.NotificationUtil
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 open class SmartNotificationImpl(val context: Context, private val learningService: LearningService) : SmartNotificationController {
@@ -53,7 +55,7 @@ open class SmartNotificationImpl(val context: Context, private val learningServi
                 .setConstraints(constraints)
                 .setInputData(data)
                 .addTag(tag)
-                .addTag("sendTime: $time")
+                .addTag("sendTime: ${SimpleDateFormat("HH:mm:ss",Locale.US).format(Date(System.currentTimeMillis() + time))}")
                 .setInitialDelay(time, TimeUnit.MILLISECONDS).build())
     }
 
