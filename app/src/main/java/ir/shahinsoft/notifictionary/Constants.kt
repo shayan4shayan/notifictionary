@@ -66,3 +66,5 @@ const val EXTRA_WORD = "extra_word"
 const val EXTRA_TRANSLATE = "extra_translate"
 const val EXTRA_HAS_LEARNED = "extra_has_learned"
 const val EXTRA_LANG = "extra_lang"
+
+const val COPY_MAX_TOAST_SIZE = 50

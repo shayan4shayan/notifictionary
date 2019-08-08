@@ -17,6 +17,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.provider.Settings
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
@@ -24,12 +25,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import android.text.Editable
 import android.text.SpannableString
 import android.text.TextWatcher
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import ir.shahinsoft.notifictionary.*
@@ -171,6 +177,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
         if (!(isLicenseAccepted())) {
             val licensdialog1 = LicenseDialog(this, onAccept , onExit)
             licensdialog1.show()
@@ -213,7 +220,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         undoTranslation.setOnClickListener { undoTranslation() }
         undoTranslation.setOnLongClickListener { toast(R.string.undo); true }
 
-        fab.setOnLongClickListener { toast(R.string.add_to_learn);true }
+        fab.setOnLongClickListener { toast(R.string.add_to_learn); true }
 
         appBarLayout.addOnOffsetChangedListener(appBarStateChangeListener)
 
@@ -223,6 +230,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         imgSwitch.setOnClickListener { swapTranslateLanguages() }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu?.add("monitor")?.setOnMenuItemClickListener {
+            Intent(this@MainActivity,MonitorActivity::class.java).apply { startActivity(this) }
+            true
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onResume() {

@@ -3,6 +3,7 @@ package ir.shahinsoft.notifictionary.services.learning.database
 import android.util.SparseArray
 import ir.shahinsoft.notifictionary.services.learning.models.ApproximateState
 import org.json.JSONArray
+import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 

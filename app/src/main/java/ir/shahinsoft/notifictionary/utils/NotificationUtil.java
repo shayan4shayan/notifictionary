@@ -38,6 +38,7 @@ public class NotificationUtil {
     public static final String ID = "notifictionary word reminder";
     public static final String NAME = "Remember";
     public static final int REMINDER_ID = 0x12000;
+    public static final int NOTIFICATION_ID = 5;
 
     public static void sendNotification(Context context, Intent intent, Translate translate) {
 
@@ -84,7 +85,7 @@ public class NotificationUtil {
 
         Notification notification = builder.build();
         if (manager != null) {
-            manager.notify(ID, translate.getId(), notification);
+            manager.notify(ID, NOTIFICATION_ID, notification);
         }
 
     }
@@ -112,7 +113,7 @@ public class NotificationUtil {
                 .setPriority(100);
 
         Notification notification = builder.build();
-        manager.notify(ID, id, notification);
+        manager.notify(ID, NOTIFICATION_ID, notification);
     }
 
     private static RemoteViews getNotificationTranslateContentContent(Context context, String translate, String translation, int id) {

@@ -6,6 +6,7 @@ import ir.shahinsoft.notifictionary.services.learning.models.ApproximateState
 import ir.shahinsoft.notifictionary.services.learning.models.Record
 import java.io.*
 import java.lang.IndexOutOfBoundsException
+import kotlin.concurrent.thread
 import kotlin.contracts.Returns
 
 class Q {
@@ -37,9 +38,15 @@ class Q {
         return state.id * 10 + action.ordinal
     }
 
+    fun allRewardsByState(state: ApproximateState): Map<Record.Action, Double> {
+        return (0 until data.size()).map { data.keyAt(it) }.filter { it / 10 == state.id }
+                .map { Pair<Record.Action, Double>(Record.Action.values()[it % 10], data.get(it)) }.toMap()
+    }
+
     fun update(state: ApproximateState, action: Record.Action, reward: Int) {
         val newQ = (1 - learningRate) * valueOf(state, action) + learningRate * (reward + discountFactor * bestRewardOf(action))
         data.put(keyOf(state, action), newQ)
+        //thread { save(data.clone()) }
     }
 
     private fun bestRewardOf(action: Record.Action): Double {
@@ -48,7 +55,7 @@ class Q {
     }
 
     fun save() {
-        val out = FileOutputStream(PathProvider.instance.q)
+        val out = FileOutputStream(PathProvider.instance.QPath)
         (0 until data.size()).map { "${data.keyAt(it)} ${data.valueAt(it)}" }.forEach {
             out.write(it.toByteArray())
             out.write("\n".toByteArray())
@@ -68,20 +75,21 @@ class Q {
 
     fun bestActionForState(state: ApproximateState): Record.Action {
         try {
-            val sint = state.id
-            val foundKeys = (0 until data.size()).map { data.keyAt(it) }.filter { it / 10 == sint }
-            val maxkey = foundKeys.maxBy { data.get(it) }
-                    ?: return Record.Action.values().get(java.util.Random().nextInt(Record.Action.values().size))
+            val map = allRewardsByState(state)
+            val maxkey = map.maxBy { it.value }?.key
+                    ?: return Record.Action.values().random()
 
-            return if (data[maxkey] < defultValue) {
-                if (foundKeys.size == Record.Action.values().size) {
-                    Record.Action.values().get(maxkey % 10)
-                } else {
-                    val index = Record.Action.values().map { Record.Action.values().indexOf(it) }.filter { action -> !foundKeys.map { key -> key % 10 }.contains(action) }.random()
-                    Record.Action.values().get(index)
+            return if (map[maxkey] ?: error("") < defultValue) {
+                // all actions have reward bellow the default value so the biggest is maxkey
+                if (map.size == Record.Action.values().size) {
+                    maxkey
+                }
+                // there is at least one action that has value equal to default value but not selected till now and does not exists in list
+                else {
+                    Record.Action.values().filter { map[it] == null }.random()
                 }
             } else {
-                Record.Action.values()[maxkey % 10]
+                maxkey
             }
         } catch (e: IndexOutOfBoundsException) {
             return Record.Action.values().random()

@@ -57,14 +57,19 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
     //firebase
-//    implementation 'com.google.firebase:firebase-core:16.0.8'
-
-    //google ads
-    //implementation 'com.google.firebase:firebase-ads:17.1.0'
 
     implementation 'com.airbnb.android:lottie:3.0.7'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    def work_version = "2.1.0"
+
+    implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+
+
 
     //forcing to use same version in compile and runtime
     configurations.all {

@@ -3,7 +3,7 @@ package ir.shahinsoft.notifictionary.services.learning.database
 import android.content.Context
 import java.io.File
 
-class PathProvider() {
+class PathProvider {
 
 
     companion object {
@@ -14,10 +14,10 @@ class PathProvider() {
     lateinit var recordsPath: File
     lateinit var QPath: File
 
-    val learningDirectory = "learning"
-    val states = "states.txt"
-    val records = "records.txt"
-    val q = "Q.txt"
+    private val learningDirectory = "learning"
+    private val states = "states.txt"
+    private val records = "records.txt"
+    private val q = "Q.txt"
 
     fun init(context: Context) {
         statesPath = File("${context.cacheDir}/$learningDirectory/$states")

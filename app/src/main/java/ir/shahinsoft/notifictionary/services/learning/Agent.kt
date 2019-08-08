@@ -36,6 +36,7 @@ class Agent() {
 
     fun updateRecord(sid: Int, action: Record.Action, userResponse: Boolean) {
         records.updateReward(states.states[sid], action, if (userResponse) 1 else -1)
+        records.records.find { it.state.id == sid && it.action == action }?.let { records.saveRecord(it) }
         qLearning.update(states.states[sid], action, if (userResponse) 1 else -1)
     }
 

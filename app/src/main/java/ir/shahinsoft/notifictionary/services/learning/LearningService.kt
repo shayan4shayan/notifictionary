@@ -41,6 +41,7 @@ class LearningService {
             Record.Action.DELAY_RANDOM_AFTER_ONE_HOUR -> (1000 * 60 * 60 until 1000*60*60*2).random().toLong()
             else -> 0
         }
+        UpdateDataTask(agent).execute()
 
         return Pair(pair,time)
 
