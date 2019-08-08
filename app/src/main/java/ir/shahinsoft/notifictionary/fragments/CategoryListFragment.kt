@@ -98,7 +98,6 @@ class CategoryListFragment : androidx.fragment.app.Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter = WordsAdapter(ArrayList<Category>(), onWordActionListener)
         recycler.adapter = adapter
-        recycler.addOnScrollListener(scrollListener)
         recycler.isNestedScrollingEnabled = true
         recycler.setItemViewCacheSize(20)
         Log.d("CategoryListFragment", "OnViewCreated called: $catId")
@@ -136,11 +135,13 @@ class CategoryListFragment : androidx.fragment.app.Fragment() {
         super.onResume()
         page = 0
         onSelected()
+        recycler.addOnScrollListener(scrollListener)
         Log.d("CategoryListFragment", "onResume $catId")
     }
 
     override fun onPause() {
         super.onPause()
+        recycler.removeOnScrollListener(scrollListener)
         adapter.translates.clear()
         page = 0
         isLoading = false
@@ -160,6 +161,10 @@ class CategoryListFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun checkForNotFoundLayout() {
+        if (isDetached) return
+
+        if (recycler == null) return
+
         if (adapter.translates.size == 0) {
             recycler.visibility = View.GONE
             layoutNotFound.visibility = View.VISIBLE

@@ -54,9 +54,9 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        context?.getAppDatabase()
+        context?.getAppDatabase()
         LoadCategoryTask(context?.getAppDatabase()!!) {
-//            checkForUpdate(it)
+            checkForUpdate(it)
         }.execute()
     }
 
