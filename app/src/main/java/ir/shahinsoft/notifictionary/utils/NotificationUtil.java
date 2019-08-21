@@ -226,10 +226,10 @@ public class NotificationUtil {
         }
     }
 
-    public static void cancelNotification(Context context, int id) {
+    public static void cancelNotification(Context context) {
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (manager != null) {
-            manager.cancel(ID, id);
+            manager.cancel(ID,NOTIFICATION_ID);
         }
     }
 }

@@ -171,7 +171,7 @@ class NotifictionaryService : Service() {
     }
 
     private fun dismissNotification(id: Int, hasLearned: Boolean) {
-        NotificationUtil.cancelNotification(this, id)
+        NotificationUtil.cancelNotification(this)
         state = State.START
         triggerNextNotificationTime()
 

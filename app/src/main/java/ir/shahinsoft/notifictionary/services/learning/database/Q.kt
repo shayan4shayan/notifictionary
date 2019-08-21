@@ -1,6 +1,7 @@
 package ir.shahinsoft.notifictionary.services.learning.database
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.util.SparseArray
 import ir.shahinsoft.notifictionary.services.learning.models.ApproximateState
 import ir.shahinsoft.notifictionary.services.learning.models.Record
@@ -74,6 +75,7 @@ class Q {
     }
 
     fun bestActionForState(state: ApproximateState): Record.Action {
+        Log.i("LearningService", "stateId: " + state.id)
         try {
             val map = allRewardsByState(state)
             val maxkey = map.maxBy { it.value }?.key
