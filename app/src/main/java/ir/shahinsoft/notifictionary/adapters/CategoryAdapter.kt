@@ -28,6 +28,9 @@ class CategoryAdapter(val cats: ArrayList<Category>, private val listener: OnRem
             listener.onCategorySelected(cats[holder.adapterPosition])
             notifyDataSetChanged()
         }
+        holder.merge.setOnClickListener {
+            listener.onMerge(cats[holder.adapterPosition])
+        }
 
         return holder
     }
@@ -63,11 +66,14 @@ class CategoryAdapter(val cats: ArrayList<Category>, private val listener: OnRem
 
         val color = itemView.findViewById<CardView>(R.id.cardColor)
 
+        val merge = itemView.findViewById<ImageView>(R.id.merge)
+
     }
 
     interface OnRemoveListener {
         fun onRemove(cat: Category)
         fun onSelectColor(cat: Category)
         fun onCategorySelected(category: Category)
+        fun onMerge(category: Category)
     }
 }

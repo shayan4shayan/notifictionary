@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import ir.shahinsoft.notifictionary.widget.NewCategoryDialog
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.CategoryAdapter
+import ir.shahinsoft.notifictionary.dialog.MergeDialog
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.Category
 import ir.shahinsoft.notifictionary.tasks.DeleteCategoryTask
@@ -18,6 +19,10 @@ import ir.shahinsoft.notifictionary.widget.YesNoDialog
 import kotlinx.android.synthetic.main.activity_category.*
 
 class CategoryActivity : BaseActivity(), CategoryAdapter.OnRemoveListener, YesNoDialog.OnClickListener, NewCategoryDialog.OnCategoryInsertListener {
+    override fun onMerge(category: Category) {
+        MergeDialog(this,category).show()
+    }
+
     override fun onCategorySelected(category: Category) {
 
     }

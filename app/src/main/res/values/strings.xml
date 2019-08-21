@@ -281,6 +281,11 @@
     <string name="description_licence_app">This app will use your phone usage information and responsed that gains from you for educational and financial purposes.\nTo use this app you have to accept this.</string>
     <string name="accept">Accept</string>
     <string name="exit">Exit</string>
+    <string name="merge_category">Merge category</string>
+    <string name="title_merge_dialog">Select a category to merge %s to it.</string>
+    <string name="delete_source_category">Delete category after merge</string>
+    <string name="error_category_not_selected">Please select a category</string>
+    <string name="merge_success">Category merged</string>
 
 
 </resources>
