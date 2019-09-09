@@ -8,6 +8,7 @@ import android.preference.PreferenceManager
 import android.speech.tts.TextToSpeech
 import androidx.core.app.NotificationCompat
 import android.util.Log
+import androidx.work.WorkManager
 import ir.shahinsoft.notifictionary.*
 import ir.shahinsoft.notifictionary.model.History
 import ir.shahinsoft.notifictionary.receivers.LockReceiver
@@ -254,6 +255,12 @@ class NotifictionaryService : Service() {
             initLearningService()
         }
         initOtherPartsIfNeeded()
+        checkWorker()
+    }
+
+    private fun checkWorker() {
+        smartNotificationController?.checkWorker()
+        notificationController.checkWorker()
     }
 
     private fun initOtherPartsIfNeeded() {

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
 import androidx.work.*
+import com.google.common.util.concurrent.ListenableFuture
 import ir.shahinsoft.notifictionary.ACTION_SEND_NOTIFICTIONARY
 import ir.shahinsoft.notifictionary.services.learning.LearningService
 import ir.shahinsoft.notifictionary.services.learning.models.Record
@@ -15,7 +16,13 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 open class SmartNotificationImpl(val context: Context, private val learningService: LearningService) : SmartNotificationController {
-
+    override fun checkWorker() {
+        val infos = WorkManager.getInstance(context).getWorkInfosByTag(tag)
+        infos.get().forEach {
+            it.runAttemptCount
+            //todo
+        }
+    }
 
     val tag = "smartNotification"
 
@@ -55,7 +62,7 @@ open class SmartNotificationImpl(val context: Context, private val learningServi
                 .setConstraints(constraints)
                 .setInputData(data)
                 .addTag(tag)
-                .addTag("sendTime: ${SimpleDateFormat("HH:mm:ss",Locale.US).format(Date(System.currentTimeMillis() + time))}")
+                .addTag("sendTime: ${SimpleDateFormat("HH:mm:ss", Locale.US).format(Date(System.currentTimeMillis() + time))}")
                 .setInitialDelay(time, TimeUnit.MILLISECONDS).build())
     }
 

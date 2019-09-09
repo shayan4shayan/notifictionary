@@ -19,6 +19,12 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
 
+        <meta-data android:name="com.najva.sdk.metadata.API_KEY"
+            android:value="3493fbe6-833c-4e19-84ba-d4a28e1199ee"/>
+
+        <meta-data android:name="com.najva.sdk.metadata.WEBSITE_ID"
+            android:value="6892"/>
+
         <activity android:name=".activities.MonitorActivity"/>
 
         <activity android:name=".activities.TestActivity">

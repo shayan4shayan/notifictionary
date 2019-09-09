@@ -59,7 +59,6 @@
     <string name="error_already_exists">قبلا وجود دارد</string>
     <string name="close">بسته</string>
     <string name="all">همه</string>
-    <string name="service_permission">ir.shahinsoft.notifictionary.service.PERMISSION</string>
     <string name="error_empty">این فیلدها مورد نیازند</string>
     <string name="label_limit">حد حفظ کردن (عدد)</string>
     <string name="more">بیشتر</string>

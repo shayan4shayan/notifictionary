@@ -59,7 +59,7 @@
     <string name="error_already_exists">Already Exists</string>
     <string name="close">Close</string>
     <string name="all">ALL</string>
-    <string name="service_permission">ir.shahinsoft.notifictionary.service.PERMISSION</string>
+    <string name="service_permission" translatable="false">ir.shahinsoft.notifictionary.service.PERMISSION</string>
     <string name="error_empty">This fields is required</string>
     <string name="label_limit">Memorize Limit (num)</string>
     <string name="more">more</string>

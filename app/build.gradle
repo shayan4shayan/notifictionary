@@ -73,7 +73,7 @@ dependencies {
     implementation "androidx.work:work-runtime:$work_version"
     implementation "androidx.work:work-runtime-ktx:$work_version"
 
-    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+    implementation 'com.najva.sdk:najva-android-sdk:1.2.0'
 
 
 

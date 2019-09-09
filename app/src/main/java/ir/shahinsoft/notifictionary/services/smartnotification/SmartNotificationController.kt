@@ -6,4 +6,5 @@ interface SmartNotificationController {
     fun sendSmartTranslationNotification(id:Int,translate:String,translation:String?,intent: Intent)
     fun addNextNotificationWorker()
     fun cancel()
+    fun checkWorker()
 }

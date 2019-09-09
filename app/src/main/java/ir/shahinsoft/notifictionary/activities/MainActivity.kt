@@ -36,6 +36,7 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import com.najva.sdk.Najva
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import ir.shahinsoft.notifictionary.*
@@ -188,6 +189,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         insertFavoriteCategory()
 
+        Najva.initialize(this)
+
+        Najva.setUserSubscriptionListener {
+            //todo send najva token to server
+        }
 
         //making cardView stays bellow toolbar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
