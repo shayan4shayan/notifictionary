@@ -8,7 +8,7 @@ android application for learning vocabulary
 1. Online translate
 2. Leaning list with different categories
 3. Timed notifications to remind words in learn list randomly
-4. Crate 4-Option Test with Cosine algorithm 
+4. Create 4-Option Test with Cosine algorithm 
 5. Translate anywhere just by coping the target text
 6. Yendex Translate API with 80 languages
 7. 20 Different themes
