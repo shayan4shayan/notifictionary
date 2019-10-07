@@ -2,7 +2,7 @@
 
 android application for learning vocabulary
 
-* this app in in development mode.
+* this app is in development mode.
 
 # Main Features
 1. Online translate
