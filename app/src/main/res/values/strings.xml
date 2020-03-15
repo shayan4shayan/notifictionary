@@ -281,6 +281,10 @@
     <string name="description_licence_app">This app will use your phone usage information and responsed that gains from you for educational and financial purposes.\nTo use this app you have to accept this.</string>
     <string name="accept">Accept</string>
     <string name="exit">Exit</string>
+    <string name="forget_your_password">Forget your password?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="welcome">Welcome!</string>
+    <string name="login_screen">Login Screen</string>
 
 
 </resources>

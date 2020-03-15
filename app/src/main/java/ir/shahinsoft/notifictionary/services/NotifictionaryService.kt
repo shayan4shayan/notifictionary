@@ -296,7 +296,6 @@ class NotifictionaryService : Service() {
         return (period * 60 * 1000).toLong()
     }
 
-
     private fun getNotificationPendingIntent(inMills: Long): PendingIntent {
         val intent = Intent(this, NotifictionaryService::class.java)
         intent.action = ACTION_SEND_NOTIFICTIONARY
@@ -385,7 +384,6 @@ class NotifictionaryService : Service() {
         super.onDestroy()
 
     }
-
 
     private fun getCloseIntentPending(): PendingIntent? {
         val i = Intent(this, NotifictionaryService::class.java)

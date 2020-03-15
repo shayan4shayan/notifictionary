@@ -1,5 +1,6 @@
 package ir.shahinsoft.notifictionary.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import ir.shahinsoft.notifictionary.*
@@ -11,12 +12,7 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        setTitle(R.string.login)
         login.setOnClickListener { checkAndLogin() }
-        textEmail.setOnEditorActionListener { _, _, _ -> checkAndLogin(); true }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -31,20 +27,16 @@ class LoginActivity : BaseActivity() {
         if (isDataValid()) {
             val name = textFirstName.text.toString()
             val last = textLastName.text.toString()
-            val email = textEmail.text.toString()
-            saveUsername(this, "$name $last")
-            saveEmail(this, email)
-            savePoints(this, getPoints(this))
-            setLogin(this, true)
-            finish()
-            toast(R.string.login_success)
+            //TODO send login request to server
+
+            //TODO remove code below
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
     private fun isDataValid(): Boolean {
         val name = textFirstName.text.toString()
         val last = textLastName.text.toString()
-        val email = textEmail.text.toString()
         var isValid = true
         if (name.isEmpty()) {
             layoutFirstName.error = getString(R.string.error_empty)
@@ -53,14 +45,6 @@ class LoginActivity : BaseActivity() {
         if (last.isEmpty()) {
             layoutLastName.error = getString(R.string.error_empty)
             isValid = false
-        }
-        if (email.isEmpty()) {
-            layoutEmail.error = getString(R.string.error_empty)
-            return false
-        }
-        if (!email.contains("@")) {
-            layoutEmail.error = getString(R.string.error_email)
-            return false
         }
         return isValid
     }

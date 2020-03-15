@@ -31,36 +31,21 @@ dependencies {
     implementation project(':cardstackview')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation "androidx.legacy:legacy-preference-v14:1.0.0"
     implementation "androidx.preference:preference:1.0.0"
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
 
 
     implementation 'com.android.volley:volley:1.1.1'
 
-    def room_version = "2.1.0"
+    def room_version = "2.2.4"
 
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-rc01'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     annotationProcessor "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
-
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:$room_version"
-
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:$room_version"
-
-    // Test helpers
-    testImplementation "androidx.room:room-testing:$room_version"
-
-    //firebase
-//    implementation 'com.google.firebase:firebase-core:16.0.8'
-
-    //google ads
-    //implementation 'com.google.firebase:firebase-ads:17.1.0'
 
     implementation 'com.airbnb.android:lottie:3.0.7'
 
@@ -74,5 +59,3 @@ dependencies {
         }
     }
 }
-
-apply plugin: 'com.google.gms.google-services'

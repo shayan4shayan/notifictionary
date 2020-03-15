@@ -110,9 +110,9 @@ class CategoryListFragment : androidx.fragment.app.Fragment() {
             catId = args.getInt(CATEGORY_ID)
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.i("CategoryListFragment", "onAttach called : $catId")
+        Log.i("CategoryListFragment", "onAttach called: $catId")
     }
 
     private fun onSelected() {
