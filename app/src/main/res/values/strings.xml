@@ -285,6 +285,7 @@
     <string name="sign_in">Sign in</string>
     <string name="welcome">Welcome!</string>
     <string name="login_screen">Login Screen</string>
+    <string name="home">Home</string>
 
 
 </resources>

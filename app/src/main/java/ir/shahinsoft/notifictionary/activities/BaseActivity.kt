@@ -40,9 +40,8 @@ open class BaseActivity : AppCompatActivity() {
     fun getApplicationColor() = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_theme", ContextCompat.getColor(this, R.color.picker_red).toString())!!.toInt()
 
     open fun changeTheme(color: Int) {
-        val dark = manipulateColor(color, 0.8f)
         setActionBarColor(color)
-        setStatusBarColor(dark)
+        setStatusBarColor()
     }
 
     fun manipulateColor(color: Int, factor: Float): Int {
@@ -64,7 +63,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    private fun setStatusBarColor(@ColorInt color: Int) {
+    private fun setStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             val window = window
@@ -76,7 +75,7 @@ open class BaseActivity : AppCompatActivity() {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
             // finally change the color
-            window.statusBarColor = color
+            window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         }
     }
 }
