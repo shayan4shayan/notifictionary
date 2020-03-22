@@ -16,7 +16,6 @@ class SelectLanguageDialog(context: Context, val listener: (TranslateLanguage) -
     override fun show() {
         super.show()
         setContentView(R.layout.dialog_select_language)
-        setCancelable(false)
         recycler.adapter = SelectLanguageAdapter(getLanguages()) {
             listener(it)
             dismiss()

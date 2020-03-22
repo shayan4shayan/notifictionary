@@ -67,7 +67,25 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
             getTargetFromUser()
         }
 
+        swapLanguages.setOnClickListener {
+            swapLanguages()
+        }
+
         textWord.addTextChangedListener(wordTextWatcher)
+    }
+
+    private fun swapLanguages() {
+        val source = PreferenceManager.getDefaultSharedPreferences(context).getString("source", "en")
+        val sourceName = PreferenceManager.getDefaultSharedPreferences(context).getString("sourceName", "english")
+
+        val target = PreferenceManager.getDefaultSharedPreferences(context).getString("target", "fa")
+        val targetName = PreferenceManager.getDefaultSharedPreferences(context).getString("targetName", "persian")
+
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putString("source", target).putString("sourceName", targetName)
+                .putString("target", source).putString("targetName", sourceName).apply()
+
+        initTranslationLanguages()
     }
 
     private fun getTargetFromUser() {
@@ -117,7 +135,7 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
     }
 
     private fun translateWord(word: String) {
-        Translator.with(context).TranslateTo(target).callback(this).translate(word)
+        Translator.with(context).translateFrom(source).TranslateTo(target).callback(this).translate(word)
     }
 
     override fun onWordTranslated(translate: String?) {

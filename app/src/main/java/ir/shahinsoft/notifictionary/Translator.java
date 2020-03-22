@@ -33,6 +33,7 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
     private TranslateListener listener;
     private String word;
     private String target = "fa";
+    private String source = "en";
     private String baseUrl = "https://translate.yandex.net/api/v1.5/tr.json/";
     private Object tag = new Object();
 
@@ -79,8 +80,13 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
         return this;
     }
 
+    public Translator translateFrom(String source){
+        this.source = source;
+        return this;
+    }
+
     public String getParams() {
-        return "translate?key=trnsl.1.1.20180315T180433Z.ace9368cd05ee426.a844889d9519ce7c18952bbb36162cd3d1060360&text=" + word + "&lang=" + target;
+        return "translate?key=trnsl.1.1.20180315T180433Z.ace9368cd05ee426.a844889d9519ce7c18952bbb36162cd3d1060360&text=" + word + "&lang=" + source + '-' + target;
     }
 
     @Override
