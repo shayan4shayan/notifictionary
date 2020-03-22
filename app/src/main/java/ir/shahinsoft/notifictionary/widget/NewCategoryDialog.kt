@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.WindowManager
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.getAppDatabase
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.tasks.InsertCategoryTask
 import ir.shahinsoft.notifictionary.tasks.LoadCategoryTask
 import kotlinx.android.synthetic.main.dialog_new_category.*
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.dialog_new_category.*
  */
 class NewCategoryDialog(context: Context, val listener: OnCategoryInsertListener) : AlertDialog(context) {
 
-    private lateinit var categories: List<Category>
+    private lateinit var boards: List<Board>
     override fun show() {
         window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         super.show()
@@ -23,14 +23,14 @@ class NewCategoryDialog(context: Context, val listener: OnCategoryInsertListener
 
         setContentView(R.layout.dialog_new_category)
         LoadCategoryTask(context.getAppDatabase()) { list ->
-            categories = list
+            boards = list
             btnSelect.setOnClickListener { newCategory() }
         }.execute()
     }
 
     private fun newCategory() {
         val cName = edit.text.toString()
-        if (cName.isIn(categories)) {
+        if (cName.isIn(boards)) {
             edit.error = context.getString(R.string.error_already_exists)
         } else {
             InsertCategoryTask(context.getAppDatabase()) {
@@ -41,12 +41,12 @@ class NewCategoryDialog(context: Context, val listener: OnCategoryInsertListener
     }
 
     interface OnCategoryInsertListener {
-        fun onInsert(category: Category)
+        fun onInsert(board: Board)
     }
 
 
-    private fun String.isIn(categories: List<Category>): Boolean {
-        return (0 until categories.size).map { categories[it].name.toLowerCase() }.contains(this.toLowerCase())
+    private fun String.isIn(boards: List<Board>): Boolean {
+        return (0 until boards.size).map { boards[it].name.toLowerCase() }.contains(this.toLowerCase())
     }
 }
 

@@ -5,27 +5,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import android.util.SparseArray
-import androidx.viewpager.widget.ViewPager
 import ir.shahinsoft.notifictionary.CATEGORY_ID
-import ir.shahinsoft.notifictionary.fragments.CategoryListFragment
-import ir.shahinsoft.notifictionary.model.Category
-import ir.shahinsoft.notifictionary.model.Translate
+import ir.shahinsoft.notifictionary.fragments.BoardsListFragment
+import ir.shahinsoft.notifictionary.model.Board
 
-class MainPagerAdapter(val categories: ArrayList<Category>, fm: FragmentManager) : FragmentPagerAdapter(fm){
+class MainPagerAdapter(val boards: ArrayList<Board>, fm: FragmentManager) : FragmentPagerAdapter(fm){
 
-    val fragments = SparseArray<CategoryListFragment>()
-
-    private val onWordMoveListener = object : CategoryListFragment.OnWordMoveListener {
-        override fun onMove(translate: Translate, catId: Int) {
-            (0 until fragments.size()).map { fragments.get(fragments.keyAt(it)) }.find { it.catId == catId }?.onWordInserted(translate)
-        }
-    }
+    val fragments = SparseArray<BoardsListFragment>()
 
     override fun getItem(p0: Int): Fragment {
-        val category = categories[p0]
+        val category = boards[p0]
         if (fragments[p0] == null){
-            fragments.put(p0, CategoryListFragment())
-            fragments[p0].onWordMoveListener = onWordMoveListener
+            fragments.put(p0, BoardsListFragment())
         }
         val fragment = fragments[p0]
         val bundle = Bundle()
@@ -34,9 +25,9 @@ class MainPagerAdapter(val categories: ArrayList<Category>, fm: FragmentManager)
         return fragment
     }
 
-    override fun getCount() = categories.size
+    override fun getCount() = boards.size
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return categories[position].name
+        return boards[position].name
     }
 }

@@ -21,6 +21,6 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textSize="18sp"
-        tools:text="Some category" />
+        tools:text="Some board" />
 
 </LinearLayout>

@@ -21,7 +21,7 @@ class ShopActivity : AppCompatActivity() {
     }
 
     private fun fetchDataFromServer() {
-        //todo :: send a GET request to server and get category data
+        //todo :: send a GET request to server and get board data
     }
 
     private fun updateVisibility() {

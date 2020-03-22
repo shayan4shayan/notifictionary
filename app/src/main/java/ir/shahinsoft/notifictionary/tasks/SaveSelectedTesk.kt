@@ -2,10 +2,10 @@ package ir.shahinsoft.notifictionary.tasks
 
 import android.os.AsyncTask
 import ir.shahinsoft.notifictionary.database.DatabaseWrapper
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 
-class SaveSelectedTesk(val map: HashMap<Category, ArrayList<Translate>>, val db: DatabaseWrapper, val listener: OnFinishListener)
+class SaveSelectedTesk(val map: HashMap<Board, ArrayList<Translate>>, val db: DatabaseWrapper, val listener: OnFinishListener)
     : AsyncTask<Int, Int, Int>() {
     override fun doInBackground(vararg params: Int?): Int {
 

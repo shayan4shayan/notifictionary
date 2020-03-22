@@ -7,7 +7,7 @@ import android.os.AsyncTask
 import android.util.Log
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.database.DatabaseWrapper
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 import org.json.JSONArray
 import org.json.JSONObject
@@ -17,8 +17,8 @@ import java.io.InputStream
 /**
  * Created by shayan4shayan on 2/20/18.
  */
-class Importer(val stream: InputStream, val db: DatabaseWrapper, val listener: OnLoadCompleteListener) : AsyncTask<Uri, Int, HashMap<Category, ArrayList<Translate>>>() {
-    override fun doInBackground(vararg params: Uri?): HashMap<Category, ArrayList<Translate>> {
+class Importer(val stream: InputStream, val db: DatabaseWrapper, val listener: OnLoadCompleteListener) : AsyncTask<Uri, Int, HashMap<Board, ArrayList<Translate>>>() {
+    override fun doInBackground(vararg params: Uri?): HashMap<Board, ArrayList<Translate>> {
         return parse()
     }
 
@@ -35,7 +35,7 @@ class Importer(val stream: InputStream, val db: DatabaseWrapper, val listener: O
     }
 
 
-    fun parse(): HashMap<Category, ArrayList<Translate>> {
+    fun parse(): HashMap<Board, ArrayList<Translate>> {
         val str = read(stream)
         return try {
             val obj = JSONObject(str)
@@ -53,25 +53,25 @@ class Importer(val stream: InputStream, val db: DatabaseWrapper, val listener: O
 
     }
 
-    override fun onPostExecute(result: HashMap<Category, ArrayList<Translate>>) {
+    override fun onPostExecute(result: HashMap<Board, ArrayList<Translate>>) {
         listener.onLoadComplete(result)
     }
 
-    private fun parseV1(arr: JSONArray): HashMap<Category, ArrayList<Translate>> {
-        val map = HashMap<Category, ArrayList<Translate>>()
-        map[Category("All", -1)] = parseV1JSON(arr)
+    private fun parseV1(arr: JSONArray): HashMap<Board, ArrayList<Translate>> {
+        val map = HashMap<Board, ArrayList<Translate>>()
+        map[Board("All", -1)] = parseV1JSON(arr)
         Log.d("Importer", map.toString())
         return map
     }
 
-    private fun parseV2(obj: JSONObject): HashMap<Category, ArrayList<Translate>> {
-        val map = HashMap<Category, ArrayList<Translate>>()
+    private fun parseV2(obj: JSONObject): HashMap<Board, ArrayList<Translate>> {
+        val map = HashMap<Board, ArrayList<Translate>>()
         val list = obj.getJSONArray("words")
         var startCatId = db.lastCategoryId()
         (0 until list.length()).map { list.getJSONObject(it) }
                 .forEach { jsonObject ->
 
-                    val cat = Category(jsonObject.getString("name"), ++startCatId)
+                    val cat = Board(jsonObject.getString("name"), ++startCatId)
                     val arr = ArrayList<Translate>()
                     map[cat] = arr
                     val jsonArray = jsonObject.getJSONArray("data")
@@ -117,6 +117,6 @@ class Importer(val stream: InputStream, val db: DatabaseWrapper, val listener: O
     }
 
     interface OnLoadCompleteListener {
-        fun onLoadComplete(map: HashMap<Category, ArrayList<Translate>>)
+        fun onLoadComplete(map: HashMap<Board, ArrayList<Translate>>)
     }
 }

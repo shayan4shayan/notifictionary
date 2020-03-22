@@ -3,16 +3,16 @@
 
     <string name="help_title_add_new_word">Add a new Word</string>
     <string name="help_title_change_translate">Change translation language</string>
-    <string name="help_title_add_to_category">Add a word to category</string>
-    <string name="help_title_add_a_new_category">Add a new category</string>
-    <string name="help_title_move_word_to_another_category">Move words between categories</string>
+    <string name="help_title_add_to_category">Add a word to board</string>
+    <string name="help_title_add_a_new_category">Add a new board</string>
+    <string name="help_title_move_word_to_another_category">Move words between boards</string>
     <string name="help_title_edit_or_delete">Edit or Delete words</string>
 
     <string name="help_add_new_word">To add a new word go to main page of application \n\nEnter the word you want to add(or translate) in the field with hint "Enter Word To Translate"\n\napp will automatically detects word and translates it online\n\napp shows its meaning to you\n\nnow you can add it to your library.\n\nif you don\'t have Internet connection or you think the meaning is bad you can change or insert a new meaning and then insert it to your library</string>
     <string name="help_change_translate">You can change translate language by clicking on the translate names on the top of main page, after that you can scroll to find your wanted language or simply enter the name of that in the "Filter" field to find it faster</string>
-    <string name="help_add_to_category">its very simple , select your target category then insert the word you want :)</string>
-    <string name="help_add_a_new_category">you cat do it in two ways:\n\n\t1.Click + button in main page then enter the name of category to insert\n\n\t2.from the left side menu select categories\nclick + button and enter name of category.</string>
-    <string name="help_move_word_to_another_category">In main page you can see a list of words , find your target word then click \'three dot\' at the top-left then select move , after that you can select a category to move</string>
+    <string name="help_add_to_category">its very simple , select your target board then insert the word you want :)</string>
+    <string name="help_add_a_new_category">you cat do it in two ways:\n\n\t1.Click + button in main page then enter the name of board to insert\n\n\t2.from the left side menu select boards\nclick + button and enter name of board.</string>
+    <string name="help_move_word_to_another_category">In main page you can see a list of words , find your target word then click \'three dot\' at the top-left then select move , after that you can select a board to move</string>
     <string name="help_edit_or_delete">In main page you cat see a list of words , find your target word then click \'three dot\' at the top-left so you can select each Remove or Edit options</string>
 
     <string name="qa_title_change_notification_times">How to change notifications time?</string>
@@ -28,9 +28,9 @@
     <string name="qa_how_to_change_notification_times">In the setting page select Notification Cycle , so you can select delay between two notifications</string>
     <string name="qa_how_to_disable_notifications">In the setting page select Notification Cycle and set it to zero</string>
     <string name="qa_what_is_memorize_limit">Memorize limit in settings is a limit for correct count answers in quizzes that with that count you will make sure that you learned the word, so you can change it with the level of trust to yourself :)</string>
-    <string name="qa_how_to_save_my_words">At the left side menu you can see an option named Export , with that you can select words and move them in other categories then select a name for file , your backup file will be saved in /storage/notifictionary/YOUR_FILENAME.nfb</string>
-    <string name="qa_how_to_restore_my_saved_words">At the left side menu you can see an option named Import , with that you can select you backup file and see all words in that file and categories , before restore you can change words categories or deselect some of words</string>
-    <string name="qa_why_Import_and_export">There are many reasons to use Import and Export: \n\n\t1.First , when you want to delete application and install it late , you can save your words and their detail in a file and reuse them again after you install application\n\n\t2.You want to change your phone and you want to keep your data in new phone\n\n\t3.Your friend likes your words and want to have them , simply you can Export your words and give file to your friend and he(she) Import the file into his application\n\n\t4.You can make amazing categories for learning and maybe you could able to sell them!!</string>
+    <string name="qa_how_to_save_my_words">At the left side menu you can see an option named Export , with that you can select words and move them in other boards then select a name for file , your backup file will be saved in /storage/notifictionary/YOUR_FILENAME.nfb</string>
+    <string name="qa_how_to_restore_my_saved_words">At the left side menu you can see an option named Import , with that you can select you backup file and see all words in that file and boards , before restore you can change words boards or deselect some of words</string>
+    <string name="qa_why_Import_and_export">There are many reasons to use Import and Export: \n\n\t1.First , when you want to delete application and install it late , you can save your words and their detail in a file and reuse them again after you install application\n\n\t2.You want to change your phone and you want to keep your data in new phone\n\n\t3.Your friend likes your words and want to have them , simply you can Export your words and give file to your friend and he(she) Import the file into his application\n\n\t4.You can make amazing boards for learning and maybe you could able to sell them!!</string>
     <string name="qa_how_take_quiz_works">We avoided to use random selection for option of our Quizzes , so used Cosine algorithm to find similar words in your library and with top 10 of them making random Quizzes , with this we can make sure that Quizzes are better than random ones.</string>
     <string name="qa_i_want_to_help_you_grow">If you want to help us grow you can Click Assist us in left side menu and watch a 30 seconds ad video , or click on the banner in bottom of Quiz page , or in later you can donate us \n\nYou can join to our telegram channel and send message to us for other helps!!\n\nAt least you can rate us 5 start in market :)</string>
     <string name="qa_other_questions">You can join to our telegram channel and find my account id , fill free to ask any question :)</string>

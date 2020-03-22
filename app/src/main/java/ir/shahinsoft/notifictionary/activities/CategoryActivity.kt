@@ -9,7 +9,7 @@ import ir.shahinsoft.notifictionary.widget.NewCategoryDialog
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.CategoryAdapter
 import ir.shahinsoft.notifictionary.getAppDatabase
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.tasks.DeleteCategoryTask
 import ir.shahinsoft.notifictionary.tasks.LoadCategoryTask
 import ir.shahinsoft.notifictionary.tasks.UpdateCategoryTask
@@ -18,25 +18,24 @@ import ir.shahinsoft.notifictionary.widget.YesNoDialog
 import kotlinx.android.synthetic.main.activity_category.*
 
 class CategoryActivity : BaseActivity(), CategoryAdapter.OnRemoveListener, YesNoDialog.OnClickListener, NewCategoryDialog.OnCategoryInsertListener {
-    override fun onCategorySelected(category: Category) {
+    override fun onCategorySelected(board: Board) {
 
     }
 
-    override fun onSelectColor(cat: Category) {
+    override fun onSelectColor(cat: Board) {
         ColorPickerDialog(this) { color ->
-            cat.color = color
             recycler.adapter?.notifyDataSetChanged()
             UpdateCategoryTask(getAppDatabase()).execute(cat)
         }.show()
     }
 
-    override fun onInsert(category: Category) {
-        list.add(0, category)
+    override fun onInsert(board: Board) {
+        list.add(0, board)
         recycler.adapter?.notifyItemInserted(0)
     }
 
     override fun onYesClicked(item: Any) {
-        if (item is Category) {
+        if (item is Board) {
             DeleteCategoryTask(getAppDatabase()) {
                 Toast.makeText(this, R.string.category_deleted, Toast.LENGTH_LONG).show()
                 val pos = list.indexOf(item)
@@ -50,12 +49,12 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.OnRemoveListener, YesNo
 
     }
 
-    override fun onRemove(cat: Category) {
+    override fun onRemove(cat: Board) {
         YesNoDialog(this, cat, this)
                 .show(getString(R.string.title_remove_category), getString(R.string.content_remove_category))
     }
 
-    lateinit var list: ArrayList<Category>
+    lateinit var list: ArrayList<Board>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,16 +64,6 @@ class CategoryActivity : BaseActivity(), CategoryAdapter.OnRemoveListener, YesNo
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         title = getString(R.string.title_category)
-
-        LoadCategoryTask(getAppDatabase()) {
-            list = it
-            recycler.itemAnimator = DefaultItemAnimator()
-            val adapter = CategoryAdapter(list, this)
-            recycler.adapter = adapter
-            adapter.notifyDataSetChanged()
-        }.execute()
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

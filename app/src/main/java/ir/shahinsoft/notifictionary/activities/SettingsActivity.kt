@@ -25,7 +25,7 @@ import android.provider.Settings
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
  * handset devices, settings are presented as a single list. On tablets,
- * settings are split by category, with category headers shown to the left of
+ * settings are split by board, with board headers shown to the left of
  * the list of settings.
  *
  * See [Android Design: Settings](http://developer.android.com/design/patterns/settings.html)

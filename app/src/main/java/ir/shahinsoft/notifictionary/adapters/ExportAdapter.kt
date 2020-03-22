@@ -9,7 +9,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ir.shahinsoft.notifictionary.R
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 
 /**
@@ -51,9 +51,9 @@ class ExportAdapter(val list: ArrayList<Translate>, private val callback: OnWord
         menu.show()
     }
 
-    private fun addSubmenu(category: Category, subMenu: SubMenu?, word: Translate) {
-        val sub = subMenu?.add(category.name)
-        sub?.setOnMenuItemClickListener { callback?.onMove(word, category); true }
+    private fun addSubmenu(board: Board, subMenu: SubMenu?, word: Translate) {
+        val sub = subMenu?.add(board.name)
+        sub?.setOnMenuItemClickListener { callback?.onMove(word, board); true }
     }
 
     private fun onItemClicked(adapterPosition: Int) {
@@ -86,7 +86,7 @@ class ExportAdapter(val list: ArrayList<Translate>, private val callback: OnWord
 
     interface OnWordSelectListener {
         fun onSelected(word: Translate)
-        fun onMove(word: Translate, category: Category)
-        fun getCategooryList(): List<Category>
+        fun onMove(word: Translate, board: Board)
+        fun getCategooryList(): List<Board>
     }
 }

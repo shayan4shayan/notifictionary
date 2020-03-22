@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.getAppDatabase
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.tasks.SaveSelectedTesk
 import ir.shahinsoft.notifictionary.toast
@@ -17,10 +17,10 @@ class ImportActivity : ExportActivity(), Importer.OnLoadCompleteListener, SaveSe
         finish()
     }
 
-    override fun onLoadComplete(map: HashMap<Category, ArrayList<Translate>>) {
+    override fun onLoadComplete(map: HashMap<Board, ArrayList<Translate>>) {
         selectedWords = map
-        categories.clear()
-        categories.addAll(ArrayList(map.keys))
+        boards.clear()
+        boards.addAll(ArrayList(map.keys))
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
         progress.dismiss()

@@ -14,15 +14,15 @@ import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.ExportPagerAdapter
 import ir.shahinsoft.notifictionary.fragments.ListFragment
 import ir.shahinsoft.notifictionary.getAppDatabase
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
-import ir.shahinsoft.notifictionary.tasks.CategorizeLoaderTask
+import ir.shahinsoft.notifictionary.tasks.BoardsLoaderTask
 import ir.shahinsoft.notifictionary.tasks.LoadCategoryTask
 import ir.shahinsoft.notifictionary.utils.Exporter
 import ir.shahinsoft.notifictionary.widget.GetNameDialog
 import kotlinx.android.synthetic.main.activity_import.*
 
-open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider, ListFragment.OnWordSelected, GetNameDialog.Callback, Exporter.OnExportFinishedListener, CategorizeLoaderTask.OnLoadComplete {
+open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider, ListFragment.OnWordSelected, GetNameDialog.Callback, Exporter.OnExportFinishedListener {
     override fun onFinished() {
         runOnUiThread {
             progress.dismiss()
@@ -37,7 +37,7 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
         exporter.export(name)
     }
 
-    override fun onLoadCompleted(map: HashMap<Category, ArrayList<Translate>>) {
+    fun onLoadCompleted(map: HashMap<Board, ArrayList<Translate>>) {
         this.selectedWords = map
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
@@ -45,28 +45,28 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
         progress.dismiss()
     }
 
-    override fun getWords(category: Category): ArrayList<Translate> {
-        return selectedWords[category]!!
+    override fun getWords(board: Board): ArrayList<Translate> {
+        return selectedWords[board]!!
     }
 
-    override fun getCategories(): List<Category> {
-        return categories
+    override fun getCategories(): List<Board> {
+        return boards
     }
 
-    override fun moveWord(fragment: ListFragment, word: Translate, category: Category, target: Category) {
+    override fun moveWord(fragment: ListFragment, word: Translate, board: Board, target: Board) {
         selectedWords[target]?.add(word)
-        adapter.fragments[adapter.categories.indexOf(target)].updateList()
-        updateBadge(category)
+        adapter.fragments[adapter.boards.indexOf(target)].updateList()
+        updateBadge(board)
         updateBadge(target)
     }
 
-    override fun onWordSelected(category: Category, word: Translate) {
-        updateBadge(category)
+    override fun onWordSelected(board: Board, word: Translate) {
+        updateBadge(board)
     }
 
-    private fun updateBadge(category: Category) {
-        val pos = categories.indexOf(category)
-        val size = selectedWords[category]?.filter { it.selected }?.size
+    private fun updateBadge(board: Board) {
+        val pos = boards.indexOf(board)
+        val size = selectedWords[board]?.filter { it.selected }?.size
         val tab = tabLayout.getTabAt(pos)
         val badge = tab?.customView?.findViewById<TextView>(R.id.textBadge)
         if (size!! > 0) {
@@ -83,8 +83,8 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
         return fragment
     }
 
-    lateinit var categories: ArrayList<Category>
-    var selectedWords = HashMap<Category, ArrayList<Translate>>()
+    lateinit var boards: ArrayList<Board>
+    var selectedWords = HashMap<Board, ArrayList<Translate>>()
 
     lateinit var adapter: ExportPagerAdapter
 
@@ -102,10 +102,10 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
         progress = ProgressDialog.show(this, getString(R.string.loading_words), getString(R.string.please_wait))
     }
 
-    fun initAdapter(categories: ArrayList<Category>) {
-        categories.add(OtherCategory())
-        this.categories = categories
-        adapter = ExportPagerAdapter(categories, supportFragmentManager, this)
+    fun initAdapter(boards: ArrayList<Board>) {
+        boards.add(OtherCategory())
+        this.boards = boards
+        adapter = ExportPagerAdapter(boards, supportFragmentManager, this)
 
         loadData()
         export.setOnClickListener { onButtonClicked() }
@@ -118,15 +118,15 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
     }
 
     protected open fun loadData() {
-        CategorizeLoaderTask(categories, getAppDatabase(), this).execute()
+
     }
 
     private fun exportToFile() {
         GetNameDialog(this, this).show()
     }
 
-    private fun OtherCategory(): Category {
-        return Category("Other", -1)
+    private fun OtherCategory(): Board {
+        return Board("Other", -1)
     }
 
     private fun customizeTabView() {
@@ -163,14 +163,14 @@ open class ExportActivity : BaseActivity(), ExportPagerAdapter.FragmentProvider,
     }
 
     private fun diselectAll() {
-        selectedWords[categories[viewPager.currentItem]]?.forEach { it.selected = false }
+        selectedWords[boards[viewPager.currentItem]]?.forEach { it.selected = false }
         adapter.fragments[viewPager.currentItem].updateList()
-        updateBadge(categories[viewPager.currentItem])
+        updateBadge(boards[viewPager.currentItem])
     }
 
     private fun selectAll() {
-        selectedWords[categories[viewPager.currentItem]]?.forEach { it.selected = true }
+        selectedWords[boards[viewPager.currentItem]]?.forEach { it.selected = true }
         adapter.fragments[viewPager.currentItem].updateList()
-        updateBadge(categories[viewPager.currentItem])
+        updateBadge(boards[viewPager.currentItem])
     }
 }

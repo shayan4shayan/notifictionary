@@ -2,7 +2,7 @@ package ir.shahinsoft.notifictionary.utils
 
 import android.content.Context
 import android.os.Environment
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 import org.json.JSONArray
 import org.json.JSONObject
@@ -14,7 +14,7 @@ import java.util.ArrayList
 /**
  * Created by shayan4shayan on 2/20/18.
  */
-class Exporter(val context: Context, private val toExport: HashMap<Category, ArrayList<Translate>>, val onExportFinishedListener: OnExportFinishedListener) : Runnable {
+class Exporter(val context: Context, private val toExport: HashMap<Board, ArrayList<Translate>>, val onExportFinishedListener: OnExportFinishedListener) : Runnable {
 
     var path = ""
 
@@ -36,7 +36,7 @@ class Exporter(val context: Context, private val toExport: HashMap<Category, Arr
         fos.flush()
     }
 
-    private fun getJSONString(words: HashMap<Category, ArrayList<Translate>>): String {
+    private fun getJSONString(words: HashMap<Board, ArrayList<Translate>>): String {
         val json = JSONObject()
         json.put("version","2")
         val str = JSONArray()
@@ -45,10 +45,9 @@ class Exporter(val context: Context, private val toExport: HashMap<Category, Arr
         return json.toString()
     }
 
-    private fun getJsonObject(it: Category, arrayList: ArrayList<Translate>?): JSONObject {
+    private fun getJsonObject(it: Board, arrayList: ArrayList<Translate>?): JSONObject {
         val obj = JSONObject()
         obj.put("name", it.name)
-        obj.put("color",it.color)
         val arr = JSONArray()
         arrayList?.forEach { if (it.selected) arr.put(getWordJSONObject(it)) }
         obj.put("data", arr)

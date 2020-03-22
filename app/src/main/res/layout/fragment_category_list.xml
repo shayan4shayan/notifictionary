@@ -5,36 +5,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layoutNotFound"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingTop="88dp"
-        android:paddingBottom="88dp">
+        android:layout_marginStart="48dp"
+        android:padding="8dp"
+        android:text="@string/boards"
+        android:textColor="@color/picker_deep_purple"
+        android:textSize="24sp" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:visibility="visible"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="empty_box.json"
-            app:lottie_loop="true" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/background_tablayout"
+        app:tabBackground="@drawable/background_tab_item"
+        app:tabIndicator="@color/transparent"
+        app:tabMode="auto"
+        app:tabSelectedTextColor="@color/picker_deep_purple_alpha"
+        app:tabTextColor="@color/picker_deep_purple">
 
-        <TextView
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/no_word_found" />
-    </LinearLayout>
+            android:background="@color/white"
+            android:text="@string/all" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/recently_added" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/shared" />
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2" />
 
 </LinearLayout>

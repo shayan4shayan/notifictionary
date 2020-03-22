@@ -5,7 +5,7 @@
         android:checked="true"
         android:enabled="true"
         android:title=""
-        android:icon="@drawable/ic_home_black_24dp"/>
+        android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/translate"
         android:checked="false"
@@ -17,5 +17,5 @@
         android:checked="false"
         android:enabled="true"
         android:title=""
-        android:icon="@drawable/ic_category"/>
+        android:icon="@drawable/ic_board"/>
 </menu>

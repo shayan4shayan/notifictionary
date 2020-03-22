@@ -24,43 +24,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val color = getApplicationColor()
-        changeTheme(color)
-        updateTitle()
-    }
-
-    private fun updateTitle() {
-        val title = title.toString()
-        val font = ResourcesCompat.getFont(this, R.font.permanent_marker_regular)
-        val spannable = SpannableString(title)
-        spannable.setSpan(CustomTypefaceSpan("", font!!), 0, title.length, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        setTitle(spannable)
-    }
-
-    fun getApplicationColor() = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_theme", ContextCompat.getColor(this, R.color.picker_red).toString())!!.toInt()
-
-    open fun changeTheme(color: Int) {
-        setActionBarColor(color)
         setStatusBarColor()
-    }
-
-    fun manipulateColor(color: Int, factor: Float): Int {
-        val a = Color.alpha(color)
-        val r = Math.round(Color.red(color) * factor)
-        val g = Math.round(Color.green(color) * factor)
-        val b = Math.round(Color.blue(color) * factor)
-        return Color.argb(a,
-                Math.min(r, 255),
-                Math.min(g, 255),
-                Math.min(b, 255))
-    }
-
-    private fun setActionBarColor(@ColorInt color: Int) {
-        if (actionBar != null)
-            actionBar!!.setBackgroundDrawable(ColorDrawable(color))
-        if (supportActionBar != null) {
-            supportActionBar!!.setBackgroundDrawable(ColorDrawable(color))
-        }
     }
 
     private fun setStatusBarColor() {

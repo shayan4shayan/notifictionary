@@ -20,4 +20,12 @@
     <color name="black">#000</color>
     <color name="transparent">#00000000</color>
     <color name="none" />
+    <color name="gray_light">#F0EFF7</color>
+    <color name="picker_deep_purple_alpha2">#99673AB7</color>
+    <color name="translate_top">#584CD4</color>
+    <color name="secondary_text_color">#AC7BEC</color>
+    <color name="primary_text_color">#4E3E76</color>
+    <color name="primary_title_color">#AC7BEC</color>
+    <color name="secondary_title_color">#FF9F23</color>
+    <color name="orange_light">#FFF7ED</color>
 </resources>

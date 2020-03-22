@@ -9,28 +9,26 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.ExportAdapter
-import ir.shahinsoft.notifictionary.getAppDatabase
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
-import ir.shahinsoft.notifictionary.tasks.LoadWordTask
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment(), ExportAdapter.OnWordSelectListener {
-    override fun onMove(word: Translate, category: Category) {
-        listener.moveWord(this, word, this.category, category)
+    override fun onMove(word: Translate, board: Board) {
+        listener.moveWord(this, word, this.board, board)
         recycler.adapter?.notifyDataSetChanged()
     }
 
-    override fun getCategooryList(): List<Category> {
+    override fun getCategooryList(): List<Board> {
         return listener.getCategories()
     }
 
     override fun onSelected(word: Translate) {
-        listener.onWordSelected(category, word)
+        listener.onWordSelected(board, word)
     }
 
     lateinit var listener: OnWordSelected
-    public lateinit var category: Category
+    public lateinit var board: Board
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_list, container, false)
@@ -46,7 +44,7 @@ class ListFragment : Fragment(), ExportAdapter.OnWordSelectListener {
 
     override fun onResume() {
         super.onResume()
-        onListLoaded(listener.getWords(category))
+        onListLoaded(listener.getWords(board))
     }
 
     private fun onListLoaded(words: ArrayList<Translate>) {
@@ -60,9 +58,9 @@ class ListFragment : Fragment(), ExportAdapter.OnWordSelectListener {
     }
 
     interface OnWordSelected {
-        fun onWordSelected(category: Category, word: Translate)
-        fun moveWord(fragment: ListFragment, word: Translate, category: Category, target: Category)
-        fun getCategories(): List<Category>
-        fun getWords(category: Category): ArrayList<Translate>
+        fun onWordSelected(board: Board, word: Translate)
+        fun moveWord(fragment: ListFragment, word: Translate, board: Board, target: Board)
+        fun getCategories(): List<Board>
+        fun getWords(board: Board): ArrayList<Translate>
     }
 }

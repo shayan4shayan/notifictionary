@@ -2,7 +2,7 @@ package ir.shahinsoft.notifictionary.database
 
 import android.content.Context
 import androidx.room.Room
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.History
 import ir.shahinsoft.notifictionary.model.PhoneUsage
 import ir.shahinsoft.notifictionary.model.Translate
@@ -35,11 +35,11 @@ class DatabaseWrapper(context: Context) {
 
     fun selectTranslates(catId: Int, page: Int) = ArrayList(database.wordsDao().getTranslates(catId, page * perpage, (page + 1) * perpage))
 
-    fun insert(category: Category) = database.categoriesDao().insert(category)
+    fun insert(board: Board) = database.categoriesDao().insert(board)
 
-    fun delete(category: Category) = database.categoriesDao().delete(category)
+    fun delete(board: Board) = database.categoriesDao().delete(board)
 
-    fun update(category: Category) = database.categoriesDao().update(category)
+    fun update(board: Board) = database.categoriesDao().update(board)
 
     fun selectCategories() = ArrayList(database.categoriesDao().categories)
 
@@ -52,7 +52,7 @@ class DatabaseWrapper(context: Context) {
         } else 1
     }
 
-    fun insert(params: Array<out Category?>) = database.categoriesDao().insert(params.toList())
+    fun insert(params: Array<out Board?>) = database.categoriesDao().insert(params.toList())
 
     fun lastCategoryId(): Int {
         val ids = database.categoriesDao().lastId()

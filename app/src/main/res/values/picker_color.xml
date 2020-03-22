@@ -4,6 +4,10 @@
     <color name="picker_pink">#E91E63</color>
     <color name="picker_purple">#9C27B0</color>
     <color name="picker_deep_purple">#673AB7</color>
+    <color name="picker_deep_purple_alpha">#BF673AB7</color>
+    <color name="picker_deep_purple_alpha3">#80673AB7</color>
+    <color name="picker_deep_purple_alpha4">#4D673AB7</color>
+
     <color name="picker_indigo">#3F51B5</color>
 
     <color name="picker_blue">#2196F3</color>

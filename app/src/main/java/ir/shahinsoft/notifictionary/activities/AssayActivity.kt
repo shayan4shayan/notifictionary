@@ -175,7 +175,6 @@ class AssayActivity : BaseActivity(), QuizAdapter.OnQuestionAnsweredListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_assay)
 
-        coordinator.setBackgroundColor(getApplicationColor())
 
         title = getString(R.string.title_activity_assay)
 

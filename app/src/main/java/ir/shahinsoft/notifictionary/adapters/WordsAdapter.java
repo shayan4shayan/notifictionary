@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ir.shahinsoft.notifictionary.R;
-import ir.shahinsoft.notifictionary.model.Category;
+import ir.shahinsoft.notifictionary.model.Board;
 import ir.shahinsoft.notifictionary.model.Translate;
 
 /**
@@ -28,15 +28,15 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
     private List<Translate> translates = new ArrayList<>();
     private PopupMenu menu;
     private Translate mCurrentTranslate;
-    private List<Category> categories;
+    private List<Board> categories;
     private OnItemActionListener listener;
 
-    public WordsAdapter(List<Category> categories, OnItemActionListener listener) {
+    public WordsAdapter(List<Board> categories, OnItemActionListener listener) {
         this.categories = categories;
         this.listener = listener;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(List<Board> categories) {
         this.categories = categories;
     }
 
@@ -55,13 +55,6 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
         notifyItemRangeInserted(oldSize, newSize);
     }
 
-    public void updateCategoryColor(Category category) {
-        for (Category cat : categories) {
-            if (cat.getId() == category.getId()) {
-                cat.setColor(category.getColor());
-            }
-        }
-    }
 
     @NonNull
     @Override
@@ -98,7 +91,7 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
         menu.setOnMenuItemClickListener(this);
         MenuItem item = menu.getMenu().findItem(R.id.menu_move);
         if (listener.canShowMoveMenu() || mCurrentTranslate.getCatId() == -1) {
-            for (final Category c : categories) {
+            for (final Board c : categories) {
                 MenuItem menu = item.getSubMenu().add(c.getName());
                 menu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
@@ -118,16 +111,15 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
         Translate translate = translates.get(position);
         holder.mWordView.setText(translate.getName());
         holder.mTranslateView.setText(translate.getTranslate());
-        holder.noCategory.setBackgroundColor(findCategoryById(translate.getCatId()).getColor());
     }
 
-    private Category findCategoryById(int id) {
-        for (Category c : categories) {
+    private Board findCategoryById(int id) {
+        for (Board c : categories) {
             if (c.getId() == id) {
                 return c;
             }
         }
-        return new Category("", -1);
+        return new Board("", -1);
     }
 
     @Override
@@ -172,7 +164,7 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
 
         void play(String name);
 
-        void onMove(Translate translate, Category category);
+        void onMove(Translate translate, Board board);
 
         boolean canShowMoveMenu();
     }

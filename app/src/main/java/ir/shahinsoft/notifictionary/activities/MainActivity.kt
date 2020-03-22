@@ -1,49 +1,34 @@
 package ir.shahinsoft.notifictionary.activities
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.*
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
-import android.text.Editable
 import android.text.SpannableString
-import android.text.TextWatcher
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.squareup.picasso.Picasso
-import com.squareup.picasso.Target
 import ir.shahinsoft.notifictionary.*
 import ir.shahinsoft.notifictionary.dialog.LicenseDialog
+import ir.shahinsoft.notifictionary.fragments.BoardsListFragment
 import ir.shahinsoft.notifictionary.fragments.MainFragment
-import ir.shahinsoft.notifictionary.model.Category
-import ir.shahinsoft.notifictionary.model.Translate
-import ir.shahinsoft.notifictionary.model.TranslateLanguage
+import ir.shahinsoft.notifictionary.fragments.TranslateFragment
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
-import ir.shahinsoft.notifictionary.tasks.InsertFavoriteCategoryTask
-import ir.shahinsoft.notifictionary.tasks.InsertTask
 import ir.shahinsoft.notifictionary.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.translate.*
-import java.lang.Exception
 import kotlin.system.exitProcess
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val onAccept = {
         getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
         startNotifictionaryService()
@@ -55,6 +40,31 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         exitProcess(0)
     }
 
+    private val homeFragment = MainFragment()
+
+    private val translateFragment = TranslateFragment()
+
+    private val boardsFragment = BoardsListFragment()
+
+    private val bottomNavigationItemSelectListener = BottomNavigationView.OnNavigationItemSelectedListener {
+        when (it.itemId) {
+            R.id.home -> {
+                setFragment(homeFragment)
+            }
+            R.id.translate -> {
+                setFragment(translateFragment)
+            }
+            R.id.boards -> {
+                setFragment(boardsFragment)
+            }
+        }
+        return@OnNavigationItemSelectedListener true
+    }
+
+    private fun setFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -62,16 +72,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         checkLicense()
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this, drawer_layout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
         nav_view.itemIconTintList = null
 
-        bottom_navigation.setOnNavigationItemSelectedListener(this)
+        bottom_navigation.setOnNavigationItemSelectedListener(bottomNavigationItemSelectListener)
 
         setNavViewFont()
+
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container, homeFragment).commit()
     }
 
     private fun checkLicense() {

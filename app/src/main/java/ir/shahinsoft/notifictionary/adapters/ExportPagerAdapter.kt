@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import ir.shahinsoft.notifictionary.fragments.ListFragment
-import ir.shahinsoft.notifictionary.model.Category
+import ir.shahinsoft.notifictionary.model.Board
 
-class ExportPagerAdapter(val categories: List<Category>, fm: FragmentManager, private val provider: FragmentProvider) : FragmentPagerAdapter(fm) {
+class ExportPagerAdapter(val boards: List<Board>, fm: FragmentManager, private val provider: FragmentProvider) : FragmentPagerAdapter(fm) {
     internal val fragments = SparseArray<ListFragment>()
     override fun getItem(position: Int): Fragment {
         var fragment = fragments[position]
@@ -15,16 +15,16 @@ class ExportPagerAdapter(val categories: List<Category>, fm: FragmentManager, pr
             fragment = provider.getFragment()
             fragments.append(position, fragment)
         }
-        fragment.category = categories[position]
+        fragment.board = boards[position]
         return fragment
     }
 
     override fun getCount(): Int {
-        return categories.size
+        return boards.size
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return categories[position].name
+        return boards[position].name
     }
 
 

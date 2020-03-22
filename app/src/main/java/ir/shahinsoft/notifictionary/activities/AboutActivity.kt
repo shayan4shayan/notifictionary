@@ -12,7 +12,6 @@ class AboutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
-        layout.setBackgroundColor(getApplicationColor())
         telegram.setOnClickListener { openTelegramPage() }
         instagram.setOnClickListener { openInstagramPage() }
         twitter.setOnClickListener { openTwitterPage() }

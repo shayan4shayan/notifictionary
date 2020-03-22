@@ -6,7 +6,7 @@ android application for learning vocabulary
 
 # Main Features
 1. Online translate
-2. Leaning list with different categories
+2. Leaning list with different boards
 3. Timed notifications to remind words in learn list randomly
 4. Create 4-Option Test with Cosine algorithm 
 5. Translate anywhere just by coping the target text

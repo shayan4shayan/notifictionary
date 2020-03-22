@@ -89,7 +89,6 @@ class SettingActivityPhone : BaseActivity() {
 
         private fun onColorChanged(pref: Preference, color: Int) {
             pref.sharedPreferences.edit().putString(pref.key,"$color").apply()
-            (activity as BaseActivity).changeTheme(color)
         }
 
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
