@@ -5,14 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:padding="8dp"
-        android:text="@string/boards"
-        android:textColor="@color/picker_deep_purple"
-        android:textSize="24sp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="@string/boards"
+            android:textColor="@color/primary_text_color"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:srcCompat="@drawable/ic_add" />
+    </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -24,8 +41,11 @@
         app:tabBackground="@drawable/background_tab_item"
         app:tabIndicator="@color/transparent"
         app:tabMode="auto"
-        app:tabSelectedTextColor="@color/picker_deep_purple_alpha"
-        app:tabTextColor="@color/picker_deep_purple">
+        app:tabPadding="4dp"
+        app:tabPaddingEnd="20dp"
+        app:tabPaddingStart="20dp"
+        app:tabSelectedTextColor="@color/secondary_text_color"
+        app:tabTextColor="@color/primary_text_color">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/all"
@@ -35,12 +55,14 @@
             android:text="@string/all" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/recently"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="@string/recently_added" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/shared"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -48,8 +70,11 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2" />
 

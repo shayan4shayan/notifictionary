@@ -196,7 +196,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun startCategoriesActivity() {
-        startActivity(CategoryActivity::class.java)
+
     }
 
     private fun startQuizActivity() {

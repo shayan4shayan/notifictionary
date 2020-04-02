@@ -52,9 +52,7 @@
         <activity
             android:name=".activities.AssayActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.CategoryActivity"
-            android:theme="@style/PopupTheme" />
+
         <activity android:name=".activities.ExportActivity" />
         <activity android:name=".activities.ImportActivity" />
         <activity

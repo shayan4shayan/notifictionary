@@ -28,4 +28,5 @@
     <color name="primary_title_color">#AC7BEC</color>
     <color name="secondary_title_color">#FF9F23</color>
     <color name="orange_light">#FFF7ED</color>
+    <color name="gray_light_alpha">#80FFF7ED</color>
 </resources>
