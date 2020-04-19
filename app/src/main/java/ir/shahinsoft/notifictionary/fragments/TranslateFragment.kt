@@ -11,9 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.dialog.PickBoardDialog
 import ir.shahinsoft.notifictionary.dialog.SelectLanguageDialog
+import ir.shahinsoft.notifictionary.model.Board
+import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.model.TranslateLanguage
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
+import ir.shahinsoft.notifictionary.tasks.InsertTask
 import kotlinx.android.synthetic.main.fragment_translate.*
 import java.util.*
 
@@ -72,6 +76,35 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
         }
 
         textWord.addTextChangedListener(wordTextWatcher)
+
+        add.setOnClickListener {
+            if (textWord.text.isEmpty() || textTranslation.text.isEmpty()){
+                return@setOnClickListener
+            }
+            addWordToBoard()
+        }
+    }
+
+    private fun addWordToBoard() {
+        context?.apply {
+            PickBoardDialog(this) {
+                addWordToBoard(it)
+            }.show()
+        }
+    }
+
+    private fun addWordToBoard(board: Board){
+        val word = textWord.text.toString()
+        val translation = textTranslation.text.toString()
+        val translate = Translate()
+        translate.name = word
+        translate.translate = translation
+        translate.catId = board.id
+        InsertTask(context!!.getAppDatabase()){
+            textWord.text.clear()
+            textTranslation.text.clear()
+            context?.toast(String.format(getString(R.string.add_message_format),word,board.name))
+        }.execute(translate)
     }
 
     private fun swapLanguages() {

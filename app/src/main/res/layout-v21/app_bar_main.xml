@@ -14,6 +14,21 @@
         android:background="@color/white"
         android:orientation="vertical" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_menu"
+        android:id="@+id/menu"
+        android:padding="32dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_search"
+        android:id="@+id/search"
+        android:padding="32dp"
+        android:layout_alignParentEnd="true"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

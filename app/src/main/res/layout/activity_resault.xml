@@ -35,7 +35,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:contentDescription="@string/correct"
-                app:srcCompat="@drawable/ic_checked" />
+                 />
 
             <ir.shahinsoft.notifictionary.widget.AppTextView
                 android:id="@+id/textCorrect"
@@ -83,7 +83,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:contentDescription="@string/all"
-                app:srcCompat="@drawable/ic_one_hundred" />
+                 />
 
             <ir.shahinsoft.notifictionary.widget.AppTextView
                 android:id="@+id/textAll"
@@ -106,7 +106,6 @@
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_button_default"
             android:text="@string/close"
             android:textColor="@color/white" />
     </LinearLayout>

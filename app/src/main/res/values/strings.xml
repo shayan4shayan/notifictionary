@@ -73,7 +73,7 @@
     <string name="word_is_empty">Word is empty</string>
     <string name="translate_empty">Translate is empty</string>
     <string name="undo">Undo</string>
-    <string name="add_message_format">%s added to learn list</string>
+    <string name="add_message_format">%s added to %s</string>
     <string name="favorite">Favorite</string>
     <string name="take_quiz">Take Quiz</string>
     <string name="title_category">Categories</string>
@@ -297,6 +297,10 @@
     <string name="shared">Shared</string>
     <string name="what_are_you_trying_to_learn_today">What are you trying to learn today?</string>
     <string name="blind_speack">Speach word</string>
+    <string name="pick_board">Pick board</string>
+    <string name="learn">LEARN</string>
+    <string name="quiz">QUIZ</string>
+    <string name="word_box">WORD BOX</string>
 
 
 </resources>

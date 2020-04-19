@@ -43,7 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:background="@drawable/background_button_default"
             android:text="@string/yes"
             android:textColor="@color/white" />
 

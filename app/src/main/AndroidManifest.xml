@@ -59,7 +59,6 @@
             android:name=".activities.HistoryActivity"
             android:theme="@style/PopupTheme" />
         <activity android:name=".activities.LicenseActivity" />
-        <activity android:name=".activities.HelpActivity" />
         <activity
             android:name=".activities.AboutActivity"
             android:theme="@style/PopupTheme.NoActionBar" />

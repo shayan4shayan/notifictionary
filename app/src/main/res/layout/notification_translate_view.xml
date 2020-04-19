@@ -92,7 +92,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/circle_background_white"
                     android:tint="@color/green"
-                    app:srcCompat="@drawable/ic_check_black_24dp" />
+                     />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -14,9 +14,21 @@ import ir.shahinsoft.notifictionary.model.Board
  */
 class CategoryAdapter(val boards: ArrayList<Board>, val onBoardSelected: (Board) -> Unit) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
+    val viewTypePurple = 0
+    val viewTypeOrange = 1
+
+
+    override fun getItemViewType(position: Int): Int {
+        return ((position + 1) / 2) % 2
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_category_primary, parent, false)
+                if (viewType == viewTypePurple) {
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_category_primary, parent, false)
+                } else {
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_category_secondary, parent, false)
+                }
         ).apply {
             itemView.setOnClickListener {
                 onBoardSelected(boards[adapterPosition])
@@ -31,7 +43,10 @@ class CategoryAdapter(val boards: ArrayList<Board>, val onBoardSelected: (Board)
         holder.title.text = board.name
         holder.leanredCount.text = "${board.learnedCount}"
         holder.totalCount.text = "${board.totalCount}"
-        val progress = board.learnedCount.toFloat() / board.totalCount.toFloat()
+        var progress = board.learnedCount.toFloat() / board.totalCount.toFloat()
+        if (board.totalCount ==0){
+            progress = 0f
+        }
         if (progress < 0.33) {
             holder.image.setImageResource(R.drawable.ic_boards_learning)
         } else if (progress >= 0.33 && progress < 0.66) {

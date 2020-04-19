@@ -121,7 +121,7 @@
                     android:layout_height="48dp"
                     android:padding="8dp"
                     android:tint="@color/picker_black"
-                    app:srcCompat="@drawable/ic_check_black_24dp" />
+                    app:srcCompat="@drawable/ic_close_black_24dp" />
             </androidx.cardview.widget.CardView>
 
 

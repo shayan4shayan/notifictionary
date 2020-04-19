@@ -1,32 +1,30 @@
 package ir.shahinsoft.notifictionary.activities
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
-import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.text.SpannableString
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ir.shahinsoft.notifictionary.*
 import ir.shahinsoft.notifictionary.dialog.LicenseDialog
-import ir.shahinsoft.notifictionary.fragments.BoardsListFragment
-import ir.shahinsoft.notifictionary.fragments.MainFragment
-import ir.shahinsoft.notifictionary.fragments.TranslateFragment
+import ir.shahinsoft.notifictionary.fragments.*
+import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlin.system.exitProcess
+
+
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val onAccept = {
@@ -50,24 +48,36 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (it.itemId) {
             R.id.home -> {
                 setFragment(homeFragment)
+                menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
             }
             R.id.translate -> {
                 setFragment(translateFragment)
+                menu.setColorFilter(ContextCompat.getColor(this, R.color.white))
             }
             R.id.boards -> {
                 setFragment(boardsFragment)
+                menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
             }
         }
         return@OnNavigationItemSelectedListener true
     }
 
     private fun setFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+        for (i in 0 until supportFragmentManager.backStackEntryCount) {
+            supportFragmentManager.popBackStack()
+        }
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        boardsFragment.activityCallback = { board ->
+            setBoardDetailFragment(board)
+        }
 
         checkLicense()
 
@@ -83,7 +93,38 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         setNavViewFont()
 
+        menu.setOnClickListener {
+            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                drawer_layout.closeDrawer(GravityCompat.START)
+            } else {
+                drawer_layout.openDrawer(GravityCompat.START)
+            }
+        }
+
         supportFragmentManager.beginTransaction().add(R.id.fragment_container, homeFragment).commit()
+    }
+
+    private fun setBoardDetailFragment(board: Board) {
+        val fragment = BoardDetailFragment()
+        fragment.board = board
+        fragment.learnFragment = {
+            setLearnFragment(it)
+        }
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(board.name)
+                .commit()
+    }
+
+    private fun setLearnFragment(board: Board){
+        val fragment = LearnFragment()
+        fragment.board = board
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container,fragment)
+                .addToBackStack("learn")
+                .commit()
     }
 
     private fun checkLicense() {
@@ -137,8 +178,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.action_quiz -> startQuizActivity()
             R.id.action_categories -> startCategoriesActivity()
             R.id.action_history -> startHistoryActivity()
-            R.id.action_import -> startImportActivity()
-            R.id.action_export -> startExportActivity()
             R.id.action_settings -> startSettingsActivity()
             R.id.action_about -> startAboutActivity()
             R.id.action_telegram -> openTelegram()
@@ -166,25 +205,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun startSettingsActivity() {
-        if (isXLargeTablet())
-            startActivity(SettingsActivity::class.java)
-        else {
-            startActivity(SettingActivityPhone::class.java)
-        }
-    }
-
-    private fun isXLargeTablet(): Boolean {
-        return resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK >= Configuration.SCREENLAYOUT_SIZE_XLARGE
-    }
-
-    private fun startExportActivity() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_PERMISSION_WRITE_EXTERNAL_CODE)
-                return
-            }
-        }
-        startActivity(ExportActivity::class.java)
+        startActivity(SettingsActivity::class.java)
     }
 
     private fun startImportActivity() {
@@ -201,19 +222,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun startQuizActivity() {
         startActivity(AssayActivity::class.java)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            Importer.RESULT_CODE -> {
-                if (data?.data != null) {
-                    val intent = Intent(this, ImportActivity::class.java)
-                    intent.data = data.data
-                    startActivity(intent)
-                }
-            }
-            else -> super.onActivityResult(requestCode, resultCode, data)
-        }
     }
 
     override fun onDestroy() {

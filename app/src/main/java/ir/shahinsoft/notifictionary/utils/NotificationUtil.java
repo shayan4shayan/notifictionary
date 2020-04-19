@@ -188,7 +188,7 @@ public class NotificationUtil {
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ID);
-        builder.setSmallIcon(R.drawable.ic_notification_icon)
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setLargeIcon(bitmap)
                 .setAutoCancel(false)

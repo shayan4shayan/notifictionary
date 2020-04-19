@@ -36,7 +36,6 @@ class ColorPickerDialog(context: Context, val listener: (Int) -> Unit) : AlertDi
     private fun select(image: View?) {
         images.forEach { it.setImageDrawable(null); }
         if (image is ImageView) {
-            image.setImageResource(R.drawable.ic_check_black_24dp)
             selectedIndex = images.indexOf(image)
         }
     }

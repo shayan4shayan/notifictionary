@@ -49,8 +49,7 @@
         android:textColor="@color/white"
         android:tint="@color/picker_deep_purple"
         app:backgroundTint="@color/white"
-        app:fabCustomSize="72dp"
-        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+        app:fabCustomSize="72dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutFirstName"

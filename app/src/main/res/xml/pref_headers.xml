@@ -9,7 +9,6 @@
 
     <header
         android:fragment="ir.shahinsoft.notifictionary.activities.SettingsActivity$NotificationPreferenceFragment"
-        android:icon="@drawable/ic_notification"
         android:title="@string/pref_header_notifications" />
 
     <header

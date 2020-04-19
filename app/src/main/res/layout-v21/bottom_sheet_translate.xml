@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:tint="@color/white"
-            app:srcCompat="@drawable/ic_volume_up_black_24dp" />
+             />
     </LinearLayout>
 
 
