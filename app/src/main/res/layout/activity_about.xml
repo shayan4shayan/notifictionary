@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:background="@color/picker_orange_deep"
+    android:background="@color/secondary_text_color"
     tools:context=".activities.AboutActivity">
 
     <FrameLayout

@@ -50,6 +50,7 @@
             android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="16dp"
+            android:visibility="gone"
             android:hint="@string/search"
             android:textColorHint="@color/picker_deep_purple_alpha"
             app:drawableTint="@color/picker_deep_purple" />
@@ -59,13 +60,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:padding="8dp"
-            android:text="@string/feed"
+            android:text="@string/recent"
             android:textColor="@color/picker_deep_purple"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/feedRecycler"
+            android:id="@+id/recentRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"

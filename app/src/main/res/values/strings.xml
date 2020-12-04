@@ -301,6 +301,7 @@
     <string name="learn">LEARN</string>
     <string name="quiz">QUIZ</string>
     <string name="word_box">WORD BOX</string>
+    <string name="recent">Recent</string>
 
 
 </resources>

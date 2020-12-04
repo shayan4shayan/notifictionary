@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/background_list_item_primary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text_color"
+        tools:text="HELLO"
+        android:id="@+id/textWord"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:padding="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_text_color"
+        tools:text="سلام"
+        android:id="@+id/textTranslate"
+        android:padding="8dp"
+        android:drawableRight="@drawable/ic_translate"
+        android:drawablePadding="8dp"
+        android:layout_gravity="right"
+        android:textSize="16sp"/>
+
+
+
+</LinearLayout>

@@ -4,10 +4,11 @@ import android.content.Intent
 import android.content.Intent.*
 import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import ir.shahinsoft.notifictionary.R
 import kotlinx.android.synthetic.main.activity_about.*
 
-class AboutActivity : BaseActivity() {
+class AboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
