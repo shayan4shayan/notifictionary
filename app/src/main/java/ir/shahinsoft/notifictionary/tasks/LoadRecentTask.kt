@@ -10,6 +10,6 @@ class LoadRecentTask(private val wrapper: DatabaseWrapper, private val onResult:
     }
 
     override fun onPostExecute(result: List<Translate>?) {
-        result?.apply(onResult) ?: onResult(emptyList());
+        result?.apply(onResult) ?: onResult(emptyList())
     }
 }

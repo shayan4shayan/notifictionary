@@ -95,16 +95,11 @@ class NotifictionaryService : Service() {
                     .execute(History().apply { word = clip;this.translate = translate })
     }
 
-    fun isSmartNotificationActive() = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_smart_notifications", true)
-
     override fun onCreate() {
         super.onCreate()
         binder = Binder()
         initSpeaker()
         initLearningService()
-        if (isSmartNotificationActive()) {
-            initDeviceUsageReceiver()
-        }
     }
 
     private fun initLearningService() {
@@ -202,9 +197,7 @@ class NotifictionaryService : Service() {
             NotificationUtil.sendTranslateNotification(this, id, translate, translation)
             learningService.reward(intent.getIntExtra("state_id", 0),
                     Record.Action.values()[intent.getIntExtra("action", 0)], true)
-            toast("agent gets good reward")
         }
-        //triggerNextNotificationTime()
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -242,25 +235,12 @@ class NotifictionaryService : Service() {
         val isNotificationEnabled = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notifications_new_message", true)
         if (!isNotificationEnabled) return
 
-        //checking if we are in correct state
-        if (state != State.START) return
-
         //send notification
-        val smartNotification = isSmartNotificationActive()
-        Log.d("notifictionaryService", "$smartNotification")
         val period = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_notification_cycle", "20")!!.toInt()
-        var inMills: Long
-        if (smartNotification) {
-            handleSmartNotification()
-            return
-        } else {
-            inMills = getNormalTime(period)
-        }
+        var inMills = getNormalTime(period)
+
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(getNotificationPendingIntent(inMills))
-
-        Log.d("notifictionaryService", "$inMills")
-        Log.d("notifictionaryService", "$period")
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + if (inMills > 0) inMills else 1000 * 60 * 30, getNotificationPendingIntent(inMills))
     }
 
