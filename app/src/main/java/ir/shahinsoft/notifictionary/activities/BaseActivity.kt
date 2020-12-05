@@ -24,7 +24,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        //setStatusBarColor()
+        setStatusBarColor()
     }
 
     private fun setStatusBarColor() {

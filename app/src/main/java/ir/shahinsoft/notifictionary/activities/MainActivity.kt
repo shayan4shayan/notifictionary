@@ -175,13 +175,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_quiz -> startQuizActivity()
-            R.id.action_categories -> startCategoriesActivity()
             R.id.action_history -> startHistoryActivity()
             R.id.action_settings -> startSettingsActivity()
             R.id.action_about -> startAboutActivity()
             R.id.action_telegram -> openTelegram()
-            R.id.action_logout -> logout()
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)

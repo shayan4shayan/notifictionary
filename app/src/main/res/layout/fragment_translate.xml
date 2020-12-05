@@ -122,15 +122,6 @@
                 android:textColorHint="@color/picker_deep_purple_alpha" />
 
             <ImageView
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:tint="@color/primary_text_color"
-                app:srcCompat="@drawable/ic_add"
-                android:contentDescription="@string/add_to_learn" />
-
-            <ImageView
                 android:id="@+id/speak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,27 +133,47 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@color/white">
-
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_translate_bottom_area" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@color/gray_light">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_translate_bottom_area" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_translation_top_area" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:background="@color/gray_light">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_translation_top_area" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_add"
+            android:tint="@color/white"
+            android:id="@+id/add"
+            app:backgroundTint="@color/secondary_text_color"
+            app:elevation="0dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="64dp"/>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

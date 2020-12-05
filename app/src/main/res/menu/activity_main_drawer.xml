@@ -4,21 +4,6 @@
     tools:context="ir.shahinsoft.languagenotifier.main.MainActivity">
 
     <item
-        android:id="@+id/login"
-        android:icon="@drawable/ic_login"
-        android:title="@string/login" />
-
-    <item
-        android:id="@+id/action_quiz"
-        android:icon="@drawable/ic_quiz"
-        android:title="@string/take_quiz" />
-
-    <item
-        android:id="@+id/action_categories"
-        android:icon="@drawable/ic_category"
-        android:title="@string/title_category" />
-
-    <item
         android:id="@+id/action_history"
         android:icon="@drawable/ic_history"
         android:title="@string/history" />
@@ -57,10 +42,5 @@
             app:showAsAction="always" />
 
     </group>
-
-    <item
-        android:id="@+id/action_logout"
-        android:icon="@drawable/ic_close_black_24dp"
-        android:title="@string/logout" />
 
 </menu>
