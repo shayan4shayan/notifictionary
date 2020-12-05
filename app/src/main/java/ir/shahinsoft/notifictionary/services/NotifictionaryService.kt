@@ -329,18 +329,13 @@ class NotifictionaryService : Service() {
             }
         }
 
-//        val style = NotificationCompat.BigTextStyle()
-//        style.bigText(getString(R.string.notifictionary_is_active))
-
         val notification = NotificationCompat.Builder(this, getString(R.string.app_name))
                 .setContentTitle(getString(R.string.notifictionary_is_active))
-                //.setContentText(getString(R.string.notifictionary_is_active))
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .addAction(0, getString(R.string.close_notification), getCloseIntentPending())
                 .addAction(0, getString(R.string.force_notification), getForceNotificationPendingIntent())
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .setShowWhen(false)
-//                .setStyle(style)
                 .setChannelId(channelId)
 
 
