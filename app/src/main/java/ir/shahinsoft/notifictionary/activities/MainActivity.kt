@@ -13,6 +13,9 @@ import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.adivery.sdk.Adivery
+import com.adivery.sdk.AdiveryInterstitialCallback
+import com.adivery.sdk.AdiveryLoadedAd
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ir.shahinsoft.notifictionary.*
 import ir.shahinsoft.notifictionary.databinding.ActivityMainBinding
@@ -78,6 +81,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        Adivery.configure(application, "dc162baf-69e7-43a9-bd4e-6dbba40bb0b2")
 
         boardsFragment.activityCallback = { board ->
             setBoardDetailFragment(board)

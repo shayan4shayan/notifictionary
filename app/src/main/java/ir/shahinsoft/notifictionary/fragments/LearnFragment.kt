@@ -1,10 +1,14 @@
 package ir.shahinsoft.notifictionary.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.adivery.sdk.Adivery
+import com.adivery.sdk.AdiveryInterstitialCallback
+import com.adivery.sdk.AdiveryLoadedAd
 import ir.shahinsoft.notifictionary.databinding.FragmentLearnBinding
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.Board
@@ -21,6 +25,7 @@ class LearnFragment : Fragment() {
     var wrong = 0
 
     lateinit var binding : FragmentLearnBinding
+    var ad : AdiveryLoadedAd? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLearnBinding.inflate(inflater,container,false)
@@ -46,6 +51,7 @@ class LearnFragment : Fragment() {
             right++
             if (wordsStack.empty()){
                 displayFinish()
+                ad?.show()
             } else {
                 displayWord()
             }
@@ -55,10 +61,20 @@ class LearnFragment : Fragment() {
             wrong ++
             if (wordsStack.empty()){
                 displayFinish()
+                ad?.show()
             } else{
                 displayWord()
             }
         }
+
+        Adivery.requestInterstitialAd(activity,"1eee0302-c9e6-48b5-b433-b32058c45b28",
+            object :AdiveryInterstitialCallback(){
+                override fun onAdLoaded(ad: AdiveryLoadedAd?) {
+                    this@LearnFragment.ad = ad
+                    Log.d("LearnFragment","AD loaded")
+                }
+            })
+        Log.d("LearnFragment","request ad send")
 
         binding.quit.setOnClickListener {
             activity?.onBackPressed()
