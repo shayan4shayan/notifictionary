@@ -42,7 +42,7 @@
         app:lottie_fileName="about.json"
         android:padding="16dp"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true" />
+        app:lottie_loop="false" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -97,9 +97,9 @@
             android:id="@+id/instagram"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            app:srcCompat="@drawable/ic_instagram"
             android:contentDescription="@string/instagram_account"
-            android:padding="8dp"
-            app:srcCompat="@drawable/ic_instagram" />
+            android:padding="8dp" />
 
         <ImageView
             android:id="@+id/twitter"
