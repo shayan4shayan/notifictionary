@@ -28,20 +28,6 @@ class BoardsListFragment : androidx.fragment.app.Fragment() {
 
     var activityCallback : ((Board) -> Unit)? = null
 
-    val onTabSelectListener= object :TabLayout.OnTabSelectedListener {
-        override fun onTabReselected(tab: TabLayout.Tab?) {
-
-        }
-
-        override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-        }
-
-        override fun onTabSelected(tab: TabLayout.Tab?) {
-            reloadBoards()
-        }
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_category_list, container, false)
@@ -49,8 +35,6 @@ class BoardsListFragment : androidx.fragment.app.Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadAllBoards()
-
-        tabLayout.addOnTabSelectedListener(onTabSelectListener)
 
         add.setOnClickListener {
             addBoard()

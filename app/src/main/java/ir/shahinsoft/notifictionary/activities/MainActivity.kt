@@ -185,11 +185,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         return true
     }
 
-    private fun logout() {
-        //todo implement yes no dialog for logout
-
-    }
-
     private fun openTelegram() {
         Intent(ACTION_VIEW).apply {
             data = Uri.parse("https://t.me/notifictionary")
