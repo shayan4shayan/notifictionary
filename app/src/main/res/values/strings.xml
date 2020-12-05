@@ -302,6 +302,7 @@
     <string name="quiz">QUIZ</string>
     <string name="word_box">WORD BOX</string>
     <string name="recent">Recent</string>
+    <string name="description_add">Add word to Borad</string>
 
 
 </resources>

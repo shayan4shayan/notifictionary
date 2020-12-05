@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,7 +35,8 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
     private String word;
     private String target = "fa";
     private String source = "en";
-    private String baseUrl = "https://translate.yandex.net/api/v1.5/tr.json/";
+    private String key = "250a878383cdc41ca196";
+    private String baseUrl = "https://api.mymemory.translated.net/get";
     private Object tag = new Object();
 
     //to remove unnecessary characters
@@ -59,8 +61,11 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
     public void translate(String word, Object tag) {
         this.word = word;
         this.tag = tag;
+        Log.i("Translator", "source: " + source);
+        Log.i("Translator", "target: " + target);
         requestQueue.cancelAll(tag);
         String url = createUrl();
+        Log.d("Translator", url);
         StringRequest request = new StringRequest(url, this, this);
         request.setTag(tag);
         requestQueue.add(request);
@@ -71,7 +76,10 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
     }
 
     private String createUrl() {
-        return Uri.parse(baseUrl).buildUpon().appendEncodedPath(getParams()).build().toString();
+        return Uri.parse(baseUrl).buildUpon()
+                .appendQueryParameter("key", key)
+                .appendQueryParameter("q", word)
+                .appendQueryParameter("langpair", source + '|' + target).build().toString();
     }
 
 
@@ -80,13 +88,9 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
         return this;
     }
 
-    public Translator translateFrom(String source){
+    public Translator translateFrom(String source) {
         this.source = source;
         return this;
-    }
-
-    public String getParams() {
-        return "translate?key=trnsl.1.1.20180315T180433Z.ace9368cd05ee426.a844889d9519ce7c18952bbb36162cd3d1060360&text=" + word + "&lang=" + source + '-' + target;
     }
 
     @Override
@@ -94,30 +98,12 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
         Log.d("Translator", response);
         try {
             JSONObject jsonObject = new JSONObject(response);
-            int code = jsonObject.getInt("code");
-            switch (code) {
-                case 200:
-                    String translate = jsonObject.getJSONArray("text").getString(0);
+            int code = jsonObject.getInt("responseStatus");
+            if(code==200) {
+                    String translate = jsonObject.getJSONObject("responseData").getString("translatedText");
                     listener.onWordTranslated(translate);
-                    break;
-                case 401:
-                    listener.onFailedToTranslate(context.getString(R.string.api_key_depricated));
-                    break;
-                case 402:
-                    listener.onFailedToTranslate(context.getString(R.string.api_key_depricated));
-                    break;
-                case 404:
-                    listener.onFailedToTranslate(context.getString(R.string.exceed_daily_translate));
-                    break;
-                case 413:
-                    listener.onFailedToTranslate(context.getString(R.string.text_size_error));
-                    break;
-                case 422:
-                    listener.onFailedToTranslate(context.getString(R.string.cannot_translate));
-                    break;
-                case 501:
-                    listener.onFailedToTranslate(context.getString(R.string.translate_not_supported));
-                    break;
+            } else {
+                throw new JSONException(response);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -144,6 +130,7 @@ public class Translator implements Response.Listener<String>, Response.ErrorList
             return;
         }
         listener.onFailedToTranslate(context.getString(R.string.error_unknown));
+
     }
 
     public void cancelAll() {

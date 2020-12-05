@@ -169,10 +169,11 @@
             app:srcCompat="@drawable/ic_add"
             android:tint="@color/white"
             android:id="@+id/add"
-            app:backgroundTint="@color/secondary_text_color"
+            app:backgroundTint="@color/translate_top"
             app:elevation="0dp"
             android:layout_gravity="right"
-            android:layout_marginRight="64dp"/>
+            android:layout_marginRight="64dp"
+            android:contentDescription="@string/description_add" />
     </FrameLayout>
 
     <LinearLayout
