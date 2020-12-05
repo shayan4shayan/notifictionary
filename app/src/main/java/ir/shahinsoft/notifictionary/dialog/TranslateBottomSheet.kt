@@ -11,10 +11,10 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.databinding.BottomSheetTranslateBinding
 import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.tasks.InsertTask
-import kotlinx.android.synthetic.main.bottom_sheet_translate.*
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.ByteArrayOutputStream
@@ -24,9 +24,11 @@ import java.util.ArrayList
 class TranslateBottomSheet(context: Context, val isReadonly: Boolean, val text: String, val onDismiss: (String) -> Unit)
     : BottomSheetDialog(context) {
 
+    lateinit var binding : BottomSheetTranslateBinding
+
     private val onLanguageChanged = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val target = spinnerTarget.selectedItem as String
+            val target = binding.spinnerTarget.selectedItem as String
             translateTo(target)
         }
 
@@ -37,62 +39,63 @@ class TranslateBottomSheet(context: Context, val isReadonly: Boolean, val text: 
 
     private val translateListener = object : Translator.TranslateListener {
         override fun onWordTranslated(translate: String?) {
-            textTranslate.text = translate
-            textTranslate.visibility = View.VISIBLE
-            progress.visibility = View.GONE
-            textTranslate.isClickable = false
+            binding.textTranslate.text = translate
+            binding.textTranslate.visibility = View.VISIBLE
+            binding.progress.visibility = View.GONE
+            binding.textTranslate.isClickable = false
             if (!isReadonly) {
-                replace.isEnabled = true
+                binding.replace.isEnabled = true
             }
-            addToTranslateList.visibility = View.VISIBLE
+            binding.addToTranslateList.visibility = View.VISIBLE
         }
 
         override fun onFailedToTranslate(reason: String?) {
-            textTranslate.text = reason ?: "cannot translate Tap to retry!!"
-            textTranslate.isClickable = true
-            textTranslate.visibility = View.VISIBLE
-            progress.visibility = View.GONE
-            replace.isEnabled = false
+            binding.textTranslate.text = reason ?: "cannot translate Tap to retry!!"
+            binding.textTranslate.isClickable = true
+            binding.textTranslate.visibility = View.VISIBLE
+            binding.progress.visibility = View.GONE
+            binding.replace.isEnabled = false
         }
 
     }
 
     private fun translateTo(target: String) {
-        textTranslate.visibility = View.GONE
-        progress.visibility = View.VISIBLE
+        binding.textTranslate.visibility = View.GONE
+        binding.progress.visibility = View.VISIBLE
         Translator.with(context).TranslateTo(target).callback(translateListener).translate(text)
     }
 
     override fun show() {
         super.show()
-        setContentView(R.layout.bottom_sheet_translate)
+        binding = BottomSheetTranslateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         setCancelable(false)
-        textWord.text = text
-        layout.setBackgroundColor(getApplicationColor())
+        binding.textWord.text = text
+        binding.layout.setBackgroundColor(getApplicationColor())
         val languages = getLanguages()
-        spinnerTarget.adapter = ArrayAdapter<String>(context, R.layout.simple_text_white, languages)
-        spinnerTarget.setPopupBackgroundDrawable(ColorDrawable(getApplicationColor()))
-        spinnerTarget.onItemSelectedListener = onLanguageChanged
+        binding.spinnerTarget.adapter = ArrayAdapter<String>(context, R.layout.simple_text_white, languages)
+        binding.spinnerTarget.setPopupBackgroundDrawable(ColorDrawable(getApplicationColor()))
+        binding.spinnerTarget.onItemSelectedListener = onLanguageChanged
         val target = context.getSharedPreferences(APP, MODE_PRIVATE).getString(TARGET_SMALL, "fa")
         val index = languages.indexOf(target ?: "fa")
-        spinnerTarget.setSelection(index)
+        binding.spinnerTarget.setSelection(index)
 
-        textTranslate.setOnClickListener {
+        binding.textTranslate.setOnClickListener {
             translateTo(target ?: "fa")
         }
         translateTo(target ?: "fa")
 
-        replace.setOnClickListener {
-            onDismiss(textTranslate.text.toString())
+        binding.replace.setOnClickListener {
+            onDismiss(binding.textTranslate.text.toString())
             dismiss()
         }
-        close.setOnClickListener {
+        binding.close.setOnClickListener {
             onDismiss("")
             dismiss()
         }
 
-        speak.setOnClickListener {
+        binding.speak.setOnClickListener {
             Intent(context, NotifictionaryService::class.java).apply {
                 action = ACTION_SPEAK
                 putExtra(EXTRA_WORD, text)
@@ -100,10 +103,10 @@ class TranslateBottomSheet(context: Context, val isReadonly: Boolean, val text: 
             }
         }
 
-        if (isReadonly) replace.visibility = View.INVISIBLE
+        if (isReadonly) binding.replace.visibility = View.INVISIBLE
 
-        addToTranslateList.setOnClickListener { addToTranslateList() }
-        addToTranslateList.visibility = View.INVISIBLE
+        binding.addToTranslateList.setOnClickListener { addToTranslateList() }
+        binding.addToTranslateList.visibility = View.INVISIBLE
     }
 
     private fun addToTranslateList(){
@@ -115,9 +118,9 @@ class TranslateBottomSheet(context: Context, val isReadonly: Boolean, val text: 
 
     private fun getTranslate(): Translate {
         return Translate().apply {
-            name = textWord.text.toString()
-            translate = textTranslate.text.toString()
-            lang = spinnerTarget.selectedItem as String
+            name = binding.textWord.text.toString()
+            translate = binding.textTranslate.text.toString()
+            lang = binding.spinnerTarget.selectedItem as String
         }
     }
 

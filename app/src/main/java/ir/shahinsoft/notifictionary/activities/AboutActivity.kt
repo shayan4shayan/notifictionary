@@ -9,18 +9,21 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import ir.shahinsoft.notifictionary.R
-import kotlinx.android.synthetic.main.activity_about.*
+import ir.shahinsoft.notifictionary.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
-        telegram.setOnClickListener { openTelegramPage() }
-        instagram.setOnClickListener { openInstagramPage() }
-        twitter.setOnClickListener { openTwitterPage() }
-        gmail.setOnClickListener { sendGmail() }
-        close.setOnClickListener { finish() }
+        binding = ActivityAboutBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        binding.telegram.setOnClickListener { openTelegramPage() }
+        binding.instagram.setOnClickListener { openInstagramPage() }
+        binding.twitter.setOnClickListener { openTwitterPage() }
+        binding.gmail.setOnClickListener { sendGmail() }
+        binding.close.setOnClickListener { finish() }
     }
 
     override fun onResume() {

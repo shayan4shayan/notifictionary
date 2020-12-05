@@ -42,8 +42,8 @@ fun Context.toast(mills: Long) {
 fun Context.translateToast(message: String) {
     val toast = Toast.makeText(this, "", Toast.LENGTH_LONG)
     toast.view = LayoutInflater.from(this).inflate(R.layout.custom_toast, null, false)
-    val tv = toast.view.findViewById<TextView>(R.id.text)
-    tv.text = message
+    val tv = toast.view?.findViewById<TextView>(R.id.text)
+    tv?.text = message
     toast.setGravity(Gravity.CENTER, 0, 0)
     toast.show()
 }

@@ -10,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.databinding.FragmentTranslateBinding
 import ir.shahinsoft.notifictionary.dialog.PickBoardDialog
 import ir.shahinsoft.notifictionary.dialog.SelectLanguageDialog
 import ir.shahinsoft.notifictionary.model.Board
@@ -18,7 +20,6 @@ import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.model.TranslateLanguage
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.tasks.InsertTask
-import kotlinx.android.synthetic.main.fragment_translate.*
 import java.util.*
 
 class TranslateFragment : Fragment(), Translator.TranslateListener {
@@ -26,8 +27,11 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
     lateinit var source: String
     lateinit var target: String
 
+    lateinit var binding : FragmentTranslateBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_translate, container, false)
+        binding = FragmentTranslateBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     private val wordTextWatcher = object : TextWatcher {
@@ -35,8 +39,8 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
             if (p0?.isEmpty() == true)
                 return
             Handler().postDelayed({
-                if (textWord?.text == p0) {
-                    translateWord(textWord.text.toString())
+                if (binding.textWord?.text == p0) {
+                    translateWord(binding.textWord.text.toString())
                 }
             }, 500)
         }
@@ -54,31 +58,31 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
 
         initTranslationLanguages()
 
-        speak.setOnClickListener {
-            if (textWord.text.isNotEmpty()) {
+        binding.speak.setOnClickListener {
+            if (binding.textWord.text.isNotEmpty()) {
                 context?.startService(Intent(context, NotifictionaryService::class.java).apply {
                     action = ACTION_SPEAK
-                    putExtra(EXTRA_WORD, textWord.text.toString())
+                    putExtra(EXTRA_WORD, binding.textWord.text.toString())
                 })
             }
         }
 
-        sourceLanguage.setOnClickListener {
+        binding.sourceLanguage.setOnClickListener {
             getSourceFromUser()
         }
 
-        targetLanguage.setOnClickListener {
+        binding.targetLanguage.setOnClickListener {
             getTargetFromUser()
         }
 
-        swapLanguages.setOnClickListener {
+        binding.swapLanguages.setOnClickListener {
             swapLanguages()
         }
 
-        textWord.addTextChangedListener(wordTextWatcher)
+        binding.textWord.addTextChangedListener(wordTextWatcher)
 
-        add.setOnClickListener {
-            if (textWord.text.isEmpty() || textTranslation.text.isEmpty()){
+        binding.add.setOnClickListener {
+            if (binding.textWord.text.isEmpty() || binding.textTranslation.text.isEmpty()){
                 return@setOnClickListener
             }
             addWordToBoard()
@@ -94,15 +98,15 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
     }
 
     private fun addWordToBoard(board: Board){
-        val word = textWord.text.toString()
-        val translation = textTranslation.text.toString()
+        val word = binding.textWord.text.toString()
+        val translation = binding.textTranslation.text.toString()
         val translate = Translate()
         translate.name = word
         translate.translate = translation
         translate.catId = board.id
-        InsertTask(context!!.getAppDatabase()){
-            textWord.text.clear()
-            textTranslation.text.clear()
+        InsertTask(context?.getAppDatabase()!!){
+            binding.textWord.text.clear()
+            binding.textTranslation.text.clear()
             context?.toast(String.format(getString(R.string.add_message_format),word,board.name))
         }.execute(translate)
     }
@@ -155,12 +159,12 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
         target = PreferenceManager.getDefaultSharedPreferences(context).getString("target", "fa")
                 ?: "fa"
 
-        sourceLanguage.text = PreferenceManager
+        binding.sourceLanguage.text = PreferenceManager
                 .getDefaultSharedPreferences(context)
                 .getString("sourceName", "english")
                 ?.toUpperCase(Locale.US) ?: "ENGLISH"
 
-        targetLanguage.text = PreferenceManager
+        binding.targetLanguage.text = PreferenceManager
                 .getDefaultSharedPreferences(context)
                 .getString("targetName", "persian")
                 ?.toUpperCase(Locale.US) ?: "PERSIAN"
@@ -172,7 +176,7 @@ class TranslateFragment : Fragment(), Translator.TranslateListener {
     }
 
     override fun onWordTranslated(translate: String?) {
-        textTranslation.setText(translate)
+        binding.textTranslation.setText(translate)
     }
 
     override fun onFailedToTranslate(reason: String?) {

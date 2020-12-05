@@ -6,11 +6,12 @@ buildscript {
         google()
         jcenter()
         maven {
-            url 'https://kotlin.bintray.com/kotlinx/'
-        }
-        maven {
             url 'https://dl.bintray.com/adivery/maven'
         }
+        maven {
+            url 'https://kotlin.bintray.com/kotlinx/'
+        }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'

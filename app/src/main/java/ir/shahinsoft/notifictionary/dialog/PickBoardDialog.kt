@@ -4,15 +4,17 @@ import android.app.AlertDialog
 import android.content.Context
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.CategoryAdapter
+import ir.shahinsoft.notifictionary.databinding.DialogPickBoardBinding
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.tasks.BoardsLoaderTask
-import kotlinx.android.synthetic.main.dialog_pick_board.*
 
 class PickBoardDialog(context:Context, val callback : (Board)->Unit) : AlertDialog(context){
+    lateinit var binding : DialogPickBoardBinding
     override fun show() {
         super.show()
-        setContentView(R.layout.dialog_pick_board)
+        binding = DialogPickBoardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         loadBoards()
     }
 
@@ -23,7 +25,7 @@ class PickBoardDialog(context:Context, val callback : (Board)->Unit) : AlertDial
     }
 
     private fun displayBoards(boards:List<Board>) {
-        recycler.adapter = CategoryAdapter(ArrayList(boards)) {
+        binding.recycler.adapter = CategoryAdapter(ArrayList(boards)) {
             callback(it)
             dismiss()
         }

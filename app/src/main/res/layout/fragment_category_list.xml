@@ -31,44 +31,6 @@
             app:srcCompat="@drawable/ic_add" />
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:background="@drawable/background_tablayout"
-        android:visibility="gone"
-        app:tabBackground="@drawable/background_tab_item"
-        app:tabIndicator="@color/transparent"
-        app:tabMode="auto"
-        app:tabPaddingEnd="20dp"
-        app:tabPaddingStart="20dp"
-        app:tabSelectedTextColor="@color/secondary_text_color"
-        app:tabTextColor="@color/primary_text_color">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/all" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/recently"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/recently_added" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/shared"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/shared" />
-    </com.google.android.material.tabs.TabLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"

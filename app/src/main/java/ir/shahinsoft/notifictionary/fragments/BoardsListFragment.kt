@@ -1,42 +1,35 @@
 package ir.shahinsoft.notifictionary.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.tabs.TabLayout
-import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.CategoryAdapter
+import ir.shahinsoft.notifictionary.databinding.FragmentCategoryListBinding
 import ir.shahinsoft.notifictionary.dialog.AddBoardDialog
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.tasks.BoardsLoaderTask
 import ir.shahinsoft.notifictionary.tasks.InsertCategoryTask
-import kotlinx.android.synthetic.main.fragment_category_list.*
 
 class BoardsListFragment : androidx.fragment.app.Fragment() {
 
-    final val ALL = 0
-    final val SHARED = 1
-    final val RECENT = 2
-
     var forceUpdate = false
-
-    var displayType = ALL
 
     var activityCallback : ((Board) -> Unit)? = null
 
+    lateinit var binding : FragmentCategoryListBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_category_list, container, false)
+        binding = FragmentCategoryListBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadAllBoards()
 
-        add.setOnClickListener {
+        binding.add.setOnClickListener {
             addBoard()
         }
 
@@ -50,41 +43,13 @@ class BoardsListFragment : androidx.fragment.app.Fragment() {
         }
     }
     private fun insertNewBoard(name:String){
-        InsertCategoryTask(context!!.getAppDatabase()) {
+        InsertCategoryTask(context?.getAppDatabase()!!) {
             forceUpdate = true
-            reloadBoards()
+            loadAllBoards()
             forceUpdate = false
         }.execute(name)
     }
 
-    private fun reloadBoards(){
-        Log.i("BoardsListFragment","reloading boards")
-        tabLayout?.apply {
-            val position = selectedTabPosition
-            Log.d("BoardsListFragment"," pos " + position)
-            if (position==0){
-                if (forceUpdate || displayType!=ALL){
-                    loadAllBoards()
-                }
-            } else if (forceUpdate || position==1){
-                if (displayType!=RECENT){
-                    loadRecentBoards()
-                }
-            } else {
-                if (forceUpdate || displayType!=SHARED){
-                    loadSharedBoards()
-                }
-            }
-        }
-    }
-
-    private fun loadSharedBoards() {
-
-    }
-
-    private fun loadRecentBoards() {
-
-    }
 
     fun onBoardSelected(board:Board){
         Log.i("BoardListFragment","board ${board.name} selected")
@@ -104,7 +69,7 @@ class BoardsListFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun displayBoards(boards: List<Board>) {
-        recycler?.adapter = CategoryAdapter(ArrayList(boards)){
+        binding.recycler.adapter = CategoryAdapter(ArrayList(boards)){
             onBoardSelected(it)
         }
     }

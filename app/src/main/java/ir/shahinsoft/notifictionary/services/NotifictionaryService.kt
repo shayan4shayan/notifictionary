@@ -155,7 +155,7 @@ class NotifictionaryService : Service() {
             ACTION_NEW_PERIOD -> triggerNextNotificationTime()
             ACTION_SMART_NOTIFICATION_ON -> initDeviceUsageReceiver()
             ACTION_SMART_NOTIFICATION_OFF -> turnOffSmartNotifications()
-            ACTION_SEND_TRANSLATE_NOTIFICATION -> sendTranslateNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getStringExtra(EXTRA_TRANSLATE), intent.getStringExtra(EXTRA_LANG), intent)
+            ACTION_SEND_TRANSLATE_NOTIFICATION -> sendTranslateNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getStringExtra(EXTRA_TRANSLATE)!!, intent.getStringExtra(EXTRA_LANG), intent)
             ACTION_DISMISS_NOTIFICATION -> dismissNotification(intent.getIntExtra(EXTRA_ID, -1), intent.getBooleanExtra(EXTRA_HAS_LEARNED, false))
             ACTION_USER_DISMISSED_NOTIFICATION -> userDismissedNotification(intent.getIntExtra(EXTRA_ID, -1), intent)
             ACTION_FORCE_NOTIFICATION -> forceANotifictionary()

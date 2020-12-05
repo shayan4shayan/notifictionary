@@ -10,7 +10,7 @@
     <declare-styleable name="CircleProgressBar">
         <attr name="min_progress" format="integer" />
         <attr name="max_progress" format="integer" />
-        <attr name="progress" />
+        <attr name="android:progress" />
         <attr name="progressbarColor" format="color" />
         <attr name="progressBarThickness" format="dimension" />
     </declare-styleable>

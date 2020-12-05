@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.databinding.FragmentMainBinding
 import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.tasks.LoadRecentTask
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : androidx.fragment.app.Fragment() {
+
+    lateinit var binding : FragmentMainBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        binding = FragmentMainBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,7 +35,7 @@ class MainFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun displayRecent(recent:List<Translate>){
-        recentRecycler.adapter = RecentAdapter(recent)
+        binding.recentRecycler.adapter = RecentAdapter(recent)
         Log.d("MainFragment","displaying recent")
     }
 

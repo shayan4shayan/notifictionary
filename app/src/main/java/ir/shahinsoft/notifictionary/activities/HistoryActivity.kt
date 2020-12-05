@@ -7,21 +7,21 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.HistoryAdapter
+import ir.shahinsoft.notifictionary.databinding.ActivityHistoryBinding
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.History
-import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.tasks.LoadHistoryTask
-import kotlinx.android.synthetic.main.activity_history.*
 import kotlin.concurrent.thread
 
 class HistoryActivity : BaseActivity(), HistoryAdapter.OnItemActionClickListener {
+    lateinit var binding : ActivityHistoryBinding
     override fun onDelete(t: History) {
         thread {
             getAppDatabase().delete(t)
         }
         items.removeAt(0)
-        recycler.adapter?.notifyItemRemoved(0)
-        recycler.layoutManager?.scrollToPosition(0)
+        binding.recycler.adapter?.notifyItemRemoved(0)
+        binding.recycler.layoutManager?.scrollToPosition(0)
     }
 
     override fun onInsert(t: History) {
@@ -35,7 +35,8 @@ class HistoryActivity : BaseActivity(), HistoryAdapter.OnItemActionClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_history)
+        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -46,30 +47,19 @@ class HistoryActivity : BaseActivity(), HistoryAdapter.OnItemActionClickListener
             items = it
             val adapter = HistoryAdapter(it, this)
 
-            recycler.adapter = adapter
+            binding.recycler.adapter = adapter
         }.execute()
 
 
-        val manager = recycler.layoutManager as LinearLayoutManager
+        val manager = binding.recycler.layoutManager as LinearLayoutManager
         manager.reverseLayout = true
         manager.stackFromEnd = true
-        recycler.itemAnimator = DefaultItemAnimator()
+        binding.recycler.itemAnimator = DefaultItemAnimator()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_history, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return if (item?.itemId == android.R.id.home) {
-            finish()
-            true
-        } else if (item?.itemId == R.id.menu_clear) {
-            clearAll()
-            true
-        } else
-            super.onOptionsItemSelected(item)
     }
 
     private fun clearAll() {
@@ -78,7 +68,7 @@ class HistoryActivity : BaseActivity(), HistoryAdapter.OnItemActionClickListener
     }
 
     private fun clearList() {
-        (recycler.adapter as HistoryAdapter).clearAll()
+        (binding.recycler.adapter as HistoryAdapter).clearAll()
     }
 
     private fun removeAllItemsInDatabase() {

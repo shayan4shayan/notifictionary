@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:tint="@color/primary_text_color"
+                app:tint="@color/primary_text_color"
                 app:srcCompat="@drawable/ic_swap"
                 android:contentDescription="@string/blind_swap_language" />
 
@@ -119,14 +119,15 @@
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
                 android:textColor="@color/primary_text_color"
-                android:textColorHint="@color/picker_deep_purple_alpha" />
+                android:textColorHint="@color/picker_deep_purple_alpha"
+                android:importantForAutofill="no" />
 
             <ImageView
                 android:id="@+id/speak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:tint="@color/primary_text_color"
+                app:tint="@color/primary_text_color"
                 app:srcCompat="@drawable/ic_speack"
                 android:contentDescription="@string/blind_speack" />
         </LinearLayout>

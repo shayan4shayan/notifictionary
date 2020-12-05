@@ -124,7 +124,7 @@ public class CircleProgressBar extends View {
         //Reading values from the XML layout
         try {
             strokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_progressBarThickness, strokeWidth);
-            progress = typedArray.getFloat(R.styleable.CircleProgressBar_progress, progress);
+            progress = typedArray.getFloat(R.styleable.CircleProgressBar_android_progress, progress);
             color = typedArray.getInt(R.styleable.CircleProgressBar_progressbarColor, color);
             min = typedArray.getInt(R.styleable.CircleProgressBar_min_progress, min);
             max = typedArray.getInt(R.styleable.CircleProgressBar_max_progress, max);

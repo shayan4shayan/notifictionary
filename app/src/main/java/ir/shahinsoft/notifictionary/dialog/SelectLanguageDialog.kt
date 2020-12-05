@@ -4,8 +4,8 @@ import android.app.AlertDialog
 import android.content.Context
 import ir.shahinsoft.notifictionary.R
 import ir.shahinsoft.notifictionary.adapters.SelectLanguageAdapter
+import ir.shahinsoft.notifictionary.databinding.DialogSelectLanguageBinding
 import ir.shahinsoft.notifictionary.model.TranslateLanguage
-import kotlinx.android.synthetic.main.dialog_select_language.*
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.ByteArrayOutputStream
@@ -13,10 +13,12 @@ import java.io.IOException
 import java.util.ArrayList
 
 class SelectLanguageDialog(context: Context, val listener: (TranslateLanguage) -> Unit) : AlertDialog(context) {
+    lateinit var binding: DialogSelectLanguageBinding
     override fun show() {
         super.show()
-        setContentView(R.layout.dialog_select_language)
-        recycler.adapter = SelectLanguageAdapter(getLanguages()) {
+        binding = DialogSelectLanguageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.recycler.adapter = SelectLanguageAdapter(getLanguages()) {
             listener(it)
             dismiss()
         }

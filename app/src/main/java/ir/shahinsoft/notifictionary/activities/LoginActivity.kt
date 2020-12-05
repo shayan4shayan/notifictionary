@@ -4,29 +4,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import ir.shahinsoft.notifictionary.*
-import kotlinx.android.synthetic.main.activity_login.*
+import ir.shahinsoft.notifictionary.databinding.ActivityLoginBinding
 
 class LoginActivity : BaseActivity() {
 
+    lateinit var binding : ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        login.setOnClickListener { checkAndLogin() }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == android.R.id.home) {
-            finish()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
+        binding.login.setOnClickListener { checkAndLogin() }
     }
 
     private fun checkAndLogin() {
         if (isDataValid()) {
-            val name = textFirstName.text.toString()
-            val last = textLastName.text.toString()
+            val name = binding.textFirstName.text.toString()
+            val last = binding.textLastName.text.toString()
             //TODO send login request to server
 
             //TODO remove code below
@@ -35,15 +30,15 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun isDataValid(): Boolean {
-        val name = textFirstName.text.toString()
-        val last = textLastName.text.toString()
+        val name = binding.textFirstName.text.toString()
+        val last = binding.textLastName.text.toString()
         var isValid = true
         if (name.isEmpty()) {
-            layoutFirstName.error = getString(R.string.error_empty)
+            binding.layoutFirstName.error = getString(R.string.error_empty)
             isValid = false
         }
         if (last.isEmpty()) {
-            layoutLastName.error = getString(R.string.error_empty)
+            binding.layoutLastName.error = getString(R.string.error_empty)
             isValid = false
         }
         return isValid

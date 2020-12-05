@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ir.shahinsoft.notifictionary.R
+import ir.shahinsoft.notifictionary.databinding.FragmentLearnBinding
 import ir.shahinsoft.notifictionary.getAppDatabase
 import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.model.Translate
 import ir.shahinsoft.notifictionary.tasks.LoadWordTask
-import kotlinx.android.synthetic.main.fragment_learn.*
 import java.util.*
 
 class LearnFragment : Fragment() {
@@ -21,14 +20,17 @@ class LearnFragment : Fragment() {
     var right = 0
     var wrong = 0
 
+    lateinit var binding : FragmentLearnBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_learn, container, false)
+        binding = FragmentLearnBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        finish.visibility = View.GONE
-        main.visibility = View.GONE
-        meaning.visibility = View.GONE
+        binding.finish.visibility = View.GONE
+        binding.main.visibility = View.GONE
+        binding.meaning.visibility = View.GONE
 
         context?.apply {
             LoadWordTask(getAppDatabase(),board.id){
@@ -36,11 +38,11 @@ class LearnFragment : Fragment() {
             }.execute()
         }
 
-        flip.setOnClickListener {
+        binding.flip.setOnClickListener {
             displayTranslate()
         }
 
-        yes.setOnClickListener {
+        binding.yes.setOnClickListener {
             right++
             if (wordsStack.empty()){
                 displayFinish()
@@ -49,7 +51,7 @@ class LearnFragment : Fragment() {
             }
         }
 
-        no.setOnClickListener {
+        binding.no.setOnClickListener {
             wrong ++
             if (wordsStack.empty()){
                 displayFinish()
@@ -58,7 +60,7 @@ class LearnFragment : Fragment() {
             }
         }
 
-        quit.setOnClickListener {
+        binding.quit.setOnClickListener {
             activity?.onBackPressed()
         }
     }
@@ -71,28 +73,28 @@ class LearnFragment : Fragment() {
     }
 
     fun displayFinish(){
-        main.visibility = View.GONE
-        meaning.visibility = View.GONE
+        binding.main.visibility = View.GONE
+        binding.meaning.visibility = View.GONE
 
-        finish.visibility = View.VISIBLE
+        binding.finish.visibility = View.VISIBLE
 
-        rightText.text = "Right: $right"
-        wrongText.text = "Wrong: $wrong"
+        binding.rightText.text = "Right: $right"
+        binding.wrongText.text = "Wrong: $wrong"
     }
 
     fun displayTranslate() {
         val translate = wordsStack.pop()
-        main.visibility = View.GONE
+        binding.main.visibility = View.GONE
 
-        meaning.visibility = View.VISIBLE
-        textTranslate.text =translate.translate
+        binding.meaning.visibility = View.VISIBLE
+        binding.textTranslate.text =translate.translate
     }
 
     fun displayWord(){
         val translate = wordsStack.peek()
 
-        main.visibility = View.VISIBLE
-        textWord.text = translate.name
+        binding.main.visibility = View.VISIBLE
+        binding.textWord.text = translate.name
 
     }
 }

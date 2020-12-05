@@ -17,7 +17,6 @@ import androidx.core.app.NotificationCompat;
 
 import ir.shahinsoft.notifictionary.ConstantsKt;
 import ir.shahinsoft.notifictionary.R;
-import ir.shahinsoft.notifictionary.activities.AssayActivity;
 import ir.shahinsoft.notifictionary.model.Translate;
 import ir.shahinsoft.notifictionary.services.NotifictionaryService;
 
@@ -210,18 +209,6 @@ public class NotificationUtil {
 
         if (manager != null) {
             manager.notify(ID, REMINDER_ID, notification);
-        }
-    }
-
-    private static PendingIntent getPendingIntentForExam(Context context) {
-        Intent intent = new Intent(context, AssayActivity.class);
-        return PendingIntent.getActivity(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    public static void cancelRemindNotification(Context context) {
-        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (manager != null) {
-            manager.cancel(ID, REMINDER_ID);
         }
     }
 

@@ -15,18 +15,20 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ir.shahinsoft.notifictionary.*
+import ir.shahinsoft.notifictionary.databinding.ActivityMainBinding
 import ir.shahinsoft.notifictionary.dialog.LicenseDialog
 import ir.shahinsoft.notifictionary.fragments.*
 import ir.shahinsoft.notifictionary.model.Board
 import ir.shahinsoft.notifictionary.services.NotifictionaryService
 import ir.shahinsoft.notifictionary.utils.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlin.system.exitProcess
 
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    lateinit var binding : ActivityMainBinding
+
     private val onAccept = {
         getSharedPreferences(APP, Context.MODE_PRIVATE).edit().putBoolean(LICENSE_ACCEPTANCE, true).apply()
         startNotifictionaryService()
@@ -48,15 +50,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         when (it.itemId) {
             R.id.home -> {
                 setFragment(homeFragment)
-                menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
+                binding.appBar.menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
             }
             R.id.translate -> {
                 setFragment(translateFragment)
-                menu.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.appBar.menu.setColorFilter(ContextCompat.getColor(this, R.color.white))
             }
             R.id.boards -> {
                 setFragment(boardsFragment)
-                menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
+                binding.appBar.menu.setColorFilter(ContextCompat.getColor(this, R.color.picker_deep_purple))
             }
         }
         return@OnNavigationItemSelectedListener true
@@ -73,7 +75,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         boardsFragment.activityCallback = { board ->
             setBoardDetailFragment(board)
@@ -82,22 +86,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         checkLicense()
 
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
+                this, binding.drawerLayout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        nav_view.setNavigationItemSelectedListener(this)
-        nav_view.itemIconTintList = null
+        binding.navView.setNavigationItemSelectedListener(this)
+        binding.navView.itemIconTintList = null
 
-        bottom_navigation.setOnNavigationItemSelectedListener(bottomNavigationItemSelectListener)
+        binding.appBar.bottomNavigation.setOnNavigationItemSelectedListener(bottomNavigationItemSelectListener)
 
         setNavViewFont()
 
-        menu.setOnClickListener {
-            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-                drawer_layout.closeDrawer(GravityCompat.START)
+        binding.appBar.menu.setOnClickListener {
+            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
             } else {
-                drawer_layout.openDrawer(GravityCompat.START)
+                binding.drawerLayout.openDrawer(GravityCompat.START)
             }
         }
 
@@ -138,8 +142,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun setNavViewFont() {
         val font = ResourcesCompat.getFont(this, R.font.prompt_regular)
-        (0 until nav_view.menu.size()).map {
-            nav_view.menu.getItem(it)
+        (0 until binding.navView.menu.size()).map {
+            binding.navView.menu.getItem(it)
         }.forEach { menuItem ->
             SpannableString(menuItem.title).apply {
                 setSpan(CustomTypefaceSpan("", font!!), 0, menuItem.title.length, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -166,8 +170,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
@@ -181,7 +185,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.action_telegram -> openTelegram()
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
@@ -200,20 +204,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         startActivity(SettingsActivity::class.java)
     }
 
-    private fun startImportActivity() {
-        Importer.import_(this)
-    }
-
     private fun startHistoryActivity() {
         startActivity(HistoryActivity::class.java)
-    }
-
-    private fun startCategoriesActivity() {
-
-    }
-
-    private fun startQuizActivity() {
-        startActivity(AssayActivity::class.java)
     }
 
     override fun onDestroy() {
